@@ -1,138 +1,278 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, Calendar, MapPin } from "lucide-react";
+import { Download, Calendar, MapPin, Star, ArrowDown, Share2, Instagram, Linkedin } from "lucide-react";
+import './hero.css';
 
 const Hero = () => {
   const [currentTextMode, setCurrentTextMode] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const [showTitle, setShowTitle] = useState(false);
+  const [shootingStarsDone, setShootingStarsDone] = useState(false);
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 0,
+    height: typeof window !== 'undefined' ? window.innerHeight : 0
+  });
   
-  // Text modes with mythological themes
+  // Constellation data remains the same
+  const constellations = [
+    {
+      name: "Aries",
+      stars: [
+        { x: 20, y: 30, size: 3, brightness: 0.7 },
+        { x: 22, y: 32, size: 4, brightness: 1 },
+        { x: 25, y: 28, size: 3, brightness: 0.8 },
+        { x: 27, y: 33, size: 2, brightness: 0.5 }
+      ],
+      connections: [
+        [0, 1],
+        [1, 2],
+        [2, 3]
+      ],
+      color: "text-yellow-300"
+    },
+    {
+      name: "Orion",
+      stars: [
+        { x: 50, y: 40, size: 4, brightness: 1 },
+        { x: 52, y: 42, size: 5, brightness: 1 },
+        { x: 54, y: 38, size: 3, brightness: 0.8 },
+        { x: 56, y: 43, size: 4, brightness: 0.9 }
+      ],
+      connections: [
+        [0, 1],
+        [1, 2],
+        [2, 3]
+      ],
+      color: "text-blue-300"
+    }
+  ];
+
+  const globalConnections = [
+    { from: { constellation: "Aries", starIndex: 3 }, to: { constellation: "Orion", starIndex: 0 } }
+  ];
+
   const textModes = [
     "PRANAV2K25",
     "π2K25",
     "Π^2 * K^25",
     "ΜΥΘΟΛΟΓΙΑ",
+    "ப்ரணவ்2025",
     "ΠΡΟΜΗΘΕΑΣ",
   ];
 
-  // Responsive adjustments
+  // Event details with maps URLs
+  const eventDetails = {
+    date: "March 15, 2025",
+    venue: "Meenakshi Sundararajan Engineering College",
+    venueMapUrl: "https://maps.google.com/?q=Meenakshi+Sundararajan+Engineering+College,+Chennai",
+    description: "Experience the fusion of ancient Greek wisdom and modern technological innovation at our one-day symposium. PRANAV2K25 brings together mythology and technology in a unique academic celebration that bridges centuries of human knowledge.",
+    websiteUrl: "https://theeightboys.com/pranav2k25-symposium"
+  };
+
+  // Social media links
+  const socialMediaLinks = [
+    { name: "Instagram", icon: Instagram, url: "https://instagram.com/__pranav2k25_", color: "bg-gradient-to-br from-purple-600 to-pink-500" },
+    { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/company/pranav2k25", color: "bg-blue-600" }
+  ];
+
+  // Add favicon to the document head
+  useEffect(() => {
+    const favicon = document.createElement('link');
+    favicon.rel = 'shortcut icon';
+    favicon.href = '/favicon.ico'; // You'll need to ensure this file exists in your public directory
+    document.head.appendChild(favicon);
+
+    return () => {
+      // Clean up on component unmount
+      const existingFavicon = document.querySelector("link[rel='shortcut icon']");
+      if (existingFavicon) {
+        document.head.removeChild(existingFavicon);
+      }
+    };
+  }, []);
+
+  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
     };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
-  // Rotate through text modes
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTextMode((prev) => (prev + 1) % textModes.length);
-    }, 1500); // Slowed down a bit for better readability
-    
-    return () => clearInterval(interval);
-  }, []);
-
-  // Optimized star generation - compute once and memoize
-  const backgroundStars = useMemo(() => {
-    // Adjust star count based on screen size
-    const starCount = windowWidth < 768 ? 50 : 100;
-    
-    return Array.from({ length: starCount }, (_, i) => ({
-      id: `star-${i}`,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      opacity: Math.random() * 0.7 + 0.3
-    }));
-  }, [windowWidth]);
-
-  // Optimized nebula elements
-  const nebulaElements = useMemo(() => {
-    const count = windowWidth < 768 ? 3 : 5;
-    
-    return Array.from({ length: count }, (_, i) => ({
-      id: `nebula-${i}`,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 30 + 10,
-      color: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.1)`
-    }));
-  }, [windowWidth]);
-
-  // Calculate font sizes based on window width
-  const getFontSize = () => {
-    if (windowWidth < 480) return 'text-3xl';
-    if (windowWidth < 768) return 'text-4xl sm:text-5xl';
-    if (windowWidth < 1024) return 'text-5xl md:text-6xl';
-    return 'text-6xl lg:text-8xl';
-  };
-
-  // Get current text for animation
-  const currentText = textModes[currentTextMode].split("");
-  
-  // Simplified constellations that adapt to screen size
-  const constellations = useMemo(() => {
-    // Define base constellations
-    const baseCons = [
-      {
-        name: "Aries",
-        stars: [
-          { x: 20, y: 30, size: 3, brightness: 0.7 },
-          { x: 22, y: 32, size: 4, brightness: 1 },
-          { x: 25, y: 28, size: 3, brightness: 0.8 },
-          { x: 27, y: 33, size: 2, brightness: 0.5 }
-        ],
-        connections: [
-          [0, 1],
-          [1, 2],
-          [2, 3]
-        ],
-        color: "text-yellow-300"
-      },
-      {
-        name: "Orion",
-        stars: [
-          { x: 50, y: 40, size: 4, brightness: 1 },
-          { x: 52, y: 42, size: 5, brightness: 1 },
-          { x: 54, y: 38, size: 3, brightness: 0.8 },
-          { x: 56, y: 43, size: 4, brightness: 0.9 }
-        ],
-        connections: [
-          [0, 1],
-          [1, 2],
-          [2, 3]
-        ],
-        color: "text-blue-300"
-      }
-    ];
-    
-    // For mobile, simplify the stars even further if needed
-    if (windowWidth < 480) {
-      return baseCons.map(con => ({
-        ...con,
-        stars: con.stars.slice(0, 3) // Use fewer stars on small screens
-      }));
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
     }
-    
-    return baseCons;
-  }, [windowWidth]);
+  }, []);
 
-  // Fixed function to safely find constellation by name
-  const findConstellationByName = (name) => {
-    return constellations.find(c => c.name === name) || null;
+  useEffect(() => {
+    // Show shooting stars first, then reveal the title
+    const shootingStarsTimer = setTimeout(() => {
+      setShootingStarsDone(true);
+    }, 3000);
+    
+    // Show title after shooting stars animation
+    const titleTimer = setTimeout(() => {
+      setShowTitle(true);
+    }, 3500);
+    
+    // Start cycling through text modes after title appears
+    const textModeTimer = setInterval(() => {
+      setCurrentTextMode((prev) => (prev + 1) % textModes.length);
+    }, 2000);
+    
+    // Hide scroll indicator after 10 seconds
+    const scrollTimer = setTimeout(() => {
+      setShowScrollIndicator(false);
+    }, 10000);
+    
+    return () => {
+      clearTimeout(shootingStarsTimer);
+      clearTimeout(titleTimer);
+      clearInterval(textModeTimer);
+      clearTimeout(scrollTimer);
+    };
+  }, [textModes.length]);
+
+  // Function to handle sharing the event with improved formatting
+  const handleShare = async () => {
+    try {
+      const shareText = `Join us for PRANAV2K25: A Symposium of Greek Mythology & Modern Innovation on ${eventDetails.date} at ${eventDetails.venue}. Learn more at ${eventDetails.websiteUrl}`;
+      
+      if (navigator.share) {
+        await navigator.share({
+          title: 'PRANAV2K25 Symposium',
+          text: shareText,
+          url: eventDetails.websiteUrl,
+        });
+      } else {
+        // Fallback for browsers that don't support the Web Share API
+        navigator.clipboard.writeText(shareText);
+        alert('Event details copied to clipboard! Share with your friends and colleagues.');
+      }
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
   };
 
-  // Global connections
-  const globalConnections = [
-    { from: { constellation: "Aries", starIndex: constellations[0]?.stars.length > 3 ? 3 : 2 }, 
-      to: { constellation: "Orion", starIndex: 0 } }
+  // Responsive design helper
+  const getResponsiveSize = (base, sm, md, lg, xl) => {
+    const width = windowSize.width;
+    if (width < 640) return base;
+    if (width < 768) return sm;
+    if (width < 1024) return md;
+    if (width < 1280) return lg;
+    return xl;
+  };
+
+  const backgroundStars = Array.from({ length: 100 }, (_, i) => ({
+    id: `star-${i}`,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 3 + 1,
+    opacity: Math.random() * 0.7 + 0.3
+  }));
+
+  const nebulaElements = Array.from({ length: 5 }, (_, i) => ({
+    id: `nebula-${i}`,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 30 + 10,
+    color: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.1)`
+  }));
+
+  const currentText = textModes[currentTextMode].split("");
+
+  const findConstellationByName = (name) => {
+    if (!name) return null;
+    return constellations.find(c => 
+      c.name.toLowerCase() === name.toLowerCase()
+    ) || null;
+  };
+
+  // Shooting stars data
+  const shootingStars = [
+    { id: 'star-1', startX: 0, startY: 30, endX: 50, endY: 50, duration: 2, delay: 0, size: 2 },
+    { id: 'star-2', startX: 100, startY: 20, endX: 50, endY: 50, duration: 2, delay: 0.5, size: 2 }
   ];
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#0B1026] via-[#0D1C3D] to-[#0B1026]">
-      {/* Reduced Nebula Elements with simplified animations */}
+    <section id='hero' className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#0B1026] via-[#0D1C3D] to-[#0B1026]">
+      {/* Add meta viewport tag to ensure proper mobile scaling */}
+      <motion.div
+        className="fixed top-0 left-0 w-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      </motion.div>
+
+      {/* Fixed top bar for navigation controls */}
+      <motion.div 
+        className="fixed top-0 left-0 right-0 p-4 flex justify-end items-center z-30"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5 }}
+      >
+        <motion.button
+          onClick={handleShare}
+          className="p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all share-button"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <Share2 className="w-5 h-5 text-white" />
+        </motion.button>
+      </motion.div>
+
+      {/* Social Media Links - Fixed on the side */}
+      <motion.div 
+        className="fixed left-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-3 z-30 hidden sm:flex"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 2, staggerChildren: 0.1 }}
+      >
+        {socialMediaLinks.map((link, index) => (
+          <motion.a
+            key={link.name}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`p-2 rounded-full ${link.color} text-white hover:scale-110 transition-all`}
+            whileHover={{ scale: 1.2, rotate: 10 }}
+            whileTap={{ scale: 0.9 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 2 + (index * 0.1) }}
+          >
+            <link.icon className="w-5 h-5" />
+          </motion.a>
+        ))}
+      </motion.div>
+
+      {/* Mobile Social Media Links - Only visible on small screens */}
+      <motion.div 
+        className="fixed bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4 z-30 sm:hidden"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2 }}
+      >
+        {socialMediaLinks.map((link) => (
+          <motion.a
+            key={link.name}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`p-2 rounded-full ${link.color} text-white hover:scale-110 transition-all`}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <link.icon className="w-4 h-4" />
+          </motion.a>
+        ))}
+      </motion.div>
+
+      {/* Nebula Elements */}
       {nebulaElements.map(nebula => (
         <motion.div
           key={nebula.id}
@@ -155,7 +295,7 @@ const Hero = () => {
         />
       ))}
 
-      {/* Background Mount Olympus-inspired landscape - static, no animation */}
+      {/* Background Mount Olympus */}
       <div className="absolute inset-0 opacity-20">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-full h-full">
           <defs>
@@ -171,7 +311,7 @@ const Hero = () => {
         </svg>
       </div>
 
-      {/* Static background stars - no animations for better performance */}
+      {/* Background stars */}
       {backgroundStars.map(star => (
         <div
           key={star.id}
@@ -186,8 +326,62 @@ const Hero = () => {
         />
       ))}
 
-      {/* Responsive constellation rendering - selective based on screen size */}
-      {windowWidth > 480 && constellations.map((constellation, constellationIndex) => (
+      {/* Shooting Stars Animation */}
+      {shootingStars.map(star => (
+        <motion.div
+          key={star.id}
+          className="absolute bg-white rounded-full z-10"
+          style={{
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+          }}
+          initial={{ 
+            x: `${star.startX}%`, 
+            y: `${star.startY}%`,
+            scale: 0,
+            opacity: 0
+          }}
+          animate={{ 
+            x: `${star.endX}%`, 
+            y: `${star.endY}%`,
+            scale: [0, 1.5, 1],
+            opacity: [0, 1, 1, 0]
+          }}
+          transition={{
+            duration: star.duration,
+            delay: star.delay,
+            ease: "easeOut"
+          }}
+        >
+          {/* Trailing effect */}
+          <motion.div 
+            className="absolute top-0 left-0 w-16 h-1 bg-gradient-to-r from-transparent via-white to-blue-300 blur-sm"
+            style={{
+              transformOrigin: 'right center',
+              transform: `translateX(-100%) rotate(${star.startX < star.endX ? '-' : ''}45deg)`
+            }}
+          />
+        </motion.div>
+      ))}
+
+      {/* Shooting Star Collision Effect - Only shows at end of shooting star animations */}
+      {shootingStarsDone && (
+        <motion.div
+          className="absolute rounded-full blur-md z-20"
+          style={{
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            background: 'radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(100,149,237,0.5) 50%, rgba(0,0,255,0) 100%)'
+          }}
+          initial={{ width: '0px', height: '0px', opacity: 0 }}
+          animate={{ width: '200px', height: '200px', opacity: [0, 1, 0] }}
+          transition={{ duration: 1.5 }}
+        />
+      )}
+
+      {/* Constellations */}
+      {constellations.map((constellation, constellationIndex) => (
         <motion.div 
           key={constellation.name}
           className="absolute w-full h-full"
@@ -210,43 +404,20 @@ const Hero = () => {
                 height: `${star.size * 2}px`
               }}
             >
-              {/* Using simple div for stars on smaller screens for better performance */}
-              {windowWidth < 768 ? (
-                <div 
-                  className="rounded-full w-full h-full" 
-                  style={{ 
-                    backgroundColor: constellation.color.includes('yellow') ? '#FFD700' : '#87CEFA',
-                    opacity: star.brightness 
-                  }}
-                />
-              ) : (
-                <motion.div 
-                  className="w-full h-full rounded-full"
-                  style={{ 
-                    backgroundColor: constellation.color.includes('yellow') ? '#FFD700' : '#87CEFA',
-                    opacity: star.brightness 
-                  }}
-                  animate={{ 
-                    scale: [1, 1.1, 1],
-                    opacity: [star.brightness, star.brightness * 1.2, star.brightness]
-                  }}
-                  transition={{
-                    duration: 2 + Math.random() * 2,
-                    repeat: Infinity,
-                    repeatType: "reverse"
-                  }}
-                />
-              )}
+              <Star 
+                className="w-full h-full" 
+                fill={constellation.color.replace('text-', 'currentColor')} 
+                stroke="none" 
+                opacity={star.brightness} 
+              />
             </div>
           ))}
 
-          {/* Constellation Connections - single SVG for all connections */}
+          {/* Connections */}
           <svg className="absolute inset-0 pointer-events-none" style={{ width: '100%', height: '100%' }}>
             {constellation.connections.map((connection, connectionIndex) => {
               const startStar = constellation.stars[connection[0]];
               const endStar = constellation.stars[connection[1]];
-              
-              if (!startStar || !endStar) return null;
               
               return (
                 <motion.line
@@ -255,7 +426,7 @@ const Hero = () => {
                   y1={`${startStar.y}%`}
                   x2={`${endStar.x}%`}
                   y2={`${endStar.y}%`}
-                  stroke={constellation.color.replace('text-', '').includes('yellow') ? '#FFD700' : '#87CEFA'}
+                  stroke={constellation.color.replace('text-', '')}
                   strokeWidth="1"
                   strokeOpacity="0.7"
                   initial={{ pathLength: 0 }}
@@ -271,150 +442,200 @@ const Hero = () => {
         </motion.div>
       ))}
 
-      {/* Global Constellation Connections - only on larger screens */}
-      {windowWidth > 768 && (
-        <svg className="absolute inset-0 pointer-events-none" style={{ width: '100%', height: '100%' }}>
-          {globalConnections.map((connection, index) => {
-            const startConstellation = findConstellationByName(connection.from.constellation);
-            const endConstellation = findConstellationByName(connection.to.constellation);
-            
-            // Skip rendering if either constellation is not found
-            if (!startConstellation || !endConstellation) return null;
-            
-            // Check if star indices are valid
-            if (!startConstellation.stars[connection.from.starIndex] || 
-                !endConstellation.stars[connection.to.starIndex]) return null;
-            
-            const startStar = startConstellation.stars[connection.from.starIndex];
-            const endStar = endConstellation.stars[connection.to.starIndex];
-            
-            return (
-              <motion.line
-                key={`global-connection-${index}`}
-                x1={`${startStar.x}%`}
-                y1={`${startStar.y}%`}
-                x2={`${endStar.x}%`}
-                y2={`${endStar.y}%`}
-                stroke="white"
-                strokeWidth="1"
-                strokeOpacity="0.5"
-                strokeDasharray="5 5"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{
-                  duration: 3,
-                  delay: 7 // Delay after all constellations have formed
-                }}
-              />
-            );
-          })}
-        </svg>
-      )}
+      {/* Global Connections */}
+      <svg className="absolute inset-0 pointer-events-none" style={{ width: '100%', height: '100%' }}>
+        {globalConnections.map((connection, index) => {
+          const startConstellation = findConstellationByName(connection.from.constellation);
+          const endConstellation = findConstellationByName(connection.to.constellation);
+          
+          if (!startConstellation || !endConstellation) {
+            return null;
+          }
+          
+          if (!startConstellation.stars[connection.from.starIndex] || 
+              !endConstellation.stars[connection.to.starIndex]) {
+            return null;
+          }
+          
+          const startStar = startConstellation.stars[connection.from.starIndex];
+          const endStar = endConstellation.stars[connection.to.starIndex];
+          
+          return (
+            <motion.line
+              key={`global-connection-${index}`}
+              x1={`${startStar.x}%`}
+              y1={`${startStar.y}%`}
+              x2={`${endStar.x}%`}
+              y2={`${endStar.y}%`}
+              stroke="white"
+              strokeWidth="1"
+              strokeOpacity="0.5"
+              strokeDasharray="5 5"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{
+                duration: 3,
+                delay: 7
+              }}
+            />
+          );
+        })}
+      </svg>
       
-      {/* Content section - fully responsive */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center text-white px-4 w-full">
-        <div className="h-16 sm:h-20 md:h-24 lg:h-32 relative mb-6 sm:mb-8 md:mb-12 flex items-center justify-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentTextMode}
-              className="flex space-x-1 sm:space-x-2 overflow-hidden py-2 sm:py-4 px-1 sm:px-2"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              transition={{ duration: 0.8 }}
-            >
-              {currentText.map((char, index) => (
-                <motion.span
-                  key={index}
-                  className={`${getFontSize()} font-bold inline-block`}
-                  style={{
-                    textShadow: "0 0 10px rgba(255,255,255,0.5)"
-                  }}
-                  initial={{ 
-                    rotateY: 180,
-                    opacity: 0
-                  }}
-                  animate={{ 
-                    rotateY: 0,
-                    opacity: 1,
-                    color: index % 2 === 0 ? '#FFD700' : '#FFFFFF'
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.05,
-                    type: "spring",
-                    damping: 12
-                  }}
+      {/* Content section - Center aligned with better mobile responsiveness */}
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 w-full max-w-4xl mx-auto h-full">
+        {/* Main content container with safe area for all device sizes */}
+        <div className="flex flex-col items-center justify-center pt-16 pb-16">
+          {/* Title with animated characters - Only shows after shooting stars collision */}
+          <div className="relative mb-4 sm:mb-6 md:mb-8 flex items-center justify-center w-full">
+            {showTitle && (
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentTextMode}
+                  className="flex space-x-0.5 xs:space-x-1 sm:space-x-2 overflow-hidden py-2 sm:py-4"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -50 }}
+                  transition={{ duration: 0.8 }}
                 >
-                  {char}
-                </motion.span>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-        
-        <motion.h2
-          className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium mb-4 sm:mb-6 md:mb-8 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-yellow-300"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1 }}
-        >
-          A Symposium of Greek Mythology & Modern Innovation
-        </motion.h2>
-
-        <motion.a
-          href="#register"
-          className="px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-yellow-400 to-blue-500 text-white font-bold rounded-lg hover:from-yellow-500 hover:to-blue-600 transition-all flex items-center justify-center text-sm sm:text-base"
-          whileHover={{ 
-            scale: 1.05
-          }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-        >
-          <Download className="mr-2 w-4 h-4 sm:w-5 sm:h-5" /> Register Now
-        </motion.a>
-
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-4 sm:mt-6 md:mt-8 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl px-2 sm:px-4">
-          {[
-            {
-              icon: Calendar,
-              title: "Event Date",
-              description: "March 15, 2025",
-              color: "text-blue-400"
-            },
-            {
-              icon: MapPin,
-              title: "Venue",
-              description: "Meenakshi Sundararajan Engineering College",
-              color: "text-green-500"
-            }
-          ].map((detail, index) => (
-            <motion.div
-              key={detail.title}
-              className={`
-                flex-1 flex items-center p-2 sm:p-3 md:p-4 rounded-lg 
-                bg-white/10 backdrop-blur-md border border-white/20 
-                ${detail.color} hover:bg-white/20 transition-all duration-300
-              `}
+                  {currentText.map((char, index) => (
+                    <motion.span
+                      key={index}
+                      // More responsive text sizing
+                      className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold inline-block"
+                      style={{
+                        textShadow: "0 0 10px rgba(255,255,255,0.5)"
+                      }}
+                      initial={{ 
+                        rotateY: 180,
+                        opacity: 0
+                      }}
+                      animate={{ 
+                        rotateY: 0,
+                        opacity: 1,
+                        color: index % 2 === 0 ? '#FFD700' : '#FFFFFF'
+                      }}
+                      transition={{
+                        duration: 0.5,
+                        delay: index * 0.05,
+                        type: "spring",
+                        damping: 12
+                      }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+            )}
+          </div>
+          
+          {/* Subtitle with responsive sizing - Shows slightly after title */}
+          {showTitle && (
+            <motion.h2
+              className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-medium mb-4 sm:mb-6 md:mb-8 max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-yellow-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 + index * 0.2 }}
+              transition={{ duration: 1, delay: 0.5 }}
             >
-              <detail.icon className="mr-2 sm:mr-3 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-              <div>
-                <h3 className="font-bold text-xs sm:text-sm">{detail.title}</h3>
-                <p className="text-xs text-white/80 mt-0.5 sm:mt-1 text-left">
-                  {windowWidth < 320 && detail.title === "Venue" 
-                    ? "MSEC" 
-                    : detail.description}
-                </p>
-              </div>
+              A Symposium of Greek Mythology & Modern Innovation
+            </motion.h2>
+          )}
+
+          {/* About section - added as requested */}
+          {showTitle && (
+            <motion.div
+              className="mb-6 px-4 py-3 rounded-lg bg-white/5 backdrop-blur-sm max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            >
+              <p className="text-xs xs:text-sm text-white/90">
+                {eventDetails.description} Visit us at{' '}
+                <a 
+                  href={eventDetails.websiteUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-300 hover:underline"
+                >
+                  theeightboys.com/pranav2k25-symposium
+                </a>
+              </p>
             </motion.div>
-          ))}
+          )}
+
+          {/* Register button - shows after subtitle */}
+          {showTitle && (
+            <motion.a
+              href="#register"
+              className="px-4 xs:px-5 sm:px-6 md:px-8 py-2 xs:py-2.5 sm:py-3 bg-gradient-to-r from-yellow-400 to-blue-500 text-white font-bold rounded-lg hover:from-yellow-500 hover:to-blue-600 transition-all flex items-center justify-center text-xs xs:text-sm sm:text-base md:text-lg register-button"
+              whileHover={{ 
+                scale: 1.05
+              }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.7 }}
+            >
+              <Download className="mr-1.5 xs:mr-2 w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5" /> Register Now
+            </motion.a>
+          )}
+
+          {/* Event details cards - shows after register button */}
+          {showTitle && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 sm:mt-8 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+              {/* Date card */}
+              <motion.div
+                className="flex items-center p-2 xs:p-3 sm:p-4 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-blue-400 hover:bg-white/20 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 }}
+              >
+                <Calendar className="mr-2 sm:mr-3 w-4 h-4 xs:w-5 xs:h-5 flex-shrink-0" />
+                <div>
+                  <h3 className="font-bold text-xs xs:text-sm">Event Date</h3>
+                  <p className="text-xs text-white/80 mt-0.5 sm:mt-1">{eventDetails.date}</p>
+                </div>
+              </motion.div>
+              
+              {/* Venue with Google Maps link */}
+              <motion.a
+                href={eventDetails.venueMapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center p-2 xs:p-3 sm:p-4 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-green-500 hover:bg-white/20 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.1 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <MapPin className="mr-2 sm:mr-3 w-4 h-4 xs:w-5 xs:h-5 flex-shrink-0" />
+                <div className="flex-1 overflow-hidden">
+                  <h3 className="font-bold text-xs xs:text-sm">Venue</h3>
+                  <p className="text-xs text-white/80 mt-0.5 sm:mt-1 truncate">{eventDetails.venue}</p>
+                </div>
+              </motion.a>
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Scroll indicator - positioned better for all device sizes */}
+      {showScrollIndicator && showTitle && (
+        <motion.div
+          className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, y: [0, 10, 0] }}
+          transition={{ 
+            opacity: { delay: 2, duration: 1 },
+            y: { repeat: Infinity, duration: 1.5 }
+          }}
+        >
+          <p className="text-xs sm:text-sm text-white/70 mb-1 sm:mb-2">Scroll for more</p>
+          <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
+        </motion.div>
+      )}
     </section>
   );
 };

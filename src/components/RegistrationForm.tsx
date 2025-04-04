@@ -53,7 +53,7 @@ const RegistrationPage: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string>('');
   const [currentStep, setCurrentStep] = useState<number>(1);
 
-  // Events data (Consistent with the data provided in the query)
+  // Events data (Updated with new events)
   const EVENTS = {
     technical: [
       { id: 'Paper Presentation', name: 'Paper Presentation' },
@@ -61,6 +61,7 @@ const RegistrationPage: React.FC = () => {
       { id: 'Wired-WOnders', name: 'Wired-WOnders' },
       { id: 'Roll and dice', name: 'Roll and dice ' },
       { id: 'Robot Craze', name: 'Robot Craze ' },
+      { id: 'Byte the dice', name: 'Byte the dice' }, // Added new technical event
     ],
     nonTechnical: [
       { id: 'Anime ', name: 'ANIME AND MANGA' },
@@ -69,6 +70,7 @@ const RegistrationPage: React.FC = () => {
       { id: 'ElectroF', name: 'ELECTRO FIELD' },
       { id: 'SportsBz', name: 'SPORTS BUZZ' },
       { id: 'OjingeoGame', name: 'OJINGEO GAME' },
+      { id: 'ZeusPark', name: 'ZEUS PARK' }, // Added new non-technical event
     ],
     workshop: [
       { id: 'DRONE ', name: 'DRONE WORKSHOP' },
@@ -79,15 +81,17 @@ const RegistrationPage: React.FC = () => {
     ],
   };
 
-  // Email sending function
-  const sendConfirmationEmail = async (participant: Participant) => {
+  // Email sending function - Modified to only send to first participant
+  const sendConfirmationEmail = async () => {
     try {
+      // Only send email to the first participant
+      const firstParticipant = participants[0];
       const templateParams = {
-        to_name: participant.name,
-        to_email: participant.email,
+        to_name: firstParticipant.name,
+        to_email: firstParticipant.email,
         team_name: teamName,
         events: selectedEvents.join(', '),
-        registration_number: participant.phone
+        registration_number: firstParticipant.phone
       };
       // Send email using EmailJS
       const response = await emailjs.send(
@@ -96,7 +100,7 @@ const RegistrationPage: React.FC = () => {
         templateParams,
         EMAILJS_CONFIG.PUBLIC_KEY
       );
-      console.log('Email sent successfully', response);
+      console.log('Email sent successfully to first participant', response);
     } catch (error) {
       console.error('Failed to send email', error);
       throw new Error('Email sending failed');
@@ -194,13 +198,13 @@ const RegistrationPage: React.FC = () => {
     return Object.keys(errors).length === 0;
   };
 
-  // Handle registration submission
+  // Handle registration submission - Modified to only send email to first participant
   const handleRegistration = async () => {
     // Validate participant details
     if (!validateSecondStep()) return;
     setIsSubmitting(true);
     try {
-      // Prepare registration data
+      // Prepare registration data - keeping the same database structure
       const registrationData = {
         registrationNumber: participants[0].phone,
         teamName,
@@ -215,10 +219,12 @@ const RegistrationPage: React.FC = () => {
       const registrationsRef = collection(db, 'registrations');
       const docRef = doc(registrationsRef, phoneNumber);
       await setDoc(docRef, registrationData);
-      // Send confirmation emails to each participant
-      await Promise.all(participants.map(sendConfirmationEmail));
+      
+      // Send confirmation email ONLY to the first participant
+      await sendConfirmationEmail();
+      
       // Set success message
-      setSuccessMessage(`Registration Successful! Your registration number is: ${phoneNumber}`);
+      setSuccessMessage(`Registration Successful! Your registration number is: ${phoneNumber}. A confirmation email has been sent to ${participants[0].email}`);
       // Reset form
       setTeamName('');
       setSelectedEvents([]);
@@ -241,8 +247,8 @@ const RegistrationPage: React.FC = () => {
   const greekStyles = {
     background: "bg-gray-900",
     container: "bg-gray-900 min-h-screen py-8",
-    headerText: "text-amber-400 font-serif",
-    subheaderText: "text-amber-300 font-serif",
+    headerText: "text-amber-400 font-serif text-2xl md:text-3xl",
+    subheaderText: "text-amber-300 font-serif text-lg md:text-xl",
     card: "bg-gray-800 border border-amber-500 shadow-lg rounded-lg p-6 mb-8",
     cardHeader: "text-xl font-bold text-amber-400 mb-4 border-b border-amber-500 pb-2 font-serif",
     cardSubheader: "font-medium text-lg mb-3 text-amber-300 font-serif",
@@ -415,7 +421,7 @@ const RegistrationPage: React.FC = () => {
         {participants.map((participant, index) => (
           <div key={index} className="mb-6">
             <h4 className={greekStyles.subheaderText}>
-              Participant {index + 1}
+              Participant {index + 1} {index === 0 && <span className="text-amber-400 text-sm">(Confirmation email will be sent to this participant only)</span>}
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -535,7 +541,7 @@ const RegistrationPage: React.FC = () => {
     <div className={greekStyles.container}>
       {/* Greek-themed header */}
       <header className="text-center mb-12">
-        <h1 className={greekStyles.headerText}>PRANAV2k25</h1>
+        <h1 className="mt-6 text-amber-400 font-serif text-2xl md:text-3xl">PRANAV2k25</h1>
         <p className={greekStyles.subheaderText}>
           Unleash the Olympian Within
         </p>

@@ -100,7 +100,7 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
 
   return (
     <section
-      id={id}
+      id="sponsors"
       className="relative min-h-screen bg-gradient-to-br from-[#1a2238] to-[#0f1423] py-16 overflow-hidden"
     >
       {/* Animated Stars Background */}

@@ -1,0 +1,28 @@
+/* hero-styles.css */
+
+/* Increase spacing between register button and share button */
+.register-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* You can adjust the margin values as needed for the spacing you want */
+  @media (min-width: 640px) {
+    .register-button {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .register-button {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+  }
+  
+  /* Target the share button in the fixed top bar */
+  .share-button {
+    margin-right: 15px;
+    margin-top: 10px;
+  }

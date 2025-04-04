@@ -1,75 +1,213 @@
-/* 🔥 Fire Sparks Animation */
-@keyframes fire-sparks {
-    0% {
-      opacity: 0.2;
-      transform: translateY(0px) scale(1);
-    }
-    50% {
-      opacity: 0.8;
-      transform: translateY(-50px) scale(1.2);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(-100px) scale(1.5);
-    }
+/* About.css - Enhanced styling for the About page */
+
+/* Fix for the second image (CoFounder) positioning */
+.leadership-profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease-in-out, filter 0.3s ease;
+}
+
+/* Specifically target the Co-Founder image to position it correctly */
+.co-founder-profile .leadership-profile-image {
+  object-position: center top;
+}
+
+/* Hover effects for leadership profiles */
+.leadership-profile {
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.leadership-profile:hover {
+  transform: translateY(-5px);
+}
+
+.leadership-profile:hover .leadership-profile-image {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.leadership-profile:hover .profile-overlay {
+  opacity: 0.8;
+}
+
+.leadership-profile:hover .profile-details {
+  transform: translateY(-5px);
+}
+
+.profile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.profile-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.profile-name {
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.profile-role {
+  color: #93c5fd; /* blue-300 */
+  font-size: 0.875rem;
+}
+
+/* Feature cards styling and hover effects */
+.feature-card {
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(5deg);
+  background-color: #1d4ed8; /* blue-700 */
+}
+
+/* Stats card animations */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.stat-card:hover::after {
+  opacity: 1;
+}
+
+.stat-value {
+  font-weight: bold;
+  color: #2563eb; /* blue-600 */
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-value {
+  transform: scale(1.05);
+  color: #1d4ed8; /* blue-700 */
+}
+
+/* Achievement item hover effects */
+.achievement-item {
+  transition: all 0.3s ease;
+}
+
+.achievement-item:hover {
+  transform: translateX(5px);
+  background-color: #f0f9ff; /* blue-50 */
+}
+
+.achievement-item:hover .achievement-icon {
+  transform: rotate(15deg) scale(1.2);
+  background-color: #dbeafe; /* blue-100 */
+}
+
+.achievement-icon {
+  transition: all 0.3s ease;
+}
+
+/* Hero section enhancement */
+.hero-section {
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+}
+
+/* CTA buttons hover effect */
+.cta-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+  transition: all 0.5s ease;
+}
+
+.cta-button:hover::after {
+  left: 100%;
+}
+
+/* Greek-themed decorative elements */
+.greek-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-image: repeating-linear-gradient(to right, #3b82f6, #3b82f6 20px, transparent 20px, transparent 40px);
+}
+
+/* Greek-themed section dividers */
+.greek-divider {
+  height: 5px;
+  background-image: repeating-linear-gradient(to right, #93c5fd, #93c5fd 10px, transparent 10px, transparent 20px);
+  margin: 2rem 0;
+}
+
+/* Adding responsive improvements */
+@media (max-width: 768px) {
+  .leadership-profile {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  
-  .fire-sparks {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("../images/image.png") no-repeat center;
-    background-size: cover;
-    opacity: 0.5;
-    mix-blend-mode: screen;
-    animation: fire-sparks 3s infinite linear;
-    pointer-events: none;
-  }
-  
-  /* ✨ Glowing Greek Title Effect (Only for Text) */
-  /* ✨ Simple Glowing Greek Title Effect */
-.glowing-title {
-    font-size: 50px;
-    font-family: "Cinzel", serif;
-    font-weight: bold;
-    color: gold;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-  }
-  
-  
-  @keyframes glowing {
-    0% { text-shadow: 0 0 10px gold; }
-    25% { text-shadow: 0 0 10px red; }
-    50% { text-shadow: 0 0 10px orange; }
-    75% { text-shadow: 0 0 10px yellow; }
-    100% { text-shadow: 0 0 10px gold; }
-  }
-  @keyframes pulseGlow {
-    0% {
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    }
-    50% {
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
-    }
-    100% {
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    }
-  }
-  
-  .shadow-gold {
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-  }
-  
-  .bg-glow {
-    background: radial-gradient(circle, rgba(255, 223, 88, 0.5) 0%, rgba(0, 0, 0, 0) 80%);
-  }
-  
-  .animate-glow {
-    animation: pulseGlow 2.5s infinite alternate ease-in-out;
-  }
-  
+}
