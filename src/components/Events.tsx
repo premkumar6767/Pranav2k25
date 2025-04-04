@@ -15,7 +15,7 @@ import wiredWonders from "../images/wirewond.jpg";
 import roleAndDice from "../images/Halt-the-dice.jpeg";
 import designedToDev from "../images/d2dev.jpg";
 import reverseCoding from "../images/decodex.jpg";
-import ojingeoGame from "../images/Ojingeo.jpg";
+import ojingeoGame from "../images/ojingeo.jpg";
 import animeQuiz from "../images/anime.jpg";
 import auralBliss from "../images/auralbliss.jpg";
 import treasureHunt from "../images/treashunt.jpg";
