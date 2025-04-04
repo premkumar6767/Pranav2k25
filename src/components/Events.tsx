@@ -20,8 +20,40 @@ import animeQuiz from "../images/anime.jpg";
 import auralBliss from "../images/auralbliss.jpg";
 import treasureHunt from "../images/treashunt.jpg";
 
+// Define types for the event objects
+interface EventItem {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  timing: string;
+  teamSize: string;
+  about: string;
+  rules: string[];
+  details: string;
+  price?: string;
+}
+
+// Define the structure of the EVENTS object
+interface EventsData {
+  technical: EventItem[];
+  nonTechnical: EventItem[];
+  online: EventItem[];
+  workshop: EventItem[];
+  [key: string]: EventItem[]; // Index signature to allow string indexing
+}
+
+// Define the structure of the CATEGORY_TITLES object
+interface CategoryTitles {
+  technical: string;
+  nonTechnical: string;
+  workshop: string;
+  online: string;
+  [key: string]: string; // Index signature to allow string indexing
+}
+
 // Define EVENTS object to be used in the component
-const EVENTS = {
+const EVENTS: EventsData = {
   technical: [
     {
       id: "paper-presentation",
@@ -346,7 +378,7 @@ const EVENTS = {
   ],
 };
 
-const CATEGORY_TITLES = {
+const CATEGORY_TITLES: CategoryTitles = {
   technical: "ΤΕΧΝΙΚΆ (TECHNICAL)",
   nonTechnical: "ΜΗ ΤΕΧΝΙΚΆ (NON-TECHNICAL)",
   workshop: "ΕΡΓΑΣΤΉΡΙΑ (WORKSHOPS)",
@@ -354,14 +386,15 @@ const CATEGORY_TITLES = {
 };
 
 const Events = () => {
-  const [activeCategory, setActiveCategory] = useState("nonTechnical");
+  // Define type for active category
+  const [activeCategory, setActiveCategory] = useState<keyof EventsData>("nonTechnical");
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [touchStartX, setTouchStartX] = useState(0);
   const [visibleItems, setVisibleItems] = useState(3);
   const [isMobile, setIsMobile] = useState(false);
   const [isCarouselFocused, setIsCarouselFocused] = useState(false);
-  const carouselRef = useRef(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   // Detect if on mobile device and set visible items based on screen width
@@ -387,7 +420,7 @@ const Events = () => {
   }, []);
 
   // Function to handle card click and navigate to detail page
-  const handleCardClick = (eventId) => {
+  const handleCardClick = (eventId: string) => {
     navigate(`/event/${eventId}`);
   };
 
@@ -431,7 +464,7 @@ const Events = () => {
     // Only add keyboard listeners if not on mobile
     if (isMobile) return;
 
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       // Only process key events when carousel is focused or no other element is focused
       if (!isCarouselFocused && document.activeElement !== document.body) return;
 
@@ -451,11 +484,11 @@ const Events = () => {
   }, [isMobile, isCarouselFocused, isAnimating, activeCategory]);
 
   // Handle touch events for swipe on mobile
-  const handleTouchStart = (e) => {
+  const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.touches[0].clientX);
   };
 
-  const handleTouchEnd = (e) => {
+  const handleTouchEnd = (e: React.TouchEvent) => {
     const touchEndX = e.changedTouches[0].clientX;
     const difference = touchStartX - touchEndX;
 
@@ -478,7 +511,7 @@ const Events = () => {
             className={`category-tab ${
               activeCategory === category ? "active" : ""
             }`}
-            onClick={() => setActiveCategory(category)}
+            onClick={() => setActiveCategory(category as keyof EventsData)}
           >
             {CATEGORY_TITLES[category]}
           </button>
@@ -618,7 +651,7 @@ const Events = () => {
     
     return (
       <div className="carousel-indicators">
-        {currentEvents.map((_, index) => (
+        {currentEvents.map((_: EventItem, index: number) => (
           <div
             key={index}
             className={`indicator ${index === activeIndex ? "active" : ""}`}
