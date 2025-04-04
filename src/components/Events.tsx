@@ -10,7 +10,7 @@ import shortFilm from "../images/shortfilm.jpg";
 import eSports from "../images/esports.jpg";
 import cricbuzz from "../images/sport.jpg";
 import droneWorkshop from "../images/drone.jpg";
-import paperPresentation from "../images/Paperpres.jpg";
+import Paperpres from "../images/Paperpres.jpg";
 import wiredWonders from "../images/wirewond.jpg";
 import roleAndDice from "../images/Halt-the-dice.jpeg";
 import designedToDev from "../images/d2dev.jpg";
@@ -26,7 +26,7 @@ const EVENTS = {
     {
       id: "paper-presentation",
       name: "Paper Presentation",
-      image: paperPresentation,
+      image: Paperpres,
       description:
         "Showcase your research ideas and innovative findings to a distinguished panel of academicians and industry professionals.",
       timing: "Day 1 - 10:00 AM to 1:00 PM",
