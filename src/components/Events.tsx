@@ -10,7 +10,7 @@ import shortFilm from "../images/shortfilm.jpg";
 import eSports from "../images/esports.jpg";
 import cricbuzz from "../images/sport.jpg";
 import droneWorkshop from "../images/drone.jpg";
-import Paperpres from "../images/Paperpres.jpg";
+import Paperpres from "../images/paperpres.jpg";
 import wiredWonders from "../images/wirewond.jpg";
 import roleAndDice from "../images/Halt-the-dice.jpeg";
 import designedToDev from "../images/d2dev.jpg";
