@@ -86,39 +86,7 @@ const Footer: React.FC = () => {
     <footer className="bg-deep-blue/95 border-t border-gold/20 pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <div>
-            <motion.div 
-              className="flex items-center gap-2 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Flame className="h-8 w-8 text-gold golden-glow" />
-              <span className="text-gold font-cinzel text-2xl font-bold">PRANAV2K25</span>
-            </motion.div>
-            <motion.p 
-              className="text-gray-300 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              A collegiate symposium blending Greek mythology with futuristic innovation, inspiring the next generation of thinkers and creators.
-            </motion.p>
-            <motion.div 
-              className="flex space-x-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <a href="https://www.instagram.com/__pranav2k25_" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-light-blue transition-colors">
-                <Instagram className="h-5 w-5 golden-glow" />
-              </a>
-              <a href="#" className="text-gold hover:text-light-blue transition-colors">
-                <Linkedin className="h-5 w-5 golden-glow" />
-              </a>
-            </motion.div>
-          </div>
-           {/* Website Team Section */}
+                     {/* Website Team Section */}
         <motion.div
           className="mb-12 col-span-2"
           initial={{ opacity: 0 }}
@@ -210,6 +178,38 @@ const Footer: React.FC = () => {
             ))}
           </div>
         </motion.div>
+          <div>
+            <motion.div 
+              className="flex items-center gap-2 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Flame className="h-8 w-8 text-gold golden-glow" />
+              <span className="text-gold font-cinzel text-2xl font-bold">PRANAV2K25</span>
+            </motion.div>
+            <motion.p 
+              className="text-gray-300 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              A collegiate symposium blending Greek mythology with futuristic innovation, inspiring the next generation of thinkers and creators.
+            </motion.p>
+            <motion.div 
+              className="flex space-x-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <a href="https://www.instagram.com/__pranav2k25_" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-light-blue transition-colors">
+                <Instagram className="h-5 w-5 golden-glow" />
+              </a>
+              <a href="#" className="text-gold hover:text-light-blue transition-colors">
+                <Linkedin className="h-5 w-5 golden-glow" />
+              </a>
+            </motion.div>
+          </div>
           
 
           {/** ✅ Show "Contact Us" ONLY on the Home Page */}
