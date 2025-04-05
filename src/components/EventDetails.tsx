@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -18,7 +17,6 @@ import animeQuiz from "../images/Senpai-fans.jpeg";
 import auralBliss from "../images/Aural-Bliss.jpeg";
 import treasureHunt from "../images/Treasure-hunt.jpeg";
 import hackathon from "../images/Hackathon.jpeg";
-import ZeusSpark from "../images/Zeusspark.jpeg"
 
 const events = {
   technical: [
@@ -31,22 +29,28 @@ const events = {
       about:
         "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
       rules: [
-        "Each participant/team can present only one research paper.",
-        "Papers must be original and should not have been published elsewhere.",
-        "A soft copy of the paper must be submitted before the event for screening.",
-        "Presentation time is 10 minutes, followed by a **5-minute Q&A session.",
-        "Use of plagiarized content will lead to immediate disqualification.",
-        "Presentations must follow IEEE format and should be in PPT format.",
-        "Judging criteria: Originality, Technical Content, Presentation Skills, and Q&A handling.",
-        "Decision of the judges will be final and binding.",
+        "Each participant/team can present *only one* research paper.",
+        "Papers must be *original* and should not have been published elsewhere.",
+        "A *soft copy* of the paper must be submitted before the event for screening.",
+        "Presentation time is *10 minutes, followed by a **5-minute Q&A* session.",
+        "Use of *plagiarized content* will lead to immediate disqualification.",
+        "Presentations must follow *IEEE format* and should be in *PPT format*.",
+        "Judging criteria: *Originality, Technical Content, Presentation Skills, and Q&A handling.*",
+        "Decision of the judges will be *final and binding*.",
       ],
       details:
-        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report **30 minutes before their scheduled time.",
+        "The event will be conducted in *Hall A. Participants must bring their presentation on a USB drive and report **30 minutes before* their scheduled time.",
       coordinators: [
         {
           name: "Sai Mathesh",
           phone: "63815 82241",
-        }
+          
+        },
+        // {
+        //   name: " Abinaya N",
+        //   phone: "8765432109",
+         
+        // }
       ]
     },
     {
@@ -58,27 +62,25 @@ const events = {
       about:
         "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
       rules: [
-        "Each participant/team can present only one research paper.",
-        "Papers must be original and should not have been published elsewhere.",
-        "A soft copy of the paper must be submitted before the event for screening.",
-        "Presentation time is 10 minutes, followed by a **5-minute Q&A session.",
-        "Use of plagiarized content will lead to immediate disqualification.",
-        "Presentations must follow IEEE format and should be in PPT format.",
-        "Judging criteria: Originality, Technical Content, Presentation Skills, and Q&A handling.",
-        "Decision of the judges will be final and binding.",
+        "Each participant/team can present *only one* research paper.",
+        "Papers must be *original* and should not have been published elsewhere.",
+        "A *soft copy* of the paper must be submitted before the event for screening.",
+        "Presentation time is *10 minutes, followed by a **5-minute Q&A* session.",
+        "Use of *plagiarized content* will lead to immediate disqualification.",
+        "Presentations must follow *IEEE format* and should be in *PPT format*.",
+        "Judging criteria: *Originality, Technical Content, Presentation Skills, and Q&A handling.*",
+        "Decision of the judges will be *final and binding*.",
       ],
       details:
-        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report **30 minutes before their scheduled time.",
+        "The event will be conducted in *Hall A. Participants must bring their presentation on a USB drive and report **30 minutes before* their scheduled time.",
       coordinators: [
         {
           name: "Aditya Kumar",
           phone: "9988776655",
-          email: "aditya.kumar@msec.edu"
         },
         {
           name: "Sneha Patel",
           phone: "8899776655",
-          email: "sneha.patel@msec.edu"
         }
       ]
     },
@@ -92,26 +94,29 @@ const events = {
         "This event challenges participants to design, analyze, and troubleshoot circuits. Participants will be provided with real-world problems and required to build functional circuits within the given time.",
       rules: [
         "Participants must bring their own calculators and circuit design tools (if needed).",
-        "All circuit components and breadboards will be provided on-site.",
-        "Each round consists of different tasks: circuit design, debugging, and real-time implementation.",
-        "Time limit for each round: 30 minutes.",
-        "Marks will be awarded based on circuit functionality, design efficiency, and time taken.",
+        "All circuit components and breadboards will be *provided on-site*.",
+        "Each round consists of different tasks: *circuit design, debugging, and real-time implementation*.",
+        "Time limit for each round: *30 minutes*.",
+        "Marks will be awarded based on *circuit functionality, design efficiency, and time taken*.",
         "Short-circuiting or mishandling of components will lead to disqualification.",
-        "Finalists will have to build a working prototype of a given circuit.",
+        "Finalists will have to build a *working prototype* of a given circuit.",
       ],
       details:
-        "The competition will be held in Electronics Lab B. Participants must report **15 minutes before the event begins.",
+        "The competition will be held in *Electronics Lab B. Participants must report **15 minutes before* the event begins.",
       coordinators: [
         {
           name: " Manoj",
           phone: "7305921931",
+          
         },
         {
           name: "Sabareesan",
           phone: "8877665544",
+          
         }
       ]
     },
+
     {
       title: "DecodeX",
       image: reverseCoding,
@@ -121,25 +126,25 @@ const events = {
       about:
         "Participants will be given obfuscated or scrambled code snippets and will need to reverse engineer them to understand their logic. The goal is to identify errors, optimize the code, and restore its original functionality.",
       rules: [
-        "Each team will receive multiple code snippets that need to be debugged and reconstructed.",
-        "Programming languages allowed: C, C++, Python, and Java.",
-        "Participants must provide comments and explanations for their solutions.",
-        "Marks will be based on correctness, efficiency, and explanation clarity.",
-        "Use of online compilers or external help is strictly prohibited.",
-        "Final submissions must be in text or code file format.",
-        "Judging will consider code quality, logic, and optimization techniques used.",
+        "Each team will receive *multiple code snippets* that need to be debugged and reconstructed.",
+        "Programming languages allowed: *C, C++, Python, and Java*.",
+        "Participants must provide *comments and explanations* for their solutions.",
+        "Marks will be based on *correctness, efficiency, and explanation clarity*.",
+        "Use of *online compilers or external help* is strictly prohibited.",
+        "Final submissions must be in *text or code file format*.",
+        "Judging will consider *code quality, logic, and optimization techniques used*.",
       ],
       details:
-        "The event will be conducted in Coding Lab 2. Participants should bring their own laptops if required.",
+        "The event will be conducted in *Coding Lab 2*. Participants should bring their own laptops if required.",
       coordinators: [
         {
           name: "Barath A",
           phone: "9043057100",
+          
         },
         {
           name: "Jesilia",
           phone: "8765123450",
-          email: "meera.iyer@msec.edu"
         }
       ]
     },
@@ -174,6 +179,7 @@ const events = {
         }
       ]
     },
+
     {
       title: "Design to Dev",
       image: designedToDev,
@@ -198,11 +204,11 @@ const events = {
         {
           name: " Prem Kumar M",
           phone: "7448631031",
+         
         },
       ]
-    }
+    },
   ],
-  
   nonTechnical: [
     {
       title: "Ojingeo Game",
@@ -213,26 +219,29 @@ const events = {
       about:
         "This event is a survival-based challenge inspired by the famous Squid Game. Participants will compete in multiple rounds of physically and mentally challenging games. The last team standing wins the ultimate prize!",
       rules: [
-        "Each round will have elimination-based mini-games.",
-        "Participants must follow the given rules for each game to avoid elimination.",
-        "Any form of cheating or misbehavior will result in immediate disqualification.",
+        "Each round will have *elimination-based mini-games*.",
+        "Participants must follow the *given rules for each game* to avoid elimination.",
+        "Any form of *cheating or misbehavior* will result in immediate disqualification.",
         "Eliminated players must exit the playing area immediately.",
-        "Finalists will compete in a mystery challenge for the grand prize.",
-        "Judging will be based on survival, performance, and strategy.",
+        "Finalists will compete in a *mystery challenge* for the grand prize.",
+        "Judging will be based on *survival, performance, and strategy.*",
       ],
       details:
-        "The event will be conducted in Ground Area C. Participants must wear comfortable clothing suitable for physical activities.",
+        "The event will be conducted in *Ground Area C*. Participants must wear comfortable clothing suitable for physical activities.",
       coordinators: [
         {
           name: " Balasundharam",
           phone: "70101 60569",
+         
         },
         {
           name: "Suyash Ashwin",
           phone: "8776655440",
+         
         }
       ]
     },
+    
     {
       title: "Senpai Fans",
       image: animeQuiz,
@@ -242,23 +251,25 @@ const events = {
       about:
         "Are you an anime and manga expert? This quiz will challenge your knowledge across different anime genres, famous characters, theme songs, and classic storylines.",
       rules: [
-        "The quiz will consist of multiple rounds: MCQs, image recognition, and audio rounds.",
-        "Teams can have up to 2 members.",
+        "The quiz will consist of *multiple rounds*: MCQs, image recognition, and audio rounds.",
+        "Teams can have *up to 2 members*.",
         "Each correct answer earns points; incorrect answers do not result in penalties.",
-        "Use of mobile phones, notes, or any external help is prohibited.",
+        "Use of *mobile phones, notes, or any external help is prohibited*.",
         "Tiebreaker questions will be conducted if necessary.",
-        "The team with the highest points at the end wins!",
+        "The *team with the highest points* at the end wins!",
       ],
       details:
-        "The event will be conducted in Hall B. Participants should report **15 minutes before the event begins.",
+        "The event will be conducted in *Hall B. Participants should report **15 minutes before* the event begins.",
       coordinators: [
         {
           name: "Kishore M",
           phone: "63811 79497",
+          
         },
         {
           name: "Sai Mathesh",
           phone: "63815 82411",
+         
         }
       ]
     },
@@ -271,23 +282,25 @@ const events = {
       about:
         "This event is for all music enthusiasts who love identifying songs, artists, and lyrics. Contestants will go through multiple rounds of music-related challenges, testing their auditory skills and knowledge.",
       rules: [
-        "Participants must guess the song, artist, or lyrics based on instrumentals, sound clips, or scrambled words.",
-        "Each correct answer gives points, and incorrect answers do not have penalties.",
-        "Bonus rounds will be included for extra points.",
-        "Participants are not allowed to use mobile phones or any external help.",
-        "Finalists will face a rapid-fire round.",
+        "Participants must guess the song, artist, or lyrics based on *instrumentals, sound clips, or scrambled words.*",
+        "Each correct answer gives *points*, and incorrect answers do not have penalties.",
+        "Bonus rounds will be included for *extra points*.",
+        "Participants are *not allowed to use mobile phones or any external help.*",
+        "Finalists will face a *rapid-fire round.*",
         "The participant/team with the highest score at the end wins.",
       ],
       details:
-        "The event will take place in Music Room 2. Participants should arrive **15 minutes early.",
+        "The event will take place in *Music Room 2. Participants should arrive **15 minutes early*.",
       coordinators: [
         {
           name: " Manikandan",
           phone: "6361854170",
+         
         },
         {
           name: " Rackesh K",
           phone: "8877665533",
+         
         }
       ]
     },
@@ -300,11 +313,11 @@ const events = {
       about:
         "Teams will solve riddles and navigate through multiple checkpoints to uncover the hidden treasure. The fastest team to complete all challenges wins.",
       rules: [
-        "Each team consists of 3-5 members.",
-        "Teams must follow the clue sequence provided at each checkpoint.",
-        "The use of mobile phones or external help is strictly prohibited.",
+        "Each team consists of *3-5 members*.",
+        "Teams must *follow the clue sequence* provided at each checkpoint.",
+        "The use of *mobile phones or external help* is strictly prohibited.",
         "Each checkpoint must be completed before moving to the next location.",
-        "A team caught tampering with clues or misguiding others will be disqualified.",
+        "A team caught *tampering with clues or misguiding others* will be disqualified.",
         "All team members must stay together during the hunt.",
         "Teams must respect campus rules and avoid disturbing other events.",
         "The winning team is determined by the fastest completion time.",
@@ -315,37 +328,7 @@ const events = {
         {
           name: "Madhan Raj M",
           phone: "91760 70805",
-        },
-        {
-          name: " Monish",
-          phone: "8877665544",
-        }
-      ]
-    },
-    {
-      title: "ZeusSpark",
-      image: ZeusSpark,
-      description:
-      "An exciting event to ignite creativity, teamwork, and fun through engaging activities. Round 1: Emoji Quiz - guess movie titles from emoji combinations. Round 2: Movie Plots Challenge - identify movies from their plot descriptions. Round 3: Silent Acting - guess famous movie scenes acted out without dialogue.",
-      teamSize: "3-5",
-      about:
-        "Teams will solve riddles and navigate through multiple checkpoints to uncover the hidden treasure. The fastest team to complete all challenges wins.",
-      rules: [
-        "Each team consists of 3-5 members.",
-        "Teams must follow the clue sequence provided at each checkpoint.",
-        "The use of mobile phones or external help is strictly prohibited.",
-        "Each checkpoint must be completed before moving to the next location.",
-        "A team caught tampering with clues or misguiding others will be disqualified.",
-        "All team members must stay together during the hunt.",
-        "Teams must respect campus rules and avoid disturbing other events.",
-        "The winning team is determined by the fastest completion time.",
-      ],
-      details:
-        "Participants will receive their first clue at the starting point. Each clue leads to a hidden location where the next clue awaits. The final clue will guide the team to the treasure.",
-      coordinators: [
-        {
-          name: "Madhan Raj M",
-          phone: "91760 70805",
+          
         },
         {
           name: " Monish",
@@ -362,25 +345,23 @@ const events = {
       about:
         "This event is a hands-on electronics challenge where participants must complete tasks involving circuits, sensors, and basic robotics.",
       rules: [
-        "Teams must complete 3 electronic challenges within the given time.",
-        "Challenges include circuit building, component identification, and logic debugging.",
-        "All required electronic components will be provided on-site.",
-        "Use of pre-made circuits or mobile assistance is not allowed.",
-        "Judging will be based on accuracy, speed, and efficiency.",
+        "Teams must complete *3 electronic challenges* within the given time.",
+        "Challenges include *circuit building, component identification, and logic debugging*.",
+        "All required electronic components will be *provided on-site*.",
+        "Use of *pre-made circuits or mobile assistance is not allowed*.",
+        "Judging will be based on *accuracy, speed, and efficiency*.",
         "Any misuse of components may result in disqualification.",
       ],
       details:
-        "The competition will be held in Electronics Lab 3. Participants should bring their own **basic tools (screwdrivers, pliers, etc.) if needed.",
+        "The competition will be held in *Electronics Lab 3. Participants should bring their own **basic tools (screwdrivers, pliers, etc.)* if needed.",
       coordinators: [
         {
           name: "Varun Kapoor",
           phone: "9988776677",
-          email: "varun.kapoor@msec.edu"
         },
         {
           name: "Shweta Joshi",
           phone: "8877665577",
-          email: "shweta.joshi@msec.edu"
         }
       ]
     },
@@ -408,13 +389,15 @@ const events = {
         {
           name: "Hariharan ",
           phone: "63794 25941",
+         
         },
         {
           name: "Mahider ",
           phone: "8765432188",
+          
         }
       ]
-    }
+    },
   ],
   online: [
     {
@@ -430,12 +413,12 @@ const events = {
       rules: [
         "Each team must consist of 3-5 members.",
         "The theme for the short film will be revealed on the event day.",
-        "The maximum duration of the short film should be 5 minutes.",
-        "All content (video, audio, images) must be original and free from copyright infringement.",
-        "Films must be submitted in MP4 format with a resolution of at least 720p.",
+        "The maximum duration of the short film should be *5 minutes*.",
+        "All content (video, audio, images) must be *original* and free from copyright infringement.",
+        "Films must be submitted in *MP4 format* with a resolution of at least *720p*.",
         "Any form of plagiarism or pre-recorded content will lead to disqualification.",
         "Offensive, vulgar, or inappropriate content is strictly prohibited.",
-        "Judging will be based on creativity, storytelling, cinematography, and editing skills.",
+        "Judging will be based on *creativity, storytelling, cinematography, and editing skills*.",
         "Late submissions will not be considered.",
       ],
       details:
@@ -444,15 +427,14 @@ const events = {
         {
           name: "Dhruv Patel",
           phone: "9876543299",
-          email: "dhruv.patel@msec.edu"
         },
         {
           name: "Nisha Rajput",
           phone: "8765432199",
-          email: "nisha.rajput@msec.edu"
         }
       ]
     },
+
     {
       title: "E-Sports",
       image: eSports,
@@ -464,16 +446,16 @@ const events = {
       about:
         "This high-intensity gaming competition brings together e-sports enthusiasts to battle it out in their favorite online multiplayer games. The tournament format will vary based on the selected games.",
       rules: [
-        "The tournament will feature multiple games (e.g., BGMI, Valorant, CS:GO, FIFA).",
-        "Each participant must register for their preferred game before the deadline.",
-        "Teams must follow the game-specific rules and fair play policies.",
-        "Any form of cheating, hacking, or unfair play will result in an immediate ban.",
-        "Participants must have a stable internet connection and be available during match timings.",
-        "Judging criteria: Kill count, survival, teamwork, and strategy.",
-        "Winners will be determined based on game-specific scoring and tournament brackets.",
+        "The tournament will feature *multiple games* (e.g., BGMI, Valorant, CS:GO, FIFA).",
+        "Each participant must *register for their preferred game* before the deadline.",
+        "Teams must *follow the game-specific rules* and fair play policies.",
+        "Any form of *cheating, hacking, or unfair play* will result in an immediate ban.",
+        "Participants must have a *stable internet connection* and be available during match timings.",
+        "Judging criteria: *Kill count, survival, teamwork, and strategy.*",
+        "Winners will be determined based on *game-specific scoring and tournament brackets.*",
       ],
       details:
-        "Participants will receive match schedules and lobby details via Discord before the tournament begins. Ensure your game account is ready and updated before the event.",
+        "Participants will receive match schedules and lobby details via *Discord* before the tournament begins. Ensure your game account is ready and updated before the event.",
       coordinators: [
         {
           name: "Vishal Nair",
@@ -484,7 +466,7 @@ const events = {
           phone: "8877665511",
         }
       ]
-    }
+    },
   ],
   workshop: [
     {
@@ -493,18 +475,18 @@ const events = {
       description:
         "Learn the fundamentals of drone technology, including assembly, calibration, and flying techniques. A must-attend for drone enthusiasts!",
       timing: "Day 1 - Full Day",
-      
+      price: "₹1000",
       teamSize: "1",
       about:
         "A hands-on workshop covering drone aerodynamics, control systems, and live flying sessions. Participants will gain practical experience in drone assembly and operation.",
       rules: [
-        "This is an individual participation workshop (no teams allowed).",
-        "Participants will learn about drone components, assembly, and programming.",
+        "This is an *individual participation* workshop (no teams allowed).",
+        "Participants will learn about *drone components, assembly, and programming*.",
         "All required materials and drones will be provided at the workshop.",
-        "Participants must handle drones with care and responsibility.",
+        "Participants must handle drones with *care and responsibility*.",
         "No unauthorized modifications to the drones are allowed during the session.",
-        "A live flight demonstration will be conducted under expert supervision.",
-        "Each participant must complete a mini project using the concepts learned in the workshop.",
+        "A live *flight demonstration* will be conducted under expert supervision.",
+        "Each participant must complete a *mini project* using the concepts learned in the workshop.",
         "Certificates of completion will be awarded to all attendees.",
       ],
       details:
@@ -519,8 +501,8 @@ const events = {
           phone: "8877665533",
         }
       ]
-    }
-  ]
+    },
+  ],
 };
 
 const EventDetail = () => {
@@ -667,50 +649,44 @@ const EventDetail = () => {
                 <p className="first-letter:text-3xl first-letter:font-bold first-letter:mr-1 first-letter:text-amber-300">
                   {event.about}
                 </p>
-                <div className="mt-4 p-3 bg-amber-900/20 rounded-lg">
-                  <p className="font-semibold text-amber-300">Team Size:</p>
-                  <p>{event.teamSize} participants</p>
-                  
-
+                <div className="mt-4 p-3 bg-amber-900/30 rounded-lg border border-amber-100/20">
+                  <p className="font-medium text-amber-200">Team Size: <span className="text-white">{event.teamSize}</span></p>
+                  {event.price && <p className="font-medium text-amber-200 mt-2">Registration Fee: <span className="text-white">{event.price}</span></p>}
+                  {event.timing && <p className="font-medium text-amber-200 mt-2">Timing: <span className="text-white">{event.timing}</span></p>}
                 </div>
               </div>
             )}
 
             {activeTab === "rules" && (
-              <div>
-                <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">Sacred Rules</h3>
-                <ul className="list-disc pl-5 space-y-2 font-serif">
+              <div className="space-y-3 font-serif">
+                <h3 className="text-xl text-amber-300 mb-4">Divine Laws</h3>
+                <ul className="list-disc list-inside space-y-2">
                   {event.rules.map((rule, index) => (
-                    <li key={index}>{rule}</li>
+                    <li key={index} dangerouslySetInnerHTML={{ __html: rule.replace(/\*(.*?)\*/g, '<span class="text-amber-300 font-semibold">$1</span>') }}></li>
                   ))}
                 </ul>
               </div>
             )}
 
             {activeTab === "details" && (
-              <div>
-                <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">Event Details</h3>
-                <p className="font-serif">{event.details}</p>
+              <div className="font-serif">
+                <h3 className="text-xl text-amber-300 mb-4">Sacred Details</h3>
+                <p dangerouslySetInnerHTML={{ __html: event.details.replace(/\*(.*?)\*/g, '<span class="text-amber-300 font-semibold">$1</span>') }}></p>
               </div>
             )}
 
             {activeTab === "coordinators" && (
-              <div>
-                <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">Event Oracles</h3>
-                <div className="space-y-4">
-                  {event.coordinators.map((coordinator, index) => (
-                    <div key={index} className="bg-amber-900/20 p-3 rounded-lg">
-                      <p className="font-bold">{coordinator.name}</p>
-                      
-                      <div className="flex flex-col mt-2 space-y-2">
-                        <a 
-                          href={`tel:${coordinator.phone}`} 
-                          className="flex items-center text-amber-200 hover:text-amber-100"
-                        >
-                          <Phone className="w-4 h-4 mr-2" /> {coordinator.phone}
-                        </a>
-
+              <div className="font-serif">
+                <h3 className="text-xl text-amber-300 mb-4">Event Oracles</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {event.coordinators?.map((coordinator, index) => (
+                    <div key={index} className="bg-stone-800/50 p-4 rounded-lg border border-amber-100/20">
+                      <h4 className="text-lg font-semibold text-amber-200">{coordinator.name}</h4>
+                      <div className="mt-2 flex items-center">
+                        <Phone className="w-4 h-4 mr-2 text-amber-300" />
+                        <span>{coordinator.phone}</span>
                       </div>
+                    
                     </div>
                   ))}
                 </div>
@@ -718,20 +694,6 @@ const EventDetail = () => {
             )}
           </div>
         </div>
-
-        {/* Event Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="mt-8"
-        >
-          <img
-            src={event.image}
-            alt={event.title}
-            className="rounded-lg w-full object-cover h-64 shadow-lg border-2 border-amber-200/30"
-          />
-        </motion.div>
       </div>
     </div>
   );
