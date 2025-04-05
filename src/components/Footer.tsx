@@ -120,7 +120,7 @@ const Footer: React.FC = () => {
           </div>
            {/* Website Team Section */}
         <motion.div
-          className="mb-12"
+          className="mb-12 col-span-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.7 }}
@@ -151,11 +151,12 @@ const Footer: React.FC = () => {
                     transition: { duration: 0.3 }
                   }}
                 >
-                  <div className="w-24 h-24 rounded-full overflow-hidden">
+                  {/* Improved image container with fixed dimensions and better positioning */}
+                  <div className="w-28 h-28 rounded-full overflow-hidden flex items-center justify-center bg-deep-blue">
                     <motion.img 
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-center"
                       whileHover={{ 
                         scale: 1.15,
                         transition: { duration: 0.5 }
