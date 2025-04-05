@@ -118,103 +118,7 @@ const Footer: React.FC = () => {
               </a>
             </motion.div>
           </div>
-          
-          <div className="col-span-1 md:col-span-1">
-            <motion.h3 
-              className="text-xl font-cinzel font-bold text-gold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              Quick Links
-            </motion.h3>
-            <motion.div 
-              className="grid grid-cols-2 sm:grid-cols-2 gap-3"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <a href="/" className="text-gray-300 hover:text-light-blue transition-colors">Home</a>
-              <a href="/about" className="text-gray-300 hover:text-light-blue transition-colors">About</a>
-              <a href="/events" className="text-gray-300 hover:text-light-blue transition-colors">Events</a>
-              <a href="/schedule" className="text-gray-300 hover:text-light-blue transition-colors">Schedule</a>
-              <a href="/sponsors" className="text-gray-300 hover:text-light-blue transition-colors">Sponsors</a>
-              <a href="/register" className="text-gray-300 hover:text-light-blue transition-colors">Register</a>
-            </motion.div>
-          </div>
-
-          {/** ✅ Show "Contact Us" ONLY on the Home Page */}
-          {location.pathname === "/" && (
-            <div>
-              <motion.h3 
-                className="text-xl font-cinzel font-bold text-gold mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
-                Contact Us
-              </motion.h3>
-              <motion.ul 
-                className="space-y-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                <li className="flex items-start">
-                  <Mail className="h-5 w-5 text-gold golden-glow mr-3 mt-0.5" />
-                  <span className="text-gray-300">ecepranav2k25@gmail.com</span>
-                </li>
-                <li className="flex items-start">
-                  <Phone className="h-5 w-5 text-gold golden-glow mr-3 mt-0.5" />
-                  <span className="text-gray-300">+91 63747 73408</span>
-                </li>
-                <li className="flex items-start">
-                  <MapPin className="h-5 w-5 text-gold golden-glow mr-3 mt-0.5" />
-                  <span className="text-gray-300">Meenakshi sundararajan engineering college , Kodambakkam , Chennai</span>
-                </li>
-              </motion.ul>
-            </div>
-          )}
-          
-          <div>
-            <motion.h3 
-              className="text-xl font-cinzel font-bold text-gold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
-            >
-              Subscribe
-            </motion.h3>
-            <motion.p 
-              className="text-gray-300 mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-            >
-              Stay updated with the latest news and announcements about PRANAV2K25.
-            </motion.p>
-            <motion.form 
-              className="flex"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.9 }}
-            >
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                className="bg-deep-blue/50 border border-gold/30 text-white px-4 py-2 rounded-l-md focus:outline-none focus:border-light-blue w-full"
-              />
-              <button 
-                type="submit" 
-                className="bg-gold text-deep-blue px-4 py-2 rounded-r-md font-medium hover:bg-light-blue transition-colors"
-              >
-                Share
-              </button>
-            </motion.form>
-          </div>
-        </div>
-        
-        {/* Website Team Section */}
+           {/* Website Team Section */}
         <motion.div
           className="mb-12"
           initial={{ opacity: 0 }}
@@ -305,6 +209,80 @@ const Footer: React.FC = () => {
             ))}
           </div>
         </motion.div>
+          
+
+          {/** ✅ Show "Contact Us" ONLY on the Home Page */}
+          {location.pathname === "/" && (
+            <div>
+              <motion.h3 
+                className="text-xl font-cinzel font-bold text-gold mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                Contact Us
+              </motion.h3>
+              <motion.ul 
+                className="space-y-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                <li className="flex items-start">
+                  <Mail className="h-5 w-5 text-gold golden-glow mr-3 mt-0.5" />
+                  <span className="text-gray-300">ecepranav2k25@gmail.com</span>
+                </li>
+                <li className="flex items-start">
+                  <Phone className="h-5 w-5 text-gold golden-glow mr-3 mt-0.5" />
+                  <span className="text-gray-300">+91 63747 73408</span>
+                </li>
+                <li className="flex items-start">
+                  <MapPin className="h-5 w-5 text-gold golden-glow mr-3 mt-0.5" />
+                  <span className="text-gray-300">Meenakshi sundararajan engineering college , Kodambakkam , Chennai</span>
+                </li>
+              </motion.ul>
+            </div>
+          )}
+          
+          <div>
+            <motion.h3 
+              className="text-xl font-cinzel font-bold text-gold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+            >
+              Subscribe
+            </motion.h3>
+            <motion.p 
+              className="text-gray-300 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+            >
+              Stay updated with the latest news and announcements about PRANAV2K25.
+            </motion.p>
+            <motion.form 
+              className="flex"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.9 }}
+            >
+              <input 
+                type="email" 
+                placeholder="Your email" 
+                className="bg-deep-blue/50 border border-gold/30 text-white px-4 py-2 rounded-l-md focus:outline-none focus:border-light-blue w-full"
+              />
+              <button 
+                type="submit" 
+                className="bg-gold text-deep-blue px-4 py-2 rounded-r-md font-medium hover:bg-light-blue transition-colors"
+              >
+                Share
+              </button>
+            </motion.form>
+          </div>
+        </div>
+        
+       
         
         <motion.div 
           className="border-t border-gold/20 pt-8 text-center text-gray-400 text-sm"
