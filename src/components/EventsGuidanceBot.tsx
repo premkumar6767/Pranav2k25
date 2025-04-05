@@ -40,12 +40,28 @@ export default function EventsGuidanceBot() {
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
+  const chatButtonRef = useRef<HTMLDivElement | null>(null);
   
-  // For fixed position (not draggable)
+  // For draggable functionality
+  const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [dragOffset, setDragOffset] = useState<Position>({ x: 0, y: 0 });
+  
+  // For window size
   const [windowSize, setWindowSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
     height: typeof window !== 'undefined' ? window.innerHeight : 0
   });
+
+  // Initialize position based on window size
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setPosition({
+        x: window.innerWidth - 80,
+        y: window.innerHeight - 150
+      });
+    }
+  }, []);
 
   // Update window dimensions on resize
   useEffect(() => {
@@ -54,6 +70,16 @@ export default function EventsGuidanceBot() {
         width: window.innerWidth,
         height: window.innerHeight
       });
+      
+      // Keep button within bounds when window is resized
+      if (chatButtonRef.current) {
+        const buttonRect = chatButtonRef.current.getBoundingClientRect();
+        
+        setPosition(prevPosition => ({
+          x: Math.min(prevPosition.x, window.innerWidth - buttonRect.width),
+          y: Math.min(prevPosition.y, window.innerHeight - buttonRect.height)
+        }));
+      }
     };
 
     if (typeof window !== 'undefined') {
@@ -98,6 +124,85 @@ export default function EventsGuidanceBot() {
       }
     }
   }, [isOpen, windowSize]);
+
+  // Dragging handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (chatButtonRef.current) {
+      const rect = chatButtonRef.current.getBoundingClientRect();
+      setDragOffset({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      });
+      setIsDragging(true);
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (chatButtonRef.current && e.touches[0]) {
+      const rect = chatButtonRef.current.getBoundingClientRect();
+      setDragOffset({
+        x: e.touches[0].clientX - rect.left,
+        y: e.touches[0].clientY - rect.top
+      });
+      setIsDragging(true);
+    }
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (isDragging) {
+      const x = e.clientX - dragOffset.x;
+      const y = e.clientY - dragOffset.y;
+      
+      // Keep button within viewport bounds
+      const buttonSize = chatButtonRef.current?.getBoundingClientRect() || { width: 56, height: 56 };
+      
+      const boundedX = Math.max(0, Math.min(windowSize.width - buttonSize.width, x));
+      const boundedY = Math.max(0, Math.min(windowSize.height - buttonSize.height, y));
+      
+      setPosition({ x: boundedX, y: boundedY });
+    }
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    if (isDragging && e.touches[0]) {
+      const x = e.touches[0].clientX - dragOffset.x;
+      const y = e.touches[0].clientY - dragOffset.y;
+      
+      // Keep button within viewport bounds
+      const buttonSize = chatButtonRef.current?.getBoundingClientRect() || { width: 56, height: 56 };
+      
+      const boundedX = Math.max(0, Math.min(windowSize.width - buttonSize.width, x));
+      const boundedY = Math.max(0, Math.min(windowSize.height - buttonSize.height, y));
+      
+      setPosition({ x: boundedX, y: boundedY });
+      
+      // Prevent page scrolling while dragging
+      e.preventDefault();
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  // Add and remove event listeners for drag
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
+      window.addEventListener('touchend', handleMouseUp);
+    }
+    
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mouseup', handleMouseUp);
+        window.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('touchend', handleMouseUp);
+      }
+    };
+  }, [isDragging, dragOffset]);
 
   const processUserQuery = (query: string): string => {
     // Logic to determine which event the user is asking about
@@ -279,7 +384,7 @@ export default function EventsGuidanceBot() {
         }
         
         if (event.format) {
-          response += `Format:  ${event.format}\n\n`;
+          response += `Format: ${event.format}\n\n`;
         }
         
         if (event.games) {
@@ -291,7 +396,7 @@ export default function EventsGuidanceBot() {
         }
         
         if (event.team) {
-          response += `Team Size:  ${event.team}\n\n`;
+          response += `Team Size: ${event.team}\n\n`;
         }
         
         if (event.instructions) {
@@ -303,15 +408,15 @@ export default function EventsGuidanceBot() {
         }
         
         if (event.note) {
-          response += `Note:  ${event.note}\n`;
+          response += `Note: ${event.note}\n`;
         }
         
         if (event.notes) {
-          response += `Note:  ${event.notes}\n`;
+          response += `Note: ${event.notes}\n`;
         }
         
         if (event.languages) {
-          response += `Programming Languages:  ${event.languages}\n`;
+          response += `Programming Languages: ${event.languages}\n`;
         }
       } else if (query.includes("hello") || query.includes("hi") || query.includes("hey")) {
         response = "Greetings, mortal! By Zeus's thunderbolt, I welcome you to Pranav2k25! I am Hermes, messenger of the gods, here to guide you through our divine events. What knowledge do you seek?";
@@ -361,15 +466,61 @@ export default function EventsGuidanceBot() {
     }
   };
 
+  // Calculate chat window position based on button position
+  const getChatWindowPosition = () => {
+    // Button dimensions
+    const buttonWidth = 56; // Approximate width of the button
+    const buttonHeight = 56; // Approximate height of the button
+    
+    // Chat window dimensions
+    const chatWidth = windowSize.width < 640 ? windowSize.width - 40 : 350;
+    const chatHeight = windowSize.height < 500 ? windowSize.height - 40 : 400;
+    
+    // Determine which quadrant of the screen the button is in
+    const isRightHalf = position.x > windowSize.width / 2;
+    const isBottomHalf = position.y > windowSize.height / 2;
+    
+    let chatX, chatY;
+    
+    // Position chat window based on button quadrant
+    if (isRightHalf) {
+      // Button is on right half, position chat to the left of button
+      chatX = Math.max(10, position.x - chatWidth);
+    } else {
+      // Button is on left half, position chat to the right of button
+      chatX = Math.min(windowSize.width - chatWidth - 10, position.x + buttonWidth);
+    }
+    
+    if (isBottomHalf) {
+      // Button is on bottom half, position chat above button
+      chatY = Math.max(10, position.y - chatHeight);
+    } else {
+      // Button is on top half, position chat below button
+      chatY = Math.min(windowSize.height - chatHeight - 10, position.y + buttonHeight);
+    }
+    
+    // Ensure chat stays within viewport
+    chatX = Math.max(10, Math.min(windowSize.width - chatWidth - 10, chatX));
+    chatY = Math.max(10, Math.min(windowSize.height - chatHeight - 10, chatY));
+    
+    return { x: chatX, y: chatY };
+  };
+
+  const chatPosition = getChatWindowPosition();
+
   return (
     <>
-      {/* Fixed chat button at right edge */}
+      {/* Draggable chat button */}
       <div 
-        className={`fixed z-50 transition-all duration-300 ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        ref={chatButtonRef}
+        className={`fixed z-50 transition-all duration-300 ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100 cursor-grab active:cursor-grabbing'}`}
         style={{ 
-          right: '14px',
-          bottom: '100px'
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          touchAction: 'none', // Prevents touch scrolling while dragging
         }}
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
       >
         <button 
           onClick={toggleChat}
@@ -390,20 +541,21 @@ export default function EventsGuidanceBot() {
         </button>
       </div>
       
-      {/* Chat window - now positioned relative to the viewport */}
+      {/* Chat window - positioned relative to the button */}
       <div 
         ref={chatContainerRef}
         className={`fixed z-50 rounded-lg shadow-xl flex flex-col transition-all duration-300 overflow-hidden ${
           isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0 pointer-events-none'
         }`}
         style={{
-          right: '20px',
-          bottom: '20px',
+          left: `${chatPosition.x}px`,
+          top: `${chatPosition.y}px`,
           width: windowSize.width < 640 ? 'calc(100% - 40px)' : '350px',
           maxWidth: '100%',
           height: windowSize.height < 500 ? 'calc(100% - 40px)' : '400px',
           maxHeight: 'calc(100vh - 40px)',
-          border: '2px solid #D4AF37'
+          border: '2px solid #D4AF37',
+          transformOrigin: `${isOpen ? 'center' : `${position.x - chatPosition.x}px ${position.y - chatPosition.y}px`}`
         }}
       >
         {/* Header */}
