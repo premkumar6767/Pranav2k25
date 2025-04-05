@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Cpu, Wifi, Zap, Award, Users, BookOpen } from "lucide-react";
-import GreekBackground from "./../images/greek.jpg"; // Using the existing Greek background
-import HodImage from "./../images/hodmam.jpg";
-import PrincipalImage from "./../images/principal.jpeg";
-import FounderImage from "./../images/Founder.jpeg";
-import CoFounderImage from "./../images/Babai-mam.png";
-import SecretaryImage from "./../images/secretary.png";
+import GreekBackground from "../images/greek.jpg"; // Using the existing Greek background
+import HodImage from "../images/hodmam.jpg";
+import PrincipalImage from "../images/principal.jpeg";
+import FounderImage from "../images/Founder.jpeg";
+import CoFounderImage from "../images/Babai-mam.png";
+import secretary from "../images/Secretary.png";
 import "./About.css";
 
 interface AboutProps {
@@ -372,7 +372,7 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
       description: "Dr. K.S. Babai, a graduate of College of Engineering, Guindy (1966), earned her master's from IIT Madras (1980) and a Ph.D. from Annamalai University. She excelled in technical education, leading Meenakshi Sundararajan Engineering College with dedication. Her perseverance and willpower continue to inspire generations."
     },
     {
-      image: SecretaryImage,
+      image: secretary,
       name: "Mr. N. Sreekanth",
       role: "Secretary (Grammateus)",
       description: "Mr. N. Sreekanth, our secretary, actively encourages participation in programs that enhance skills like communication, problem-solving, teamwork, and creativity. His dedication to fostering institutional clubs strengthens our learning experience. By prioritizing extracurricular activities, he empowers us to become well-rounded professionals ready for the future."
