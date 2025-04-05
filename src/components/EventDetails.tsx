@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -78,12 +77,10 @@ const events = {
         {
           name: "Aditya Kumar",
           phone: "9988776655",
-          email: "aditya.kumar@msec.edu"
         },
         {
           name: "Sneha Patel",
           phone: "8899776655",
-          email: "sneha.patel@msec.edu"
         }
       ]
     },
@@ -148,7 +145,6 @@ const events = {
         {
           name: "Jesilia",
           phone: "8765123450",
-          email: "meera.iyer@msec.edu"
         }
       ]
     },
@@ -176,12 +172,10 @@ const events = {
         {
           name: "Karthik Raman",
           phone: "9988776600",
-          email: "karthik.raman@msec.edu"
         },
         {
           name: "Neha Gupta",
           phone: "8877665500",
-          email: "neha.gupta@msec.edu"
         }
       ]
     },
@@ -212,11 +206,6 @@ const events = {
           phone: "7448631031",
          
         },
-        {
-          name: "Aishwarya Reddy",
-          phone: "8765432200",
-          email: "aishwarya.reddy@msec.edu"
-        }
       ]
     },
   ],
@@ -344,7 +333,6 @@ const events = {
         {
           name: " Monish",
           phone: "8877665544",
-          email: "priyanka.mishra@msec.edu"
         }
       ]
     },
@@ -370,12 +358,10 @@ const events = {
         {
           name: "Varun Kapoor",
           phone: "9988776677",
-          email: "varun.kapoor@msec.edu"
         },
         {
           name: "Shweta Joshi",
           phone: "8877665577",
-          email: "shweta.joshi@msec.edu"
         }
       ]
     },
@@ -441,12 +427,10 @@ const events = {
         {
           name: "Dhruv Patel",
           phone: "9876543299",
-          email: "dhruv.patel@msec.edu"
         },
         {
           name: "Nisha Rajput",
           phone: "8765432199",
-          email: "nisha.rajput@msec.edu"
         }
       ]
     },
@@ -476,12 +460,10 @@ const events = {
         {
           name: "Vishal Nair",
           phone: "9988776611",
-          email: "vishal.nair@msec.edu"
         },
         {
           name: "Shreya Kapoor",
           phone: "8877665511",
-          email: "shreya.kapoor@msec.edu"
         }
       ]
     },
@@ -513,12 +495,10 @@ const events = {
         {
           name: "Amit Khanna",
           phone: "9988776633",
-          email: "amit.khanna@msec.edu"
         },
         {
           name: "Ritu Sharma",
           phone: "8877665533",
-          email: "ritu.sharma@msec.edu"
         }
       ]
     },
@@ -706,12 +686,7 @@ const EventDetail = () => {
                         <Phone className="w-4 h-4 mr-2 text-amber-300" />
                         <span>{coordinator.phone}</span>
                       </div>
-                      {coordinator.email && (
-                        <div className="mt-1 flex items-center">
-                          <Mail className="w-4 h-4 mr-2 text-amber-300" />
-                          <span>{coordinator.email}</span>
-                        </div>
-                      )}
+                    
                     </div>
                   ))}
                 </div>
