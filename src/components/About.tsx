@@ -7,7 +7,7 @@ import HodImage from "./../images/hodmam.jpg";
 import PrincipalImage from "./../images/principal.jpeg";
 import FounderImage from "./../images/Founder.jpeg";
 import CoFounderImage from "./../images/Babai-mam.png";
-import secretary from "../images/Secretary.png";
+import SecretaryImage from "./../images/secretary.png";
 import "./About.css";
 
 interface AboutProps {
@@ -21,6 +21,7 @@ interface LeadershipProfileProps {
   description: string;
 }
 
+// Improved StatCard component with new styling classes
 const StatCard: React.FC<{ value: string; label: string }> = ({ value, label }) => (
   <div className="stat-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md text-center h-full">
     <div className="stat-value text-3xl font-bold text-blue-600 mb-2">{value}</div>
@@ -28,6 +29,7 @@ const StatCard: React.FC<{ value: string; label: string }> = ({ value, label }) 
   </div>
 );
 
+// Improved FeatureCard component with enhanced styling
 const FeatureCard: React.FC<{ icon: React.ReactNode; title: string; description: string }> = ({ 
   icon, 
   title, 
@@ -47,7 +49,9 @@ const FeatureCard: React.FC<{ icon: React.ReactNode; title: string; description:
   </motion.div>
 );
 
+// Modified LeadershipProfile for horizontal scrolling on mobile
 const LeadershipProfile: React.FC<LeadershipProfileProps> = ({ image, name, role, description }) => {
+  // Determine if this is the co-founder profile that needs special positioning
   const isCoFounder = role.includes("Co-Founder");
   
   return (
@@ -56,10 +60,10 @@ const LeadershipProfile: React.FC<LeadershipProfileProps> = ({ image, name, role
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       className={`leadership-profile bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden 
-                hover:shadow-xl transition-all duration-300 h-full ${isCoFounder ? 'co-founder-profile' : ''}`}
+                hover:shadow-xl transition-all duration-300 h-full flex flex-col ${isCoFounder ? 'co-founder-profile' : ''}`}
       style={{
-        minWidth: '280px',
-        maxWidth: '340px'
+        minWidth: '280px', // Fixed minimum width for carousel items
+        maxWidth: '340px'  // Maximum width for larger screens
       }}
     >
       <div className="relative h-64">
@@ -81,6 +85,7 @@ const LeadershipProfile: React.FC<LeadershipProfileProps> = ({ image, name, role
   );
 };
 
+// ScrollSection component for mobile-optimized scroll effects
 const ScrollSection: React.FC<{ children: React.ReactNode; id?: string }> = ({ children, id }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -110,6 +115,7 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   
+  // Function to scroll the carousel left or right
   const scrollCarousel = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
       const scrollAmount = 300; // Approximate width of each card
@@ -122,12 +128,14 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
         behavior: 'smooth'
       });
       
+      // Update current index for button disabling
       const itemWidth = 300;
       const newIndex = Math.round(newPosition / itemWidth);
       setCurrentIndex(newIndex < 0 ? 0 : newIndex);
     }
   };
   
+  // Smooth scroll function for internal navigation
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -138,16 +146,20 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
     }
   };
   
+  // Add touch-based smooth scrolling for mobile devices
   useEffect(() => {
+    // Calculate total items for the carousel
     if (carouselRef.current) {
       const carouselWidth = carouselRef.current.scrollWidth;
       const itemWidth = 300; // Approximate width of each card
       setTotalItems(Math.ceil(carouselWidth / itemWidth));
     }
     
+    // Add CSS for smooth scrolling to body specifically for mobile
     if (window.innerWidth <= 768) {
       document.body.style.scrollBehavior = 'smooth';
       
+      // Add custom scroll effect for iOS momentum scrolling
       const style = document.createElement('style');
       style.textContent = `
         @media (max-width: 768px) {
@@ -238,6 +250,7 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
       `;
       document.head.appendChild(style);
       
+      // Observer for scroll animations on mobile
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -246,22 +259,27 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
         });
       }, { threshold: 0.1 });
       
+      // Add the scroll-reveal class to all sections
       document.querySelectorAll('section').forEach(section => {
         section.classList.add('scroll-reveal');
         observer.observe(section);
       });
       
+      // Add scroll listener to update active indicator and button states
       const carousel = carouselRef.current;
       if (carousel) {
+        // Create scroll indicators
         const scrollIndicatorContainer = document.createElement('div');
         scrollIndicatorContainer.className = 'scroll-indicator';
         
+        // Calculate how many indicators needed based on carousel width and item width
         const carouselWidth = carousel.scrollWidth;
         const visibleWidth = carousel.clientWidth;
         const itemWidth = 300; // Approximate width of each card
         const totalItems = Math.ceil(carouselWidth / itemWidth);
         const numIndicators = Math.ceil(carouselWidth / visibleWidth);
         
+        // Create indicator dots
         for (let i = 0; i < numIndicators; i++) {
           const dot = document.createElement('div');
           dot.className = 'scroll-indicator-dot';
@@ -269,8 +287,10 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
           scrollIndicatorContainer.appendChild(dot);
         }
         
+        // Add indicators to DOM
         carousel.parentNode?.appendChild(scrollIndicatorContainer);
         
+        // Add scroll listener to update active indicator
         carousel.addEventListener('scroll', () => {
           const scrollPosition = carousel.scrollLeft;
           const maxScroll = carousel.scrollWidth - carousel.clientWidth;
@@ -278,6 +298,7 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
           const activeIndex = Math.floor(scrollPercentage * (numIndicators - 1));
           setCurrentIndex(Math.round(scrollPosition / itemWidth));
           
+          // Update active indicator
           const dots = scrollIndicatorContainer.querySelectorAll('.scroll-indicator-dot');
           dots.forEach((dot, index) => {
             if (index === activeIndex) {
@@ -297,12 +318,14 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
           el.classList.remove('scroll-reveal');
         });
         
+        // Clean up scroll indicators
         const scrollIndicator = document.querySelector('.scroll-indicator');
         scrollIndicator?.parentNode?.removeChild(scrollIndicator);
       };
     }
   }, []);
   
+  // Adding the missing departmentStats
   const departmentStats = [
     { value: "100%", label: "Placement Rate" },
     { value: "20+", label: "Research Publications" },
@@ -312,7 +335,7 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
   
   const eceHighlights = [
     {
-      title: "Hermes Communication Systems",
+      title: "Hermes Communication Systems", // Keeping original titles
       description: "Cutting-edge research and training in wireless communications, signal processing, and network infrastructure development.",
       icon: <Wifi className="w-6 h-6" />,
     },
@@ -349,7 +372,7 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
       description: "Dr. K.S. Babai, a graduate of College of Engineering, Guindy (1966), earned her master's from IIT Madras (1980) and a Ph.D. from Annamalai University. She excelled in technical education, leading Meenakshi Sundararajan Engineering College with dedication. Her perseverance and willpower continue to inspire generations."
     },
     {
-      image: secretary,
+      image: SecretaryImage,
       name: "Mr. N. Sreekanth",
       role: "Secretary (Grammateus)",
       description: "Mr. N. Sreekanth, our secretary, actively encourages participation in programs that enhance skills like communication, problem-solving, teamwork, and creativity. His dedication to fostering institutional clubs strengthens our learning experience. By prioritizing extracurricular activities, he empowers us to become well-rounded professionals ready for the future."
@@ -357,7 +380,7 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
     {
       image: PrincipalImage,
       name: "Dr. S. V. Saravanan",
-      role: "Principal (Archon)",
+      role: "Principal (Archon)", // Keeping the Greek titles
       description: "Dr. S. V. Saravanan, our principal, seamlessly integrates technical skills with academics, fostering a holistic learning environment. His mentorship, motivational guidance, and hands-on approach empower students to thrive. Committed to student success, he ensures a well-rounded educational journey toward excellence."
     },
     {
@@ -372,16 +395,19 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
     navigate("/event/technical");
   };
 
+  // Add scrolling progress indicator for mobile
   const { scrollYProgress } = useScroll();
   const scrollProgress = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <div ref={mainRef} className="min-h-screen bg-gray-100 dark:bg-gray-900">
+      {/* Mobile Scroll Progress Indicator */}
       <motion.div 
         className="fixed top-0 left-0 right-0 h-1 bg-blue-600 z-50 origin-left md:hidden"
         style={{ scaleX: scrollProgress }}
       />
       
+      {/* Mobile Scroll Navigation */}
       <div className="fixed bottom-4 right-4 z-50 md:hidden">
         <button 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -394,6 +420,7 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
         </button>
       </div>
       
+      {/* Hero Section with Improved Background and Mobile Optimizations */}
       <ScrollSection id="about">
         <section 
           className="hero-section relative py-20 md:py-28 overflow-hidden bg-cover bg-center bg-no-repeat" 
@@ -418,43 +445,35 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
                 Pioneering the future of electronic systems and communication technologies through
                 innovation, research, and industry-aligned education.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <button 
-                  onClick={() => navigate("/programs")}
-                  className="cta-button px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-lg hover:shadow-xl"
-                >
-                  Our Programs
-                </button>
-                <button 
-                  onClick={() => navigate("/contact")}
-                  className="cta-button px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors backdrop-blur-sm"
-                >
-                  Contact Us
-                </button>
-              </div>
+
+
+<div className="flex flex-wrap justify-center gap-4">
+  <button 
+    onClick={() => window.open("https://msec.edu.in", "_blank")}
+    className="cta-button px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-lg hover:shadow-xl"
+  >
+    Our College
+  </button>
+  <button 
+    onClick={() => window.open("https://msec.edu.in/ece.html","_blank")}
+    className="cta-button px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors backdrop-blur-sm"
+  >
+   Our Department
+  </button>
+</div>
             </motion.div>
           </div>
           
-          <div className="container mx-auto px-4 mt-16">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              {departmentStats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="h-full"
-                >
-                  <StatCard value={stat.value} label={stat.label} />
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          {/* Stats Section with Equal Height Cards */}
+         
         </section>
       </ScrollSection>
 
-      <div className="greek-divider mx-auto max-w-4xl"></div>
+     
 
+      
+
+      {/* Leadership Team Section with Horizontal Scrolling on Mobile */}
       <ScrollSection>
         <section className="py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
@@ -479,11 +498,14 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
               </motion.p>
             </div>
             
+            {/* Mobile horizontal scroll carousel for Leadership team */}
             <div className="relative max-w-6xl mx-auto carousel-navigation">
+              {/* Mobile scroll hint (only visible on small screens) */}
               <div className="md:hidden text-center text-sm text-gray-500 mb-4">
                 <span>← Swipe to see more →</span>
               </div>
               
+              {/* Navigation buttons for mobile carousel */}
               <button 
                 className="carousel-button left"
                 onClick={() => scrollCarousel('left')}
@@ -506,6 +528,7 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
                 </svg>
               </button>
               
+              {/* Leadership team carousel (horizontal on mobile, grid on desktop) */}
               <div 
                 ref={carouselRef}
                 className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 
@@ -535,129 +558,16 @@ const About: React.FC<AboutProps> = ({ backgroundImage = GreekBackground }) => {
         </section>
       </ScrollSection>
 
-      <div className="greek-divider mx-auto max-w-4xl"></div>
+  
 
-      <ScrollSection>
-        <section className="py-16 bg-gradient-to-r from-blue-700 to-blue-500">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.h2 
-                initial={{ opacity: 0, y: -10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-white mb-6"
-              >
-                Ready to Join Our Department?
-              </motion.h2>
-              <motion.p 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-xl text-blue-100 mb-8"
-              >
-                Discover opportunities in Electronics & Communication Engineering
-              </motion.p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <button 
-                  onClick={() => navigate("/admissions")}
-                  className="cta-button px-6 py-3 bg-white text-blue-600 hover:bg-blue-50 rounded-lg transition-colors shadow-lg hover:shadow-xl"
-                >
-                  Apply Now
-                </button>
-                <button 
-                  onClick={() => navigate("/contact")}
-                  className="cta-button px-6 py-3 bg-transparent border-2 border-white text-white hover:bg-white/10 rounded-lg transition-colors"
-                >
-                  Contact Us
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-      </ScrollSection>
+      {/* CTA Section with Improved Gradient and Mobile Scroll Animation */}
+     
 
-      <div className="greek-divider mx-auto max-w-4xl"></div>
+ 
 
-      <ScrollSection>
-        <section className="py-16 bg-gray-50 dark:bg-gray-800">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <motion.h2 
-                initial={{ opacity: 0, y: -10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-gray-900 dark:text-white mb-4 greek-header relative"
-              >
-                Research & Innovation
-              </motion.h2>
-              <motion.p 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-gray-600 dark:text-gray-300"
-              >
-                Exploring the frontiers of electronics and communication technology
-              </motion.p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                <div className="flex items-center mb-4">
-                  <BookOpen className="w-6 h-6 text-blue-600 mr-4" />
-                  <h3 className="text-xl font-bold text-gray-800 dark:text-white">Publications</h3>
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Our faculty and students have published over 20 research papers in prestigious international journals and conferences, focusing on wireless communication, VLSI design, and embedded systems.
-                </p>
-                <button 
-                  onClick={() => navigate("/research")}
-                  className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium flex items-center"
-                >
-                  View Publications
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                  </svg>
-                </button>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                <div className="flex items-center mb-4">
-                  <Users className="w-6 h-6 text-blue-600 mr-4" />
-                  <h3 className="text-xl font-bold text-gray-800 dark:text-white">Industry Partnerships</h3>
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  We collaborate with 15+ leading technology companies to provide real-world experience, internship opportunities, and joint research projects for our students and faculty.
-                </p>
-                <button 
-                  onClick={() => navigate("/partners")}
-                  className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium flex items-center"
-                >
-                  Our Partners
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                  </svg>
-                </button>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-      </ScrollSection>
+      {/* Research Spotlight Section with Mobile-Optimized Layout */}
+          {/* Footer Navigation Links with Improved Mobile Layout */}
+      
     </div>
   );
 };
