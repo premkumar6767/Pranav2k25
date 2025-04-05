@@ -5,8 +5,8 @@ import { Flame, Mail, Phone, MapPin, Instagram, Twitter, Facebook, Linkedin, Git
 
 // Import developer images
 import premKumarImage from '../images/prem-kumar.jpeg';
-import barathAnandImage from '../images/prem-kumar.jpeg';
-import kishoreMImage from '../images/prem-kumar.jpeg';
+import barathAnandImage from '../images/Barath-Anand.jpeg';
+import kishoreMImage from '../images/Kishore.jpeg';
 import dhanushImage from '../images/prem-kumar.jpeg';
 
 // Custom CSS class for golden glow effect
