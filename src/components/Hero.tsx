@@ -62,7 +62,7 @@ const Hero = () => {
 
   // Event details with maps URLs
   const eventDetails = {
-    date: "April 15, 2025",
+    date: "April 16, 2025",
     venue: "Meenakshi Sundararajan Engineering College",
     venueMapUrl: "https://maps.google.com/?q=Meenakshi+Sundararajan+Engineering+College,+Chennai",
     description: "Experience the fusion of ancient Greek wisdom and modern technological innovation at our one-day symposium. PRANAV2K25 brings together mythology and technology in a unique academic celebration that bridges centuries of human knowledge.",
