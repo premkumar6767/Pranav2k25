@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./About.css";
 import { Star, Medal, ExternalLink, ChevronLeft, ChevronRight, Shield, Globe, Sparkles } from "lucide-react";
 import SIT from "../images/SIT.png";
+import chennaiComputer from "../images/Chennai-Computers.jpeg"
 
 interface SponsorProps {
   id?: string;
@@ -19,7 +20,7 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
     {
       name: "Chennai Computers",
       title: "Expert in Computer Repairs",
-      image: "/images/greek-temple1.jpg",
+      image: chennaiComputer,
       mythicalBackground: {
         deity: "Hephaestus",
         realm: "Celestial Forge",
