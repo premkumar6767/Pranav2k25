@@ -27,17 +27,17 @@ const Footer: React.FC = () => {
 
   const websiteTeam = [
     {
-      name: "Prem Kumar",
+      name: "Prem Kumar M",
       role: "Web Developer",
       image: prem,
       social: {
-        github: "https://github.com/alexjohnson",
+        github: "https://github.com/premkumar6767",
         linkedin: "https://www.linkedin.com/in/prem-kumar-m-167b722a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        instagram: "https://instagram.com/alexjohnson"
+        instagram: "https://www.instagram.com/prem_madhan_777?igsh=MWk3b2cyZWRtZG04NA=="
       }
     },
     {
-      name: "Barath Anand ",
+      name: "Barath Anand",
       role: "Web Developer",
       image: me,
       social: {

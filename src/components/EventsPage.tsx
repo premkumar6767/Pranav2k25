@@ -415,11 +415,6 @@ const EventTree: React.FC<EventTreeProps> = ({
         </div>
       )}
 
-      {selectedEvent.date && (
-        <p className="text-sm text-yellow-200 mb-2 relative z-10">
-          {selectedEvent.date}
-        </p>
-      )}
       <p className="text-gray-100 relative z-10 overflow-y-auto max-h-40">
         {selectedEvent.description}
       </p>
@@ -464,7 +459,7 @@ const EventsPage: React.FC = () => {
       title: "Paper Presentation",
       description:
         "Present your research and innovative ideas in a structured format. Improve your presentation skills and showcase your technical knowledge. Submit an abstract (200-500 words) highlighting your key findings and methodology. Q&A session follows to evaluate your understanding and depth of research.",
-      date: "March 15, 2025",
+
       imageUrl: paperPresentation,
       category: "technical",
     },
@@ -473,7 +468,7 @@ const EventsPage: React.FC = () => {
       title: "Hackathon",
       description:
         "A two-round innovation challenge. Round 1: Teams analyze problem statements, develop solutions, and present their ideas. Round 2: Shortlisted teams build prototypes or simulations of their proposed solutions within a specified time frame, demonstrating core functionalities and technical implementation.",
-      date: "April 5, 2025",
+
       imageUrl: hackathon,
       category: "technical",
     },
@@ -482,7 +477,7 @@ const EventsPage: React.FC = () => {
       title: "Wired Wonders",
       description:
         "An electrifying multi-round competition for electronics enthusiasts. Round 1: Decode resistor color bands and fix circuit malfunctions. Round 2: Blindfolded circuit building with partner guidance. Round 3: Strategic bidding for components to design innovative systems within budget constraints.",
-      date: "April 12, 2025",
+
       imageUrl: wiredWonders,
       category: "technical",
     },
@@ -491,7 +486,7 @@ const EventsPage: React.FC = () => {
       title: "Halt the Dice",
       description:
         "Test your critical thinking and problem-solving through tech-based challenges. Roll the dice to face unpredictable quizzes or tasks. Progress through knockout, challenge, and final showdown rounds with increasing difficulty. Two-member teams collaborate to overcome a variety of technical challenges.",
-      date: "April 18, 2025",
+ 
       imageUrl: roleAndDice,
       category: "technical",
     },
@@ -500,7 +495,7 @@ const EventsPage: React.FC = () => {
       title: "Robot Craze",
       description:
         "An action-packed game where players control robots in various challenges. Customize your robots with different weapons, armor, and abilities before each round. Engage in combat using tactics like dodging, attacking, and defending to outsmart opponents. Complete missions or defeat other robots to win.",
-      date: "April 25, 2025",
+ 
       imageUrl: robotCraze,
       category: "workshop",
     },
@@ -509,7 +504,7 @@ const EventsPage: React.FC = () => {
       title: "Design to Dev",
       description:
         "A professional workshop bridging UI/UX design and development. Round 1: Design a single-page website using Canva or Figma within 50 minutes. Round 2: Convert your design into a functional website using HTML, CSS, and JavaScript within 1-1.5 hours, demonstrating the design-to-code workflow.",
-      date: "May 2, 2025",
+
       imageUrl: designedToDev,
       category: "technical",
     },
@@ -518,7 +513,7 @@ const EventsPage: React.FC = () => {
       title: "DecodeX",
       description:
         "Challenge your coding skills through reverse engineering tasks. Round 1: Deduce the logic behind simple input-output pairs. Round 2: Analyze complex patterns and reconstruct algorithms. Round 3: Optimize and write executable code to generate exact outputs. Solutions must be efficient and accurate.",
-      date: "May 10, 2025",
+
       imageUrl: reverseCoding,
       category: "technical",
     },
@@ -527,7 +522,7 @@ const EventsPage: React.FC = () => {
       title: "Ojingeo Game",
       description:
         "Test your critical thinking and competitive skills through a variety of Korean-inspired games. Face unpredictable challenges requiring quick thinking and effective collaboration. Games include Ddakji (paper tile flipping), balloon shooting, marble picking with chopsticks, code games, and Skribbl drawing competitions.",
-      date: "May 18, 2025",
+
       imageUrl: ojingeoGame,
       category: "nonTechnical",
     },
@@ -536,7 +531,6 @@ const EventsPage: React.FC = () => {
       title: "Aural Bliss",
       description:
         "A thrilling musical event testing your knowledge and speed. Round 1: Guess songs from their instrumental BGM within seconds. Round 2: Connect images to identify songs. Round 3: Recognize celebrities from childhood photos. Round 4: Unscramble jumbled song lyrics. Teams with fastest correct answers advance.",
-      date: "May 25, 2025",
       imageUrl: auralBliss,
       category: "nonTechnical",
     },
@@ -545,7 +539,6 @@ const EventsPage: React.FC = () => {
       title: "Senpai Fans",
       description:
         "A fun event for anime enthusiasts to explore art, culture, and fiction. Round 1: Otaku Blitz rapid-fire quiz on anime knowledge. Round 2: Anime Battle Royale debates on topics like 'Who is the greatest anime protagonist?'. Round 3: Ultimate Weeb Challenge with screenshots, audio clips, and character identification.",
-      date: "June 1, 2025",
       imageUrl: animeQuiz,
       category: "nonTechnical",
     },
@@ -554,7 +547,6 @@ const EventsPage: React.FC = () => {
       title: "Unscramble & Hunt",
       description:
         "The ultimate test of speed, logic, and teamwork. Round 1: Race against time to unscramble as many words as possible within 2 minutes. Round 2: Search for hidden puzzle pieces across the venue and assemble them correctly before time runs out. The fastest team to complete both challenges wins.",
-      date: "June 8, 2025",
       imageUrl: treasureHunt,
       category: "nonTechnical",
     },
@@ -563,7 +555,6 @@ const EventsPage: React.FC = () => {
       title: "Cricbuzz",
       description:
         "Test your cricket knowledge and strategic thinking. Round 1: Analyze cricket moments and answer questions about tournaments, IPL history, and cricket records. Round 2: Form strategic teams based on specific cricket scenarios. Teams of 3-4 members compete to demonstrate their cricket expertise.",
-      date: "June 15, 2025",
       imageUrl: cricbuzz,
       category: "nonTechnical",
     },
@@ -572,7 +563,6 @@ const EventsPage: React.FC = () => {
       title: "Zeus' Spark",
       description:
         "An exciting event to ignite creativity, teamwork, and fun through engaging activities. Round 1: Emoji Quiz - guess movie titles from emoji combinations. Round 2: Movie Plots Challenge - identify movies from their plot descriptions. Round 3: Silent Acting - guess famous movie scenes acted out without dialogue.",
-      date: "June 22, 2025",
       imageUrl: zeuseSpark,
       category: "nonTechnical",
     },

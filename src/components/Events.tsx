@@ -61,22 +61,22 @@ const EVENTS: EventsData = {
       image: Paperpres,
       description:
         "Showcase your research ideas and innovative findings to a distinguished panel of academicians and industry professionals.",
-      timing: "Day 1 - 10:00 AM to 1:00 PM",
+      timing: "10:00 AM to 1:00 PM",
       teamSize: "1-2",
       about:
         "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
       rules: [
-        "Each participant/team can present *only one* research paper.",
-        "Papers must be *original* and should not have been published elsewhere.",
-        "A *soft copy* of the paper must be submitted before the event for screening.",
-        "Presentation time is *10 minutes, followed by a **5-minute Q&A* session.",
-        "Use of *plagiarized content* will lead to immediate disqualification.",
-        "Presentations must follow *IEEE format* and should be in *PPT format*.",
-        "Judging criteria: *Originality, Technical Content, Presentation Skills, and Q&A handling.*",
-        "Decision of the judges will be *final and binding*.",
+        "Each participant/team can present only one research paper.",
+        "Papers must be original and should not have been published elsewhere.",
+        "A soft copy of the paper must be submitted before the event for screening.",
+        "Presentation time is 10 minutes, followed by a 5-minute Q&A session.",
+        "Use of plagiarized content will lead to immediate disqualification.",
+        "Presentations must follow IEEE format and should be in PPT format.",
+        "Judging criteria: Originality, Technical Content, Presentation Skills, and Q&A handling.",
+        "Decision of the judges will be final and binding.",
       ],
       details:
-        "The event will be conducted in *Hall A. Participants must bring their presentation on a USB drive and report **30 minutes before* their scheduled time.",
+        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report 30 minutes before their scheduled time.",
     },
     {
       id: "wired-wonders",
@@ -84,21 +84,21 @@ const EVENTS: EventsData = {
       image: wiredWonders,
       description:
         "Test your knowledge of circuit design and troubleshooting in this electrifying competition!",
-      timing: "Day 1 - 2:00 PM to 5:00 PM",
+      timing: "2:00 PM to 5:00 PM",
       teamSize: "1-2",
       about:
         "This event challenges participants to design, analyze, and troubleshoot circuits. Participants will be provided with real-world problems and required to build functional circuits within the given time.",
       rules: [
         "Participants must bring their own calculators and circuit design tools (if needed).",
-        "All circuit components and breadboards will be *provided on-site*.",
-        "Each round consists of different tasks: *circuit design, debugging, and real-time implementation*.",
-        "Time limit for each round: *30 minutes*.",
-        "Marks will be awarded based on *circuit functionality, design efficiency, and time taken*.",
+        "All circuit components and breadboards will be provided on-site.",
+        "Each round consists of different tasks: circuit design, debugging, and real-time implementation.",
+        "Time limit for each round: 30 minutes.",
+        "Marks will be awarded based on circuit functionality, design efficiency, and time taken.",
         "Short-circuiting or mishandling of components will lead to disqualification.",
-        "Finalists will have to build a *working prototype* of a given circuit.",
+        "Finalists will have to build a working prototype of a given circuit.",
       ],
       details:
-        "The competition will be held in *Electronics Lab B. Participants must report **15 minutes before* the event begins.",
+        "The competition will be held in Electronics Lab B. Participants must report 15 minutes before the event begins.",
     },
     {
       id: "decodex",
@@ -106,21 +106,21 @@ const EVENTS: EventsData = {
       image: reverseCoding,
       description:
         "Deconstruct and debug pre-written code to reveal its intended functionality.",
-      timing: "Day 2 - 9:00 AM to 12:00 PM",
+      timing: "9:00 AM to 12:00 PM",
       teamSize: "1-2",
       about:
         "Participants will be given obfuscated or scrambled code snippets and will need to reverse engineer them to understand their logic. The goal is to identify errors, optimize the code, and restore its original functionality.",
       rules: [
-        "Each team will receive *multiple code snippets* that need to be debugged and reconstructed.",
-        "Programming languages allowed: *C, C++, Python, and Java*.",
-        "Participants must provide *comments and explanations* for their solutions.",
-        "Marks will be based on *correctness, efficiency, and explanation clarity*.",
-        "Use of *online compilers or external help* is strictly prohibited.",
-        "Final submissions must be in *text or code file format*.",
-        "Judging will consider *code quality, logic, and optimization techniques used*.",
+        "Each team will receive multiple code snippets that need to be debugged and reconstructed.",
+        "Programming languages allowed: C, C++, Python, and Java.",
+        "Participants must provide comments and explanations for their solutions.",
+        "Marks will be based on correctness, efficiency, and explanation clarity.",
+        "Use of online compilers or external help is strictly prohibited.",
+        "Final submissions must be in text or code file format.",
+        "Judging will consider code quality, logic, and optimization techniques used.",
       ],
       details:
-        "The event will be conducted in *Coding Lab 2*. Participants should bring their own laptops if required.",
+        "The event will be conducted in Coding Lab 2. Participants should bring their own laptops if required.",
     },
     {
       id: "halt-the-dice",
@@ -128,7 +128,7 @@ const EVENTS: EventsData = {
       image: roleAndDice,
       description:
         "A unique event where rolling the dice leads to unpredictable tech-based quizzes and problem-solving challenges.",
-      timing: "Day 2 - 1:00 PM to 4:00 PM",
+      timing: "1:00 PM to 4:00 PM",
       teamSize: "2",
       about:
         "Participants will roll dice and complete various technical challenges, including debugging, circuit connections, and quizzes.",
@@ -151,7 +151,7 @@ const EVENTS: EventsData = {
       image: designedToDev,
       description:
         "A UI/UX design and development challenge where participants create a website prototype and then convert it into a functional site.",
-      timing: "Day 1 & 2 - All Day",
+      timing: "11:00 AM to 2 PM",
       teamSize: "3-4",
       about:
         "This event focuses on transforming UI/UX designs into functional web applications through creativity and coding.",
@@ -176,20 +176,20 @@ const EVENTS: EventsData = {
       image: ojingeoGame,
       description:
         "Inspired by the viral Korean survival game, this event will push your strategic thinking and endurance to the limit.",
-      timing: "Day 1 - 10:00 AM to 2:00 PM",
+      timing: "10:00 AM to 2:00 PM",
       teamSize: "1-4",
       about:
         "This event is a survival-based challenge inspired by the famous Squid Game. Participants will compete in multiple rounds of physically and mentally challenging games. The last team standing wins the ultimate prize!",
       rules: [
-        "Each round will have *elimination-based mini-games*.",
-        "Participants must follow the *given rules for each game* to avoid elimination.",
-        "Any form of *cheating or misbehavior* will result in immediate disqualification.",
+        "Each round will have elimination-based mini-games.",
+        "Participants must follow the given rules for each game to avoid elimination.",
+        "Any form of cheating or misbehavior will result in immediate disqualification.",
         "Eliminated players must exit the playing area immediately.",
-        "Finalists will compete in a *mystery challenge* for the grand prize.",
-        "Judging will be based on *survival, performance, and strategy.*",
+        "Finalists will compete in a mystery challenge for the grand prize.",
+        "Judging will be based on survival, performance, and strategy.",
       ],
       details:
-        "The event will be conducted in *Ground Area C*. Participants must wear comfortable clothing suitable for physical activities.",
+        "The event will be conducted in Ground Area C. Participants must wear comfortable clothing suitable for physical activities.",
     },
     {
       id: "senpai-fans",
@@ -197,20 +197,20 @@ const EVENTS: EventsData = {
       image: animeQuiz,
       description:
         "Test your anime and manga knowledge in this ultimate quiz showdown!",
-      timing: "Day 2 - 10:00 AM to 12:00 PM",
+      timing: "10:00 AM to 12:00 PM",
       teamSize: "1-2",
       about:
         "Are you an anime and manga expert? This quiz will challenge your knowledge across different anime genres, famous characters, theme songs, and classic storylines.",
       rules: [
-        "The quiz will consist of *multiple rounds*: MCQs, image recognition, and audio rounds.",
-        "Teams can have *up to 2 members*.",
+        "The quiz will consist of multiple rounds: MCQs, image recognition, and audio rounds.",
+        "Teams can have up to 2 members.",
         "Each correct answer earns points; incorrect answers do not result in penalties.",
-        "Use of *mobile phones, notes, or any external help is prohibited*.",
+        "Use of mobile phones, notes, or any external help is prohibited.",
         "Tiebreaker questions will be conducted if necessary.",
-        "The *team with the highest points* at the end wins!",
+        "The team with the highest points at the end wins!",
       ],
       details:
-        "The event will be conducted in *Hall B. Participants should report **15 minutes before* the event begins.",
+        "The event will be conducted in Hall B. Participants should report 15 minutes before the event begins.",
     },
     {
       id: "aural-bliss",
@@ -218,20 +218,20 @@ const EVENTS: EventsData = {
       image: auralBliss,
       description:
         "A music lover's paradise! 'Aural Bliss' is an exhilarating competition that tests your auditory perception and musical knowledge.",
-      timing: "Day 1 - 2:00 PM to 4:00 PM",
+      timing: "2:00 PM to 4:00 PM",
       teamSize: "1-3",
       about:
         "This event is for all music enthusiasts who love identifying songs, artists, and lyrics. Contestants will go through multiple rounds of music-related challenges, testing their auditory skills and knowledge.",
       rules: [
-        "Participants must guess the song, artist, or lyrics based on *instrumentals, sound clips, or scrambled words.*",
-        "Each correct answer gives *points*, and incorrect answers do not have penalties.",
-        "Bonus rounds will be included for *extra points*.",
-        "Participants are *not allowed to use mobile phones or any external help.*",
-        "Finalists will face a *rapid-fire round.*",
+        "Participants must guess the song, artist, or lyrics based on instrumentals, sound clips, or scrambled words.",
+        "Each correct answer gives points, and incorrect answers do not have penalties.",
+        "Bonus rounds will be included for extra points.",
+        "Participants are not allowed to use mobile phones or any external help.",
+        "Finalists will face a rapid-fire round.",
         "The participant/team with the highest score at the end wins.",
       ],
       details:
-        "The event will take place in *Music Room 2. Participants should arrive **15 minutes early*.",
+        "The event will take place in Music Room 2. Participants should arrive 15 minutes early.",
     },
     {
       id: "unscramble-hunt",
@@ -239,16 +239,16 @@ const EVENTS: EventsData = {
       image: treasureHunt,
       description:
         "Solve cryptic clues and uncover hidden treasures across the campus. An adventurous race against time and opponents!",
-      timing: "Day 2 - 1:00 PM to 5:00 PM",
+      timing: "1:00 PM to 5:00 PM",
       teamSize: "3-5",
       about:
         "Teams will solve riddles and navigate through multiple checkpoints to uncover the hidden treasure. The fastest team to complete all challenges wins.",
       rules: [
-        "Each team consists of *3-5 members*.",
-        "Teams must *follow the clue sequence* provided at each checkpoint.",
-        "The use of *mobile phones or external help* is strictly prohibited.",
+        "Each team consists of 3-5 members.",
+        "Teams must follow the clue sequence provided at each checkpoint.",
+        "The use of mobile phones or external help is strictly prohibited.",
         "Each checkpoint must be completed before moving to the next location.",
-        "A team caught *tampering with clues or misguiding others* will be disqualified.",
+        "A team caught tampering with clues or misguiding others will be disqualified.",
         "All team members must stay together during the hunt.",
         "Teams must respect campus rules and avoid disturbing other events.",
         "The winning team is determined by the fastest completion time.",
@@ -262,20 +262,20 @@ const EVENTS: EventsData = {
       image: zeuseSpark,
       description:
         "A series of fun and interactive electronic-themed challenges designed for tech enthusiasts.",
-      timing: "Day 1 - 11:00 AM to 2:00 PM",
+      timing: "11:00 AM to 2:00 PM",
       teamSize: "2-3",
       about:
         "This event is a hands-on electronics challenge where participants must complete tasks involving circuits, sensors, and basic robotics.",
       rules: [
-        "Teams must complete *3 electronic challenges* within the given time.",
-        "Challenges include *circuit building, component identification, and logic debugging*.",
-        "All required electronic components will be *provided on-site*.",
-        "Use of *pre-made circuits or mobile assistance is not allowed*.",
-        "Judging will be based on *accuracy, speed, and efficiency*.",
+        "Teams must complete 3 electronic challenges within the given time.",
+        "Challenges include circuit building, component identification, and logic debugging.",
+        "All required electronic components will be provided on-site.",
+        "Use of pre-made circuits or mobile assistance is not allowed.",
+        "Judging will be based on accuracy, speed, and efficiency.",
         "Any misuse of components may result in disqualification.",
       ],
       details:
-        "The competition will be held in *Electronics Lab 3. Participants should bring their own **basic tools (screwdrivers, pliers, etc.)* if needed.",          
+        "The competition will be held in Electronics Lab 3. Participants should bring their own basic tools (screwdrivers, pliers, etc.) if needed.",          
     },
     {
       id: "cricbuzz",
@@ -315,12 +315,12 @@ const EVENTS: EventsData = {
       rules: [
         "Each team must consist of 3-5 members.",
         "The theme for the short film will be revealed on the event day.",
-        "The maximum duration of the short film should be *5 minutes*.",
-        "All content (video, audio, images) must be *original* and free from copyright infringement.",
-        "Films must be submitted in *MP4 format* with a resolution of at least *720p*.",
+        "The maximum duration of the short film should be 5 minutes.",
+        "All content (video, audio, images) must be original and free from copyright infringement.",
+        "Films must be submitted in MP4 format with a resolution of at least 720p.",
         "Any form of plagiarism or pre-recorded content will lead to disqualification.",
         "Offensive, vulgar, or inappropriate content is strictly prohibited.",
-        "Judging will be based on *creativity, storytelling, cinematography, and editing skills*.",
+        "Judging will be based on creativity, storytelling, cinematography, and editing skills.",
         "Late submissions will not be considered.",
       ],
       details:
@@ -338,16 +338,16 @@ const EVENTS: EventsData = {
       about:
         "This high-intensity gaming competition brings together e-sports enthusiasts to battle it out in their favorite online multiplayer games. The tournament format will vary based on the selected games.",
       rules: [
-        "The tournament will feature *multiple games* (e.g., BGMI, Valorant, CS:GO, FIFA).",
-        "Each participant must *register for their preferred game* before the deadline.",
-        "Teams must *follow the game-specific rules* and fair play policies.",
-        "Any form of *cheating, hacking, or unfair play* will result in an immediate ban.",
-        "Participants must have a *stable internet connection* and be available during match timings.",
-        "Judging criteria: *Kill count, survival, teamwork, and strategy.*",
-        "Winners will be determined based on *game-specific scoring and tournament brackets.*",
+        "The tournament will feature multiple games (e.g., BGMI, Valorant, CS:GO, FIFA).",
+        "Each participant must register for their preferred game before the deadline.",
+        "Teams must follow the game-specific rules and fair play policies.",
+        "Any form of cheating, hacking, or unfair play will result in an immediate ban.",
+        "Participants must have a stable internet connection and be available during match timings.",
+        "Judging criteria: Kill count, survival, teamwork, and strategy.",
+        "Winners will be determined based on game-specific scoring and tournament brackets.",
       ],
       details:
-        "Participants will receive match schedules and lobby details via *Discord* before the tournament begins. Ensure your game account is ready and updated before the event.",
+        "Participants will receive match schedules and lobby details via Discord before the tournament begins. Ensure your game account is ready and updated before the event.",
     },
   ],
   workshop: [
@@ -363,13 +363,13 @@ const EVENTS: EventsData = {
       about:
         "A hands-on workshop covering drone aerodynamics, control systems, and live flying sessions. Participants will gain practical experience in drone assembly and operation.",
       rules: [
-        "This is an *individual participation* workshop (no teams allowed).",
-        "Participants will learn about *drone components, assembly, and programming*.",
+        "This is an individual participation workshop (no teams allowed).",
+        "Participants will learn about drone components, assembly, and programming.",
         "All required materials and drones will be provided at the workshop.",
-        "Participants must handle drones with *care and responsibility*.",
+        "Participants must handle drones with care and responsibility.",
         "No unauthorized modifications to the drones are allowed during the session.",
-        "A live *flight demonstration* will be conducted under expert supervision.",
-        "Each participant must complete a *mini project* using the concepts learned in the workshop.",
+        "A live flight demonstration will be conducted under expert supervision.",
+        "Each participant must complete a mini project using the concepts learned in the workshop.",
         "Certificates of completion will be awarded to all attendees.",
       ],
       details:
