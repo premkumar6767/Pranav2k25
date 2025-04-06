@@ -257,7 +257,7 @@ const EVENTS: EventsData = {
         "Participants will receive their first clue at the starting point. Each clue leads to a hidden location where the next clue awaits. The final clue will guide the team to the treasure.",
     },
     {
-      id: "Zeus' Spark",
+      id: "Zeus-Spark",
       name: "Zeus' Spark",
       image: zeuseSpark,
       description:
