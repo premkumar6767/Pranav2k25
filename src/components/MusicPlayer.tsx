@@ -3,10 +3,10 @@ import './music-player.css';
 
 // Update your MusicPlayer component to accept this prop
 interface MusicPlayerProps {
-    audioPath: string;
-    onMusicPreferenceSet: () => void;
-    isMobile?: boolean;
-  }
+  audioPath: string;
+  onMusicPreferenceSet: () => void;
+  isMobile?: boolean;
+}
 
 const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioPath, onMusicPreferenceSet }) => {
   const [showDialog, setShowDialog] = useState(true);
@@ -15,20 +15,9 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioPath, onMusicPreferenceS
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Check if user has already set preference
-    const savedPreference = localStorage.getItem('musicEnabled');
-    
-    if (savedPreference !== null) {
-      // Returning visitor, apply saved preference
-      const preferenceEnabled = savedPreference === 'true';
-      setMusicEnabled(true);
-      setIsPlaying(preferenceEnabled);
-      setShowDialog(false); // Hide dialog if preference is already set
-      // Notify parent that preference is set
-      onMusicPreferenceSet();
-    }
-    // For new visitors, dialog remains shown by default
-  }, [onMusicPreferenceSet]);
+    // Always show dialog when component mounts - no longer check localStorage
+    setShowDialog(true);
+  }, []);
 
   useEffect(() => {
     // Create audio element
@@ -76,8 +65,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioPath, onMusicPreferenceS
     setShowDialog(false);
     setMusicEnabled(true);
     setIsPlaying(true);
-    localStorage.setItem('musicEnabled', 'true');
-    // Notify parent component that preference is set to start preloader
+    // Removed localStorage saving
     onMusicPreferenceSet();
   };
 
@@ -85,15 +73,14 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioPath, onMusicPreferenceS
     setShowDialog(false);
     setMusicEnabled(true); // Still show the button
     setIsPlaying(false);
-    localStorage.setItem('musicEnabled', 'false');
-    // Notify parent component that preference is set to start preloader
+    // Removed localStorage saving
     onMusicPreferenceSet();
   };
 
   const toggleMusic = () => {
     const newState = !isPlaying;
     setIsPlaying(newState);
-    localStorage.setItem('musicEnabled', newState.toString());
+    // Removed localStorage saving
   };
 
   return (
@@ -102,16 +89,16 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioPath, onMusicPreferenceS
         <div className="music-dialog">
           <div className="music-dialog-header">
             <div className="greek-ornament left"></div>
-            <h3>Music of the Gods</h3>
+            <h3>Would you like to play music?</h3>
             <div className="greek-ornament right"></div>
           </div>
-          <p>Would you like to enhance your journey through Olympus with the divine melodies?</p>
+          <p>Would you like to listen to background music while browsing?</p>
           <div className="music-buttons">
             <button onClick={handleYesClick} className="btn-yes">
-              <span className="btn-text">Yes, Invoke the Muses</span>
+              <span className="btn-text">Yes</span>
             </button>
             <button onClick={handleNoClick} className="btn-no">
-              <span className="btn-text">Continue in Silence</span>
+              <span className="btn-text">No</span>
             </button>
           </div>
         </div>
@@ -138,4 +125,4 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioPath, onMusicPreferenceS
   );
 };
 
-export default MusicPlayer;
+export default MusicPlayer; 

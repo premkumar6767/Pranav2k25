@@ -5,7 +5,7 @@ import "./Events.css";
 
 // Import all images
 // Technical Events
-import electroField from "../images/electro.jpg";
+import zeuseSpark from "../images/Zeusspark.jpeg";
 import shortFilm from "../images/shortfilm.jpg";
 import eSports from "../images/esports.jpg";
 import cricbuzz from "../images/sport.jpg";
@@ -257,9 +257,9 @@ const EVENTS: EventsData = {
         "Participants will receive their first clue at the starting point. Each clue leads to a hidden location where the next clue awaits. The final clue will guide the team to the treasure.",
     },
     {
-      id: "electro-field",
-      name: "Electro Field",
-      image: electroField,
+      id: "Zeus' Spark",
+      name: "Zeus' Spark",
+      image: zeuseSpark,
       description:
         "A series of fun and interactive electronic-themed challenges designed for tech enthusiasts.",
       timing: "Day 1 - 11:00 AM to 2:00 PM",
@@ -275,7 +275,7 @@ const EVENTS: EventsData = {
         "Any misuse of components may result in disqualification.",
       ],
       details:
-        "The competition will be held in *Electronics Lab 3. Participants should bring their own **basic tools (screwdrivers, pliers, etc.)* if needed.",
+        "The competition will be held in *Electronics Lab 3. Participants should bring their own **basic tools (screwdrivers, pliers, etc.)* if needed.",          
     },
     {
       id: "cricbuzz",
