@@ -42,10 +42,10 @@ const scheduleData: ScheduleDay[] = [
     events: [
       { time: "11:00 AM", title: "OJINGEO", location: "ECE 4A SECOND FLOOR" },
       { time: "11:30 AM", title: "AURAL BLISS", location: "ECE 3A CLASSROOM" },
-      { time: "02:00 PM", title: "SENPAI FANS", location: "3B CLASSROOM" },
-      { time: "01:30 PM", title: "TREASURE HUNT", location: "CS LAB" },
-      { time: "02:00 PM", title: "CRICBUZZ", location: "4B CLASSROOM" },
-      { time: "02:30 PM", title: "ZEUS' SPARK", location: "3A CLASSROOM" }
+      { time: "02:00 PM", title: "SENPAI FANS", location: "ECE 4B CLASSROOM" },
+      { time: "01:30 PM", title: "TREASURE HUNT", location: "ECE 3B CLASSROOM" },
+      { time: "02:00 PM", title: "CRICBUZZ", location: "ECE 2B CLASSROOM" },
+      { time: "02:30 PM", title: "ZEUS' SPARK", location: "4TH YEAR EEE CLASSROOM" }
     ]
   },
   {
