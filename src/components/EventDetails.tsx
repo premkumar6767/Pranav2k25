@@ -1,8 +1,9 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Share2, Phone } from "lucide-react";
-
+import { ArrowLeft, Share2, Phone, Mail } from "lucide-react";
+import electroField from "../images/electro-field.webp";
 import shortFilm from "../images/short-film.jpeg";
 import eSports from "../images/e-sports.jpg";
 import cricbuzz from "../images/sport.jpg";
@@ -17,8 +18,7 @@ import animeQuiz from "../images/Senpai-fans.jpeg";
 import auralBliss from "../images/Aural-Bliss.jpeg";
 import treasureHunt from "../images/Treasure-hunt.jpeg";
 import hackathon from "../images/Hackathon.jpeg";
-import zeuseSpark from "../images/Zeusspark.jpeg";
-
+import robot from "../images/robotcraze.jpg"
 const events = {
   technical: [
     {
@@ -33,25 +33,19 @@ const events = {
         "Each participant/team can present only one research paper.",
         "Papers must be original and should not have been published elsewhere.",
         "A soft copy of the paper must be submitted before the event for screening.",
-        "Presentation time is 10 minutes, followed by a 5-minute Q&A session.",
+        "Presentation time is 10 minutes, followed by a **5-minute Q&A session.",
         "Use of plagiarized content will lead to immediate disqualification.",
         "Presentations must follow IEEE format and should be in PPT format.",
         "Judging criteria: Originality, Technical Content, Presentation Skills, and Q&A handling.",
         "Decision of the judges will be final and binding.",
       ],
       details:
-        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report 30 minutes before their scheduled time.",
+        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report **30 minutes before their scheduled time.",
       coordinators: [
         {
           name: "Sai Mathesh",
           phone: "63815 82241",
-          
-        },
-        // {
-        //   name: " Abinaya N",
-        //   phone: "8765432109",
-         
-        // }
+        }
       ]
     },
     {
@@ -66,22 +60,24 @@ const events = {
         "Each participant/team can present only one research paper.",
         "Papers must be original and should not have been published elsewhere.",
         "A soft copy of the paper must be submitted before the event for screening.",
-        "Presentation time is 10 minutes, followed by a 5-minute Q&A session.",
+        "Presentation time is 10 minutes, followed by a **5-minute Q&A session.",
         "Use of plagiarized content will lead to immediate disqualification.",
         "Presentations must follow IEEE format and should be in PPT format.",
         "Judging criteria: Originality, Technical Content, Presentation Skills, and Q&A handling.",
         "Decision of the judges will be final and binding.",
       ],
       details:
-        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report 30 minutes before their scheduled time.",
+        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report **30 minutes before their scheduled time.",
       coordinators: [
         {
-          name: "Aditya Kumar",
-          phone: "9988776655",
+          name: "Aadhitya S V",
+          phone: "94983 83681",
+          
         },
         {
-          name: "Sneha Patel",
-          phone: "8899776655",
+          name: "Amrutha ",
+          phone: "98847 12557",
+          
         }
       ]
     },
@@ -103,21 +99,18 @@ const events = {
         "Finalists will have to build a working prototype of a given circuit.",
       ],
       details:
-        "The competition will be held in Electronics Lab B. Participants must report 15 minutes before the event begins.",
+        "The competition will be held in Electronics Lab B. Participants must report **15 minutes before the event begins.",
       coordinators: [
         {
           name: " Manoj",
           phone: "7305921931",
-          
         },
         {
           name: "Sabareesan",
           phone: "8877665544",
-          
         }
       ]
     },
-
     {
       title: "DecodeX",
       image: reverseCoding,
@@ -141,11 +134,11 @@ const events = {
         {
           name: "Barath A",
           phone: "9043057100",
-          
         },
         {
           name: "Jesilia",
           phone: "8765123450",
+          email: "meera.iyer@msec.edu"
         }
       ]
     },
@@ -173,14 +166,15 @@ const events = {
         {
           name: "Karthik Raman",
           phone: "9988776600",
+          email: "karthik.raman@msec.edu"
         },
         {
           name: "Neha Gupta",
           phone: "8877665500",
+          email: "neha.gupta@msec.edu"
         }
       ]
     },
-
     {
       title: "Design to Dev",
       image: designedToDev,
@@ -205,11 +199,16 @@ const events = {
         {
           name: " Prem Kumar M",
           phone: "7448631031",
-         
         },
+        {
+          name: "Aishwarya Reddy",
+          phone: "8765432200",
+          email: "aishwarya.reddy@msec.edu"
+        }
       ]
-    },
+    }
   ],
+  
   nonTechnical: [
     {
       title: "Ojingeo Game",
@@ -233,38 +232,13 @@ const events = {
         {
           name: " Balasundharam",
           phone: "70101 60569",
-         
         },
         {
           name: "Suyash Ashwin",
           phone: "8776655440",
-         
         }
       ]
     },
-    {
-      title: "Zeus' Spark",
-      image: zeuseSpark,
-      description: "An exciting event to ignite creativity, teamwork, and fun through engaging activities.",
-      teamSize: "2-3",
-      about: "Have fun while testing your knowledge of popular culture and movies in this entertaining event.",
-      rules: [
-        "Each round has a time limit of 10 minutes",
-        "No use of mobile phones or internet",
-        "For acting round, no speaking or lip movements allowed",
-        "Points from all rounds will be accumulated for final scoring"
-      ],
-      details: "Round 1: Emoji Quiz - guess movie titles from emoji combinations. Round 2: Movie Plots Challenge. Round 3: Silent Acting - guess famous movie scenes.",
-      coordinators: [
-        {
-          name: " Jayshaal",
-          phone: "84284 24948",
-         
-        }
-      ]
-      
-    },
-    
     {
       title: "Senpai Fans",
       image: animeQuiz,
@@ -282,17 +256,15 @@ const events = {
         "The team with the highest points at the end wins!",
       ],
       details:
-        "The event will be conducted in Hall B. Participants should report 15 minutes before the event begins.",
+        "The event will be conducted in Hall B. Participants should report **15 minutes before the event begins.",
       coordinators: [
         {
           name: "Kishore M",
           phone: "63811 79497",
-          
         },
         {
           name: "Sai Mathesh",
           phone: "63815 82411",
-         
         }
       ]
     },
@@ -313,17 +285,15 @@ const events = {
         "The participant/team with the highest score at the end wins.",
       ],
       details:
-        "The event will take place in Music Room 2. Participants should arrive 15 minutes early.",
+        "The event will take place in Music Room 2. Participants should arrive **15 minutes early.",
       coordinators: [
         {
           name: " Manikandan",
           phone: "6361854170",
-         
         },
         {
           name: " Rackesh K",
           phone: "8877665533",
-         
         }
       ]
     },
@@ -351,14 +321,71 @@ const events = {
         {
           name: "Madhan Raj M",
           phone: "91760 70805",
-          
         },
         {
           name: " Monish",
           phone: "8877665544",
+          email: "priyanka.mishra@msec.edu"
         }
       ]
     },
+    {
+      title: "ZeusSpark",
+      image: treasureHunt,
+      description:
+      "An exciting event to ignite creativity, teamwork, and fun through engaging activities. Round 1: Emoji Quiz - guess movie titles from emoji combinations. Round 2: Movie Plots Challenge - identify movies from their plot descriptions. Round 3: Silent Acting - guess famous movie scenes acted out without dialogue.",
+      teamSize: "3-5",
+      about:
+        "Teams will solve riddles and navigate through multiple checkpoints to uncover the hidden treasure. The fastest team to complete all challenges wins.",
+      rules: [
+        "Each team consists of 3-5 members.",
+        "Teams must follow the clue sequence provided at each checkpoint.",
+        "The use of mobile phones or external help is strictly prohibited.",
+        "Each checkpoint must be completed before moving to the next location.",
+        "A team caught tampering with clues or misguiding others will be disqualified.",
+        "All team members must stay together during the hunt.",
+        "Teams must respect campus rules and avoid disturbing other events.",
+        "The winning team is determined by the fastest completion time.",
+      ],
+      details:
+        "Participants will receive their first clue at the starting point. Each clue leads to a hidden location where the next clue awaits. The final clue will guide the team to the treasure.",
+      coordinators: [
+        {
+          name: "Madhan Raj M",
+          phone: "91760 70805",
+        },
+        {
+          name: " Monish",
+          phone: "8877665544",
+          email: "priyanka.mishra@msec.edu"
+        }
+      ]
+    },
+    {
+      title: "robotcraze",
+      image: robot,
+      description:
+    "An action-packed game where players control robots in various sci-fi challenges, focusing on battles, strategy, and customization.",
+  teamSize: "3-4",
+  about:
+    "Players control customizable robots either individually or in teams to complete missions or defeat opponents using tactics and combat strategies.",
+  rules: [
+    "Arrive at the venue on time and ensure you're settled accordingly.",
+    "Stick to the time limit allocated so that you won't miss the event.",
+    "Maintain professional body language, clarity in speech, and confidence while communicating.",
+    "Teams should have 3-4 members.",
+    "Clicking photos should be informed to the coordinator beforehand to avoid unnecessary issues.",
+  ],
+  details:
+    "Players can customize their robots with different weapons, armor, and abilities to match their playstyle. Combat includes lasers, missiles, and melee attacks. Victory is achieved by completing missions or defeating all opponents. Points are also awarded for achievements.",
+  coordinators: [
+    {
+      name: "TBD",  // You can replace this with actual coordinator name
+      phone: "TBD",
+      email: "TBD"
+    }
+  ]
+},
     {
       title: "Cricbuzz",
       image: cricbuzz,
@@ -383,15 +410,13 @@ const events = {
         {
           name: "Hariharan ",
           phone: "63794 25941",
-         
         },
         {
           name: "Mahider ",
           phone: "8765432188",
-          
         }
       ]
-    },
+    }
   ],
   online: [
     {
@@ -421,14 +446,15 @@ const events = {
         {
           name: "Dhruv Patel",
           phone: "9876543299",
+          email: "dhruv.patel@msec.edu"
         },
         {
           name: "Nisha Rajput",
           phone: "8765432199",
+          email: "nisha.rajput@msec.edu"
         }
       ]
     },
-
     {
       title: "E-Sports",
       image: eSports,
@@ -454,13 +480,15 @@ const events = {
         {
           name: "Vishal Nair",
           phone: "9988776611",
+          email: "vishal.nair@msec.edu"
         },
         {
           name: "Shreya Kapoor",
           phone: "8877665511",
+          email: "shreya.kapoor@msec.edu"
         }
       ]
-    },
+    }
   ],
   workshop: [
     {
@@ -489,14 +517,16 @@ const events = {
         {
           name: "Amit Khanna",
           phone: "9988776633",
+          email: "amit.khanna@msec.edu"
         },
         {
           name: "Ritu Sharma",
           phone: "8877665533",
+          email: "ritu.sharma@msec.edu"
         }
       ]
-    },
-  ],
+    }
+  ]
 };
 
 const EventDetail = () => {
@@ -643,42 +673,51 @@ const EventDetail = () => {
                 <p className="first-letter:text-3xl first-letter:font-bold first-letter:mr-1 first-letter:text-amber-300">
                   {event.about}
                 </p>
-                <div className="mt-4 p-3 bg-amber-900/30 rounded-lg border border-amber-100/20">
-                  <p className="font-medium text-amber-200">Team Size: <span className="text-white">{event.teamSize}</span></p>
+                <div className="mt-4 p-3 bg-amber-900/20 rounded-lg">
+                  <p className="font-semibold text-amber-300">Team Size:</p>
+                  <p>{event.teamSize} participants</p>
+                  
+                 
                 </div>
               </div>
             )}
 
             {activeTab === "rules" && (
-              <div className="space-y-3 font-serif">
-                <h3 className="text-xl text-amber-300 mb-4">Divine Laws</h3>
-                <ul className="list-disc list-inside space-y-2">
+              <div>
+                <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">Sacred Rules</h3>
+                <ul className="list-disc pl-5 space-y-2 font-serif">
                   {event.rules.map((rule, index) => (
-                    <li key={index} dangerouslySetInnerHTML={{ __html: rule.replace(/\*(.*?)\*/g, '<span class="text-amber-300 font-semibold">$1</span>') }}></li>
+                    <li key={index}>{rule}</li>
                   ))}
                 </ul>
               </div>
             )}
 
             {activeTab === "details" && (
-              <div className="font-serif">
-                <h3 className="text-xl text-amber-300 mb-4">Sacred Details</h3>
-                <p dangerouslySetInnerHTML={{ __html: event.details.replace(/\*(.*?)\*/g, '<span class="text-amber-300 font-semibold">$1</span>') }}></p>
+              <div>
+                <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">Event Details</h3>
+                <p className="font-serif">{event.details}</p>
               </div>
             )}
 
             {activeTab === "coordinators" && (
-              <div className="font-serif">
-                <h3 className="text-xl text-amber-300 mb-4">Event Oracles</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {event.coordinators?.map((coordinator, index) => (
-                    <div key={index} className="bg-stone-800/50 p-4 rounded-lg border border-amber-100/20">
-                      <h4 className="text-lg font-semibold text-amber-200">{coordinator.name}</h4>
-                      <div className="mt-2 flex items-center">
-                        <Phone className="w-4 h-4 mr-2 text-amber-300" />
-                        <span>{coordinator.phone}</span>
-                      </div>
+              <div>
+                <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">Event Oracles</h3>
+                <div className="space-y-4">
+                  {event.coordinators.map((coordinator, index) => (
+                    <div key={index} className="bg-amber-900/20 p-3 rounded-lg">
+                      <p className="font-bold">{coordinator.name}</p>
+                      
+                      <div className="flex flex-col mt-2 space-y-2">
+                        <a 
+                          href={`tel:${coordinator.phone}`} 
+                          className="flex items-center text-amber-200 hover:text-amber-100"
+                        >
+                          <Phone className="w-4 h-4 mr-2" /> {coordinator.phone}
+                        </a>
+                        
                     
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -686,6 +725,20 @@ const EventDetail = () => {
             )}
           </div>
         </div>
+
+        {/* Event Image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="mt-8"
+        >
+          <img
+            src={event.image}
+            alt={event.title}
+            className="rounded-lg w-full object-cover h-64 shadow-lg border-2 border-amber-200/30"
+          />
+        </motion.div>
       </div>
     </div>
   );

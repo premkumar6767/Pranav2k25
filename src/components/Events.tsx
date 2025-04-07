@@ -17,9 +17,10 @@ import designedToDev from "../images/d2dev.jpg";
 import reverseCoding from "../images/decodex.jpg";
 import ojingeoGame from "../images/ojingeo.jpg";
 import animeQuiz from "../images/anime.jpg";
+import hack from "../images/Hackathon.jpeg";
 import auralBliss from "../images/auralbliss.jpg";
 import treasureHunt from "../images/treashunt.jpg";
-
+import robot from "../images/robotcraze.jpg" ;
 // Define types for the event objects
 interface EventItem {
   id: string;
@@ -65,6 +66,53 @@ const EVENTS: EventsData = {
       teamSize: "1-2",
       about:
         "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
+      rules: [
+        "Each participant/team can present only one research paper.",
+        "Papers must be original and should not have been published elsewhere.",
+        "A soft copy of the paper must be submitted before the event for screening.",
+        "Presentation time is 10 minutes, followed by a 5-minute Q&A session.",
+        "Use of plagiarized content will lead to immediate disqualification.",
+        "Presentations must follow IEEE format and should be in PPT format.",
+        "Judging criteria: Originality, Technical Content, Presentation Skills, and Q&A handling.",
+        "Decision of the judges will be final and binding.",
+      ],
+      details:
+        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report 30 minutes before their scheduled time.",
+    },
+    {
+      id: "hackathon",
+      name: "Hackathon",
+      image: hack,
+      description:
+        "Showcase your research ideas and innovative findings to a distinguished panel of academicians and industry professionals.",
+      timing: "10:00 AM to 1:00 PM",
+      teamSize: "1-2",
+      about:
+        "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
+      rules: [
+        "Each participant/team can present only one research paper.",
+        "Papers must be original and should not have been published elsewhere.",
+        "A soft copy of the paper must be submitted before the event for screening.",
+        "Presentation time is 10 minutes, followed by a 5-minute Q&A session.",
+        "Use of plagiarized content will lead to immediate disqualification.",
+        "Presentations must follow IEEE format and should be in PPT format.",
+        "Judging criteria: Originality, Technical Content, Presentation Skills, and Q&A handling.",
+        "Decision of the judges will be final and binding.",
+      ],
+      details:
+        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report 30 minutes before their scheduled time.",
+    },
+    {
+      
+      id: "robotcraze",
+      name:"Robot Craze ",
+      image: robot,
+      description:
+        "Robot craze is an action packed game where players control robots in various challenges often set in futuristic scifi environments",
+      timing: "10:00 AM to 1:00 PM",
+      teamSize: "1-2",
+      about:
+        "Robot craze where the goal is to compete objectives or defeat opponents  player control the robots either individually or as team",
       rules: [
         "Each participant/team can present only one research paper.",
         "Papers must be original and should not have been published elsewhere.",
