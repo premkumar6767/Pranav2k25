@@ -17,7 +17,7 @@ interface ScheduleDay {
 const scheduleData: ScheduleDay[] = [
   {
     day: "Online Events",
-    date: "APRIL 15, 2025",
+    date: "APRIL 14, 2025",
     events: [
       { title: "MUSES REELS" },
       { title: "ELYSIAN BATTLES" },
@@ -27,25 +27,25 @@ const scheduleData: ScheduleDay[] = [
     day: "Technical Events",
     date: "APRIL 16, 2025",
     events: [
-      { time: "09:00 AM", title: "PAPER PRESENTATION", location: "ECE SEMINAR HALL" },
-      { time: "11:00 AM", title: "HACKATHON", location: "DSP LAB" },
-      { time: "12:30 PM", title: "WIRED WONDERS", location: "4A CLASSROOM" },
-      { time: "01:00 PM", title: "ROBOT CRAZE", location: "4B CLASSROOM" },
-      { time: "01:30 PM", title: "BYTE THE DICE", location: "3A CLASSROOM" },
-      { time: "02:00 PM", title: "DESIGN 2 DEV", location: "3B CLASSROOM" },
-      { time: "03:00 PM", title: "DECODEX", location: "2B CLASSROOM" }
+      { time: "10:00 AM", title: "PAPER PRESENTATION", location: "KRS SEMINAR HALL FIRST FLOOR" },
+      { time: "08:30 AM", title: "HACKATHON", location: "DSP LAB" },
+      { time: "10:00 AM", title: "WIRED WONDERS", location: "EDC LAB FIRST FLOOR" },
+      { time: "10:30 AM", title: "ROBOT CRAZE", location: "ECE 2A GROUND FLOOR" },
+      { time: "11:00 AM", title: "BYTE THE DICE", location: "EEE 3RD FIRST FLOOR" },
+      { time: "10:00 AM", title: "DESIGN 2 DEV", location: "CSE LAB 6 SECOND FLOOR" },
+      { time: "10:30 AM", title: "DECODEX", location: "COMMON LAB THIRD FLOOR" }
     ]
   },
   {
     day: "Non-Technical Events",
     date: "APRIL 16, 2025",
     events: [
-      { time: "09:00 AM", title: "OJINGEO", location: "4A CLASSROOM" },
-      { time: "10:30 AM", title: "AURAL BLISS", location: "2A CLASSROOM" },
-      { time: "12:00 PM", title: "SENPAI FANS", location: "3B CLASSROOM" },
-      { time: "01:30 PM", title: "UNSCRAMBLE & HUNT", location: "CS LAB" },
-      { time: "02:30 PM", title: "CRICBUZZ", location: "4B CLASSROOM" },
-      { time: "03:30 PM", title: "ZEUS' SPARK", location: "3A CLASSROOM" }
+      { time: "11:00 AM", title: "OJINGEO", location: "ECE 4A SECOND FLOOR" },
+      { time: "11:30 AM", title: "AURAL BLISS", location: "ECE 3A CLASSROOM" },
+      { time: "02:00 PM", title: "SENPAI FANS", location: "3B CLASSROOM" },
+      { time: "01:30 PM", title: "TREASURE HUNT", location: "CS LAB" },
+      { time: "02:00 PM", title: "CRICBUZZ", location: "4B CLASSROOM" },
+      { time: "02:30 PM", title: "ZEUS' SPARK", location: "3A CLASSROOM" }
     ]
   },
   {

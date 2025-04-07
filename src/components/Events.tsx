@@ -172,7 +172,7 @@ const EVENTS: EventsData = {
     },
     {
       id: "halt-the-dice",
-      name: "Halt the Dice",
+      name: "Byte the Dice",
       image: roleAndDice,
       description:
         "A unique event where rolling the dice leads to unpredictable tech-based quizzes and problem-solving challenges.",
@@ -195,7 +195,7 @@ const EVENTS: EventsData = {
     },
     {
       id: "design-to-dev",
-      name: "Design to Dev",
+      name: "Design 2 Dev",
       image: designedToDev,
       description:
         "A UI/UX design and development challenge where participants create a website prototype and then convert it into a functional site.",

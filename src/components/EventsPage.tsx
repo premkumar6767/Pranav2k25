@@ -483,7 +483,7 @@ const EventsPage: React.FC = () => {
     },
     {
       id: "4",
-      title: "Halt the Dice",
+      title: "Byte the Dice",
       description:
         "Test your critical thinking and problem-solving through tech-based challenges. Roll the dice to face unpredictable quizzes or tasks. Progress through knockout, challenge, and final showdown rounds with increasing difficulty. Two-member teams collaborate to overcome a variety of technical challenges.",
  
@@ -501,7 +501,7 @@ const EventsPage: React.FC = () => {
     },
     {
       id: "6",
-      title: "Design to Dev",
+      title: "Design 2 Dev",
       description:
         "A professional workshop bridging UI/UX design and development. Round 1: Design a single-page website using Canva or Figma within 50 minutes. Round 2: Convert your design into a functional website using HTML, CSS, and JavaScript within 1-1.5 hours, demonstrating the design-to-code workflow.",
 

@@ -26,7 +26,7 @@ const events = {
       image: paperPresentation,
       description:
         "Showcase your research ideas and innovative findings to a distinguished panel of academicians and industry professionals.",
-      teamSize: "1-2",
+      teamSize: "1-4",
       about:
         "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
       rules: [
@@ -43,8 +43,12 @@ const events = {
         "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report **30 minutes before their scheduled time.",
       coordinators: [
         {
-          name: "Sai Mathesh",
-          phone: "63815 82241",
+          name: "KS Kishore",
+          phone: "9940096759",
+        }
+        {
+          name: "Sai Prasath",
+          phone: "956622942"
         }
       ]
     },
@@ -53,7 +57,7 @@ const events = {
       image: hackathon,
       description:
         "Showcase your research ideas and innovative findings to a distinguished panel of academicians and industry professionals.",
-      teamSize: "1-2",
+      teamSize: "2-4",
       about:
         "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
       rules: [
@@ -75,8 +79,8 @@ const events = {
           
         },
         {
-          name: "Amrutha ",
-          phone: "98847 12557",
+          name: "Sutharsan V",
+          phone: "6369953702",
           
         }
       ]
@@ -86,7 +90,7 @@ const events = {
       image: wiredWonders,
       description:
         "Test your knowledge of circuit design and troubleshooting in this electrifying competition!",
-      teamSize: "1-2",
+      teamSize: "2-4",
       about:
         "This event challenges participants to design, analyze, and troubleshoot circuits. Participants will be provided with real-world problems and required to build functional circuits within the given time.",
       rules: [
@@ -107,7 +111,7 @@ const events = {
         },
         {
           name: "Sabareesan",
-          phone: "8877665544",
+          phone: "9894789245",
         }
       ]
     },
@@ -116,7 +120,7 @@ const events = {
       image: reverseCoding,
       description:
         "Deconstruct and debug pre-written code to reveal its intended functionality.",
-      teamSize: "1-2",
+      teamSize: "2-4",
       about:
         "Participants will be given obfuscated or scrambled code snippets and will need to reverse engineer them to understand their logic. The goal is to identify errors, optimize the code, and restore its original functionality.",
       rules: [
@@ -136,18 +140,17 @@ const events = {
           phone: "9043057100",
         },
         {
-          name: "Jesilia",
-          phone: "8765123450",
-          email: "meera.iyer@msec.edu"
+          name: "Peranandhan",
+          phone: "7010893206",
         }
       ]
     },
     {
-      title: "Halt the Dice",
+      title: "Byte the Dice",
       image: roleAndDice,
       description:
         "A unique event where rolling the dice leads to unpredictable tech-based quizzes and problem-solving challenges.",
-      teamSize: "2",
+      teamSize: "1-2",
       about:
         "Participants will roll dice and complete various technical challenges, including debugging, circuit connections, and quizzes.",
       rules: [
@@ -164,19 +167,17 @@ const events = {
         "The event includes three rounds: Qualifier (knockout stage), Challenge Round (technical tasks), and Final Showdown (intense competition).",
       coordinators: [
         {
-          name: "Karthik Raman",
-          phone: "9988776600",
-          email: "karthik.raman@msec.edu"
+          name: "Aditya P",
+          phone: "9940398918"
         },
         {
-          name: "Neha Gupta",
-          phone: "8877665500",
-          email: "neha.gupta@msec.edu"
+          name: "Rackesh U",
+          phone: "8639486845"
         }
       ]
     },
     {
-      title: "Design to Dev",
+      title: "Design 2 Dev",
       image: designedToDev,
       description:
         "A UI/UX design and development challenge where participants create a website prototype and then convert it into a functional site.",
@@ -199,11 +200,6 @@ const events = {
         {
           name: " Prem Kumar M",
           phone: "7448631031",
-        },
-        {
-          name: "Aishwarya Reddy",
-          phone: "8765432200",
-          email: "aishwarya.reddy@msec.edu"
         }
       ]
     }
@@ -215,7 +211,7 @@ const events = {
       image: ojingeoGame,
       description:
         "Inspired by the viral Korean survival game, this event will push your strategic thinking and endurance to the limit.",
-      teamSize: "1-4",
+      teamSize: "1-3",
       about:
         "This event is a survival-based challenge inspired by the famous Squid Game. Participants will compete in multiple rounds of physically and mentally challenging games. The last team standing wins the ultimate prize!",
       rules: [
@@ -244,7 +240,7 @@ const events = {
       image: animeQuiz,
       description:
         "Test your anime and manga knowledge in this ultimate quiz showdown!",
-      teamSize: "1-2",
+      teamSize: "1-3",
       about:
         "Are you an anime and manga expert? This quiz will challenge your knowledge across different anime genres, famous characters, theme songs, and classic storylines.",
       rules: [
@@ -324,8 +320,7 @@ const events = {
         },
         {
           name: " Monish",
-          phone: "8877665544",
-          email: "priyanka.mishra@msec.edu"
+          phone: "8877665544"
         }
       ]
     },
@@ -334,7 +329,7 @@ const events = {
       image: zeusspark,
       description:
       "An exciting event to ignite creativity, teamwork, and fun through engaging activities. Round 1: Emoji Quiz - guess movie titles from emoji combinations. Round 2: Movie Plots Challenge - identify movies from their plot descriptions. Round 3: Silent Acting - guess famous movie scenes acted out without dialogue.",
-      teamSize: "3-5",
+      teamSize: "2-3",
       about:
         "Teams will solve riddles and navigate through multiple checkpoints to uncover the hidden treasure. The fastest team to complete all challenges wins.",
       rules: [
@@ -351,9 +346,14 @@ const events = {
         "Participants will receive their first clue at the starting point. Each clue leads to a hidden location where the next clue awaits. The final clue will guide the team to the treasure.",
       coordinators: [
         {
+          name: "Diwakar",
+          phone:"6380406486"
+          
+        },
+        {
           name: "Jayshaal",
           phone: "91760 70805",
-        },
+        }
       ]
     },
     {
@@ -375,9 +375,12 @@ const events = {
     "Players can customize their robots with different weapons, armor, and abilities to match their playstyle. Combat includes lasers, missiles, and melee attacks. Victory is achieved by completing missions or defeating all opponents. Points are also awarded for achievements.",
   coordinators: [
     {
-      name: "TBD",  // You can replace this with actual coordinator name
-      phone: "TBD",
-      email: "TBD"
+      name: "Abishek",  // You can replace this with actual coordinator name
+      phone: "9488271971",
+    },
+    {
+      name: "Naresh M",
+      phone: "8098504465"
     }
   ]
 },
@@ -419,9 +422,7 @@ const events = {
       image: shortFilm,
       description:
         "Unleash your creativity by making a compelling short film in just a few minutes. Show off your storytelling, directing, and editing skills!",
-      timing: "Submit by Day 1 - 5:00 PM",
-      price: "₹300",
-      teamSize: "3-5",
+      timing: "Submit by 12th April - 5:00 PM",
       about:
         "Participants will create a short film based on a given theme within the specified time limit. The best films will be showcased at the closing ceremony.",
       rules: [
@@ -491,8 +492,7 @@ const events = {
       image: droneWorkshop,
       description:
         "Learn the fundamentals of drone technology, including assembly, calibration, and flying techniques. A must-attend for drone enthusiasts!",
-      timing: "Day 1 - Full Day",
-      price: "₹1000",
+      timing: "10 AM",
       teamSize: "1",
       about:
         "A hands-on workshop covering drone aerodynamics, control systems, and live flying sessions. Participants will gain practical experience in drone assembly and operation.",
@@ -510,14 +510,12 @@ const events = {
         "The workshop consists of theory sessions, hands-on drone building, and live flight demonstrations. By the end, participants will have a basic understanding of UAV technology and flight mechanics.",
       coordinators: [
         {
-          name: "Amit Khanna",
-          phone: "9988776633",
-          email: "amit.khanna@msec.edu"
+          name: "Kamesh",
+          phone: "9360195640",
         },
         {
-          name: "Ritu Sharma",
-          phone: "8877665533",
-          email: "ritu.sharma@msec.edu"
+          name: "Vishalan",
+          phone: "9789018392",
         }
       ]
     }
