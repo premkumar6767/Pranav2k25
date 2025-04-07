@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, Calendar, MapPin, Star, ArrowDown, Share2, Instagram, Linkedin, Music, Volume2, VolumeX } from "lucide-react";
 import './hero.css'
@@ -67,7 +67,8 @@ const Hero = () => {
     venue: "Meenakshi Sundararajan Engineering College",
     venueMapUrl: "https://maps.google.com/?q=Meenakshi+Sundararajan+Engineering+College,+Chennai",
     description: "Experience the fusion of ancient Greek wisdom and modern technological innovation at our one-day symposium. PRANAV 2K25 brings together mythology and technology in a unique academic celebration that bridges centuries of human knowledge.",
-    websiteUrl: "https://msec.edu.in"
+    websiteUrl: "https://msec.edu.in",
+    registrationUrl: "https://msec.edu.in/register" // Added explicit registration URL
   };
 
   // Social media links
@@ -76,36 +77,10 @@ const Hero = () => {
     { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/company/pranav2k25", color: "bg-blue-600" }
   ];
 
-  // Audio controls - added as requested
+  // Audio controls
   const toggleMusic = () => {
-    // This is a placeholder for actual audio functionality
-    // You would implement actual audio playback here
     setIsPlaying(!isPlaying);
-    
-    // Example implementation if you have an audio element:
-    // const audioElement = document.getElementById('bgMusic');
-    // if (isPlaying) {
-    //   audioElement.pause();
-    // } else {
-    //   audioElement.play();
-    // }
   };
-
-  // Add favicon to the document head
-  useEffect(() => {
-    const favicon = document.createElement('link');
-    favicon.rel = 'shortcut icon';
-    favicon.href = '/favicon.ico'; // You'll need to ensure this file exists in your public directory
-    document.head.appendChild(favicon);
-
-    return () => {
-      // Clean up on component unmount
-      const existingFavicon = document.querySelector("link[rel='shortcut icon']");
-      if (existingFavicon) {
-        document.head.removeChild(existingFavicon);
-      }
-    };
-  }, []);
 
   // Handle window resize
   useEffect(() => {
@@ -120,6 +95,21 @@ const Hero = () => {
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
     }
+  }, []);
+
+  // Add favicon to the document head
+  useEffect(() => {
+    const favicon = document.createElement('link');
+    favicon.rel = 'shortcut icon';
+    favicon.href = '/favicon.ico';
+    document.head.appendChild(favicon);
+
+    return () => {
+      const existingFavicon = document.querySelector("link[rel='shortcut icon']");
+      if (existingFavicon) {
+        document.head.removeChild(existingFavicon);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -150,6 +140,14 @@ const Hero = () => {
       clearTimeout(scrollTimer);
     };
   }, [textModes.length]);
+
+  // Function to handle navigation to registration page
+  const handleRegister = (e) => {
+    e.preventDefault(); // Prevent default anchor behavior
+    
+    // Navigate to registration page
+    window.location.href = eventDetails.registrationUrl;
+  };
 
   // Function to handle sharing the event with improved formatting
   const handleShare = async () => {
@@ -224,7 +222,7 @@ const Hero = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </motion.div>
 
-      {/* Fixed top bar for navigation controls - IMPROVED RESPONSIVENESS AND SPACING */}
+      {/* Fixed top bar for navigation controls */}
       <motion.div 
         className="fixed top-0 left-0 right-0 px-4 py-4 sm:px-6 sm:py-5 md:py-6 flex justify-between items-center z-30"
         initial={{ opacity: 0, y: -20 }}
@@ -240,7 +238,7 @@ const Hero = () => {
           
         </motion.div>
         
-        {/* Music toggle button - right side - ADDED AS REQUESTED */}
+        {/* Music toggle button - right side */}
         <motion.button
           onClick={toggleMusic}
           className="flex items-center p-2 sm:p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all gap-2"
@@ -256,7 +254,7 @@ const Hero = () => {
         </motion.button>
       </motion.div>
 
-      {/* Social Media Links - Fixed on the side - IMPROVED RESPONSIVENESS */}
+      {/* Social Media Links - Fixed on the side */}
       <motion.div 
         className="fixed left-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-3 z-30 hidden md:flex"
         initial={{ opacity: 0, x: -20 }}
@@ -281,7 +279,7 @@ const Hero = () => {
         ))}
       </motion.div>
 
-      {/* Mobile Social Media Links - Only visible on small screens - IMPROVED POSITIONING */}
+      {/* Mobile Social Media Links - Only visible on small screens */}
       <motion.div 
         className="fixed bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-6 z-30 md:hidden"
         initial={{ opacity: 0, y: 20 }}
@@ -513,7 +511,7 @@ const Hero = () => {
         })}
       </svg>
       
-      {/* Content section - IMPROVED RESPONSIVENESS AND ADDED SPACE FROM NAVBAR */}
+      {/* Content section */}
       <div className="relative z-10 flex flex-col items-center justify-center px-4 w-full max-w-4xl mx-auto h-full">
         {/* Main content container with safe area for all device sizes */}
         <div className="flex flex-col items-center justify-center pt-20 sm:pt-24 md:pt-28 pb-24 sm:pb-20">
@@ -532,7 +530,6 @@ const Hero = () => {
                   {currentText.map((char, index) => (
                     <motion.span
                       key={index}
-                      // More responsive text sizing that scales better on all devices
                       className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold inline-block"
                       style={{
                         textShadow: "0 0 10px rgba(255,255,255,0.5)"
@@ -574,7 +571,7 @@ const Hero = () => {
             </motion.h2>
           )}
 
-          {/* About section - added as requested - IMPROVED RESPONSIVE PADDING */}
+          {/* About section */}
           {showTitle && (
             <motion.div
               className="mb-6 px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/5 backdrop-blur-sm max-w-xs sm:max-w-sm md:max-w-lg text-center"
@@ -596,26 +593,28 @@ const Hero = () => {
             </motion.div>
           )}
 
-          {/* Register and Share buttons positioned together - FIXED AS REQUESTED */}
+          {/* Register and Share buttons - FIXED FOR MOBILE DEVICES */}
           {showTitle && (
             <motion.div
-              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4"
+              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-md"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.7 }}
             >
-              <motion.a
-                href="#register"
-                className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-yellow-400 to-blue-500 text-white font-bold rounded-lg hover:from-yellow-500 hover:to-blue-600 transition-all flex items-center justify-center text-sm sm:text-base md:text-lg register-button w-full sm:w-auto"
+              {/* Register button - Now uses onClick handler that works on all devices */}
+              <motion.button
+                onClick={handleRegister}
+                className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-yellow-400 to-blue-500 text-white font-bold rounded-lg hover:from-yellow-500 hover:to-blue-600 transition-all flex items-center justify-center text-sm sm:text-base md:text-lg w-full"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Download className="mr-2 w-4 h-4 sm:w-5 sm:h-5" /> Register Now
-              </motion.a>
+              </motion.button>
 
+              {/* Share button */}
               <motion.button
                 onClick={handleShare}
-                className="px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-sm text-white font-bold rounded-lg hover:bg-white/20 transition-all flex items-center justify-center text-sm sm:text-base md:text-lg w-full sm:w-auto"
+                className="px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-sm text-white font-bold rounded-lg hover:bg-white/20 transition-all flex items-center justify-center text-sm sm:text-base md:text-lg w-full"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Share event"
@@ -625,7 +624,7 @@ const Hero = () => {
             </motion.div>
           )}
 
-          {/* Event details cards - IMPROVED RESPONSIVENESS AND SPACING */}
+          {/* Event details cards */}
           {showTitle && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-8 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
               {/* Date card */}
@@ -665,23 +664,23 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator - IMPROVED POSITIONING */}
+      {/* Scroll indicator */}
       {showScrollIndicator && showTitle && (
-   <motion.div
-   className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
-   initial={{ opacity: 0 }}
-   animate={{ opacity: 1, y: [0, 10, 0] }}
-   transition={{ 
-     opacity: { delay: 2, duration: 1 },
-     y: { repeat: Infinity, duration: 1.5 }
-   }}
- >
-   <p className="text-white text-xs sm:text-sm mb-2 opacity-60">Scroll to discover events</p>
-   <ArrowDown className="text-white w-4 h-4 sm:w-5 sm:h-5 animate-bounce" />
- </motion.div>
-)}
-</section>
-);
+        <motion.div
+          className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, y: [0, 10, 0] }}
+          transition={{ 
+            opacity: { delay: 2, duration: 1 },
+            y: { repeat: Infinity, duration: 1.5 }
+          }}
+        >
+          <p className="text-white text-xs sm:text-sm mb-2 opacity-60">Scroll to discover events</p>
+          <ArrowDown className="text-white w-4 h-4 sm:w-5 sm:h-5 animate-bounce" />
+        </motion.div>
+      )}
+    </section>
+  );
 };
 
 export default Hero;

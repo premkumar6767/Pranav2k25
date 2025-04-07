@@ -492,7 +492,7 @@ const EventsPage: React.FC = () => {
     },
     {
       id: "5",
-      title: "Robot Craze",
+      title: "robotcraze",
       description:
         "An action-packed game where players control robots in various challenges. Customize your robots with different weapons, armor, and abilities before each round. Engage in combat using tactics like dodging, attacking, and defending to outsmart opponents. Complete missions or defeat other robots to win.",
  
