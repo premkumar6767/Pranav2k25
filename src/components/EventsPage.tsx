@@ -544,7 +544,7 @@ const EventsPage: React.FC = () => {
     },
     {
       id: "11",
-      title: "Unscramble & Hunt",
+      title: "Treasure Hunt",
       description:
         "The ultimate test of speed, logic, and teamwork. Round 1: Race against time to unscramble as many words as possible within 2 minutes. Round 2: Search for hidden puzzle pieces across the venue and assemble them correctly before time runs out. The fastest team to complete both challenges wins.",
       imageUrl: treasureHunt,

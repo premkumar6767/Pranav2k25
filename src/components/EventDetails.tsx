@@ -298,7 +298,7 @@ const events = {
       ]
     },
     {
-      title: "Unscramble & Hunt",
+      title: "Treasure Hunt",
       image: treasureHunt,
       description:
         "Solve cryptic clues and uncover hidden treasures across the campus. An adventurous race against time and opponents!",
@@ -330,7 +330,7 @@ const events = {
       ]
     },
     {
-      title: "ZeusSpark",
+      title: "Zeus' Spark",
       image: zeusspark,
       description:
       "An exciting event to ignite creativity, teamwork, and fun through engaging activities. Round 1: Emoji Quiz - guess movie titles from emoji combinations. Round 2: Movie Plots Challenge - identify movies from their plot descriptions. Round 3: Silent Acting - guess famous movie scenes acted out without dialogue.",
@@ -351,14 +351,9 @@ const events = {
         "Participants will receive their first clue at the starting point. Each clue leads to a hidden location where the next clue awaits. The final clue will guide the team to the treasure.",
       coordinators: [
         {
-          name: "Madhan Raj M",
+          name: "Jayshaal",
           phone: "91760 70805",
         },
-        {
-          name: " Monish",
-          phone: "8877665544",
-          email: "priyanka.mishra@msec.edu"
-        }
       ]
     },
     {

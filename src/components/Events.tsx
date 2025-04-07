@@ -282,8 +282,8 @@ const EVENTS: EventsData = {
         "The event will take place in Music Room 2. Participants should arrive 15 minutes early.",
     },
     {
-      id: "unscramble-hunt",
-      name: "Unscramble & Hunt",
+      id: "treasure-hunt",
+      name: "Treasure Hunt",
       image: treasureHunt,
       description:
         "Solve cryptic clues and uncover hidden treasures across the campus. An adventurous race against time and opponents!",
