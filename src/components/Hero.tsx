@@ -1,50 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, Calendar, MapPin, Star, ArrowDown, Share2, Instagram, Linkedin, Volume2, VolumeX } from "lucide-react";
-import './hero.css';
+import { Download, Calendar, MapPin, Star, ArrowDown, Share2, Instagram, Linkedin, Music, Volume2, VolumeX } from "lucide-react";
+import './hero.css'
 
-interface Star {
-  x: number;
-  y: number;
-  size: number;
-  brightness: number;
-}
-
-interface Constellation {
-  name: string;
-  stars: Star[];
-  connections: number[][];
-  color: string;
-}
-
-interface EventDetails {
-  date: string;
-  venue: string;
-  venueMapUrl: string;
-  description: string;
-  websiteUrl: string;
-  registrationUrl: string;
-}
-
-const Hero: React.FC = () => {
-  const [currentTextMode, setCurrentTextMode] = useState<number>(0);
-  const [showScrollIndicator, setShowScrollIndicator] = useState<boolean>(true);
-  const [showTitle, setShowTitle] = useState<boolean>(false);
-  const [shootingStarsDone, setShootingStarsDone] = useState<boolean>(false);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [windowSize, setWindowSize] = useState<{ width: number; height: number }>({
+const Hero = () => {
+  const [currentTextMode, setCurrentTextMode] = useState(0);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const [showTitle, setShowTitle] = useState(false);
+  const [shootingStarsDone, setShootingStarsDone] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [windowSize, setWindowSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
     height: typeof window !== 'undefined' ? window.innerHeight : 0
   });
 
-  const constellations: Constellation[] = [
+  // Constellation data remains the same
+  const constellations = [
     {
       name: "Aries",
       stars: [
-        { x: 20, y: 30, size: 3, brightness: 0.7 },
-        { x: 22, y: 32, size: 4, brightness: 1 },
-        { x: 25, y: 28, size: 3, brightness: 0.8 },
-        { x: 27, y: 33, size: 2, brightness: 0.5 }
+        { x: 20, y: 30, size: 2, brightness: 0.7 }, // Reduced star size for mobile
+        { x: 22, y: 32, size: 3, brightness: 1 },   // Reduced star size for mobile
+        { x: 25, y: 28, size: 2, brightness: 0.8 }, // Reduced star size for mobile
+        { x: 27, y: 33, size: 1.5, brightness: 0.5 } // Reduced star size for mobile
       ],
       connections: [
         [0, 1],
@@ -56,10 +34,10 @@ const Hero: React.FC = () => {
     {
       name: "Orion",
       stars: [
-        { x: 50, y: 40, size: 4, brightness: 1 },
-        { x: 52, y: 42, size: 5, brightness: 1 },
-        { x: 54, y: 38, size: 3, brightness: 0.8 },
-        { x: 56, y: 43, size: 4, brightness: 0.9 }
+        { x: 50, y: 40, size: 3, brightness: 1 },   // Reduced star size for mobile
+        { x: 52, y: 42, size: 4, brightness: 1 },   // Reduced star size for mobile
+        { x: 54, y: 38, size: 2.5, brightness: 0.8 }, // Reduced star size for mobile
+        { x: 56, y: 43, size: 3, brightness: 0.9 }   // Reduced star size for mobile
       ],
       connections: [
         [0, 1],
@@ -83,24 +61,43 @@ const Hero: React.FC = () => {
     "ΠΡΟΜΗΘΕΑΣ",
   ];
 
-  const eventDetails: EventDetails = {
+  // Event details with maps URLs
+  const eventDetails = {
     date: "April 16, 2025",
     venue: "Meenakshi Sundararajan Engineering College",
     venueMapUrl: "https://maps.google.com/?q=Meenakshi+Sundararajan+Engineering+College,+Chennai",
     description: "Experience the fusion of ancient Greek wisdom and modern technological innovation at our one-day symposium. PRANAV 2K25 brings together mythology and technology in a unique academic celebration that bridges centuries of human knowledge.",
-    websiteUrl: "https://msec.edu.in",
-    registrationUrl: "/register"
+    websiteUrl: "https://msec.edu.in"
   };
 
+  // Social media links
   const socialMediaLinks = [
     { name: "Instagram", icon: Instagram, url: "https://instagram.com/__pranav2k25_", color: "bg-gradient-to-br from-purple-600 to-pink-500" },
     { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/company/pranav2k25", color: "bg-blue-600" }
   ];
 
+  // Audio controls - added as requested
   const toggleMusic = () => {
     setIsPlaying(!isPlaying);
+    // Placeholder for actual audio functionality
   };
 
+  // Add favicon to the document head
+  useEffect(() => {
+    const favicon = document.createElement('link');
+    favicon.rel = 'shortcut icon';
+    favicon.href = '/favicon.ico';
+    document.head.appendChild(favicon);
+
+    return () => {
+      const existingFavicon = document.querySelector("link[rel='shortcut icon']");
+      if (existingFavicon) {
+        document.head.removeChild(existingFavicon);
+      }
+    };
+  }, []);
+
+  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
@@ -116,36 +113,26 @@ const Hero: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const favicon = document.createElement('link');
-    favicon.rel = 'shortcut icon';
-    favicon.href = '/favicon.ico';
-    document.head.appendChild(favicon);
-
-    return () => {
-      const existingFavicon = document.querySelector("link[rel='shortcut icon']");
-      if (existingFavicon) {
-        document.head.removeChild(existingFavicon);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
+    // Show shooting stars first, then reveal the title
     const shootingStarsTimer = setTimeout(() => {
       setShootingStarsDone(true);
     }, 3000);
-    
+
+    // Show title after shooting stars animation
     const titleTimer = setTimeout(() => {
       setShowTitle(true);
     }, 3500);
-    
+
+    // Start cycling through text modes after title appears
     const textModeTimer = setInterval(() => {
       setCurrentTextMode((prev) => (prev + 1) % textModes.length);
     }, 2000);
-    
+
+    // Hide scroll indicator after 10 seconds
     const scrollTimer = setTimeout(() => {
       setShowScrollIndicator(false);
     }, 10000);
-    
+
     return () => {
       clearTimeout(shootingStarsTimer);
       clearTimeout(titleTimer);
@@ -154,17 +141,11 @@ const Hero: React.FC = () => {
     };
   }, [textModes.length]);
 
-  // Fixed register function to ensure proper navigation on mobile
-  const handleRegister = () => {
-    // Using window.open instead of window.location.href provides better cross-device behavior
-    window.open(eventDetails.registrationUrl, '_blank', 'noopener,noreferrer');
-  };
-
-  // Improved share function with better mobile support
+  // Function to handle sharing the event with improved formatting
   const handleShare = async () => {
     try {
       const shareText = `Join us for PRANAV 2K25: National Level Technical Symposium on ${eventDetails.date} at ${eventDetails.venue}. Learn more at ${eventDetails.websiteUrl}`;
-      
+
       if (navigator.share) {
         await navigator.share({
           title: 'PRANAV 2K25 Symposium',
@@ -172,70 +153,48 @@ const Hero: React.FC = () => {
           url: eventDetails.websiteUrl,
         });
       } else {
-        // Fallback for browsers without Web Share API
-        try {
-          await navigator.clipboard.writeText(shareText);
-          alert('Event details copied to clipboard! Share with your friends and colleagues.');
-        } catch (clipboardError) {
-          console.error('Clipboard access failed:', clipboardError);
-          // Create a temporary input for manual copying as last resort
-          const tempInput = document.createElement('input');
-          document.body.appendChild(tempInput);
-          tempInput.value = shareText;
-          tempInput.select();
-          document.execCommand('copy');
-          document.body.removeChild(tempInput);
-          alert('Event details copied to clipboard! Share with your friends and colleagues.');
-        }
+        navigator.clipboard.writeText(shareText);
+        alert('Event details copied to clipboard! Share with your friends and colleagues.');
       }
     } catch (error) {
       console.error('Error sharing:', error);
-      // Provide feedback to the user
-      alert('Unable to share at this time. Please try again later.');
     }
   };
 
-  const getResponsiveSize = (base: string, sm: string, md: string, lg: string, xl: string) => {
-    const width = windowSize.width;
-    if (width < 640) return base;
-    if (width < 768) return sm;
-    if (width < 1024) return md;
-    if (width < 1280) return lg;
-    return xl;
-  };
-
-  const backgroundStars = Array.from({ length: 100 }, (_, i) => ({
+  const backgroundStars = Array.from({ length: 70 }, (_, i) => ({ // Reduced background star count
     id: `star-${i}`,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    opacity: Math.random() * 0.7 + 0.3
+    size: Math.random() * 2 + 0.5, // Reduced background star size
+    opacity: Math.random() * 0.6 + 0.4 // Slightly more opaque
   }));
 
-  const nebulaElements = Array.from({ length: 5 }, (_, i) => ({
+  const nebulaElements = Array.from({ length: 3 }, (_, i) => ({ // Reduced nebula count
     id: `nebula-${i}`,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    size: Math.random() * 30 + 10,
-    color: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.1)`
+    size: Math.random() * 20 + 5, // Reduced nebula size
+    color: `rgba(${Math.random() * 200 + 55}, ${Math.random() * 200 + 55}, ${Math.random() * 200 + 55}, 0.08)` // Slightly less transparent
   }));
 
   const currentText = textModes[currentTextMode].split("");
 
-  const findConstellationByName = (name: string) => {
+  const findConstellationByName = (name) => {
     if (!name) return null;
-    return constellations.find(c => 
+    return constellations.find(c =>
       c.name.toLowerCase() === name.toLowerCase()
     ) || null;
   };
 
+  // Shooting stars data - Further adjusted for mobile visibility
   const shootingStars = [
-    { id: 'star-1', startX: 0, startY: 30, endX: 50, endY: 50, duration: 2, delay: 0, size: 2 },
-    { id: 'star-2', startX: 100, startY: 20, endX: 50, endY: 50, duration: 2, delay: 0.5, size: 2 }
+    { id: 'star-1', startX: 5, startY: 5, endX: 55, endY: 35, duration: 1.2, delay: 0, size: 1 }, // Smaller and faster
+    { id: 'star-2', startX: 95, startY: 10, endX: 45, endY: 50, duration: 1.5, delay: 0.5, size: 1.3 } // Smaller and faster
   ];
 
   return (
     <section id='hero' className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#0B1026] via-[#0D1C3D] to-[#0B1026]">
+      {/* Add meta viewport tag to ensure proper mobile scaling */}
       <motion.div
         className="fixed top-0 left-0 w-full"
         initial={{ opacity: 0 }}
@@ -244,36 +203,41 @@ const Hero: React.FC = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </motion.div>
 
-      <motion.div 
-        className="fixed top-0 left-0 right-0 px-4 py-4 sm:px-6 sm:py-5 md:py-6 flex justify-between items-center z-30"
+      {/* Fixed top bar for navigation controls - IMPROVED RESPONSIVENESS AND SPACING */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 px-4 py-3 sm:px-6 sm:py-4 flex justify-between items-center z-30" // Reduced padding
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5 }}
       >
-        <motion.div 
-          className="rounded-full bg-white/5 backdrop-blur-sm p-2 sm:p-3"
+        {/* Logo/brand placeholder - left side */}
+        <motion.div
+          className="rounded-full bg-white/5 backdrop-blur-sm p-2 sm:p-2" // Further reduced padding
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          {/* Logo/brand placeholder */}
+
         </motion.div>
-        
+
+        {/* Music toggle button - right side - ADDED AS REQUESTED */}
         <motion.button
           onClick={toggleMusic}
-          className="flex items-center p-2 sm:p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all gap-2"
+          className="flex items-center p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all gap-2" // Reduced padding
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           aria-label={isPlaying ? "Pause music" : "Play music"}
         >
-          {isPlaying ? 
-            <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-white" /> : 
-            <VolumeX className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+          {isPlaying ?
+            <Volume2 className="w-4 h-4 text-white" /> :
+            <VolumeX className="w-4 h-4 text-white" />
           }
+
         </motion.button>
       </motion.div>
 
-      <motion.div 
-        className="fixed left-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-3 z-30 hidden md:flex"
+      {/* Social Media Links - Fixed on the side - IMPROVED RESPONSIVENESS */}
+      <motion.div
+        className="fixed left-2 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2 z-30 md:flex hidden" // Reduced left margin and spacing, hidden on mobile
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 2, staggerChildren: 0.1 }}
@@ -284,20 +248,21 @@ const Hero: React.FC = () => {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`p-2 rounded-full ${link.color} text-white hover:scale-110 transition-all`}
+            className={`p-1.5 rounded-full ${link.color} text-white hover:scale-110 transition-all`} // Reduced padding
             whileHover={{ scale: 1.2, rotate: 10 }}
             whileTap={{ scale: 0.9 }}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 2 + (index * 0.1) }}
           >
-            <link.icon className="w-5 h-5" />
+            <link.icon className="w-4 h-4" /> {/* Reduced icon size */}
           </motion.a>
         ))}
       </motion.div>
 
-      <motion.div 
-        className="fixed bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-6 z-30 md:hidden"
+      {/* Mobile Social Media Links - Only visible on small screens - IMPROVED POSITIONING */}
+      <motion.div
+        className="fixed bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-4 z-30 md:hidden" // Reduced bottom margin and spacing
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2 }}
@@ -317,10 +282,11 @@ const Hero: React.FC = () => {
         ))}
       </motion.div>
 
+      {/* Nebula Elements */}
       {nebulaElements.map(nebula => (
         <motion.div
           key={nebula.id}
-          className="absolute rounded-full blur-3xl"
+          className="absolute rounded-full blur-2xl" // Slightly less blur
           style={{
             width: `${nebula.size}px`,
             height: `${nebula.size}px`,
@@ -329,31 +295,33 @@ const Hero: React.FC = () => {
             backgroundColor: nebula.color
           }}
           animate={{
-            scale: [1, 1.1, 1]
+            scale: [1, 1.05, 1] // Reduced scale animation
           }}
           transition={{
-            duration: 30,
+            duration: 20, // Faster animation
             repeat: Infinity,
             repeatType: "reverse"
           }}
         />
       ))}
 
-      <div className="absolute inset-0 opacity-20">
+      {/* Background Mount Olympus */}
+      <div className="absolute inset-0 opacity-15"> {/* Reduced opacity */}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-full h-full">
           <defs>
             <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{stopColor:"rgba(255,255,255,0.1)"}} />
-              <stop offset="100%" style={{stopColor:"rgba(200,200,255,0.05)"}} />
+              <stop offset="0%" style={{stopColor:"rgba(255,255,255,0.08)"}} /> {/* Reduced opacity */}
+              <stop offset="100%" style={{stopColor:"rgba(200,200,255,0.03)"}} /> {/* Reduced opacity */}
             </linearGradient>
           </defs>
-          <path 
-            d="M0 100 L20 40 L40 70 L60 30 L80 60 L100 100 Z" 
-            fill="url(#mountainGradient)" 
+          <path
+            d="M0 100 L20 40 L40 70 L60 30 L80 60 L100 100 Z"
+            fill="url(#mountainGradient)"
           />
         </svg>
       </div>
 
+      {/* Background stars */}
       {backgroundStars.map(star => (
         <div
           key={star.id}
@@ -368,6 +336,7 @@ const Hero: React.FC = () => {
         />
       ))}
 
+      {/* Shooting Stars Animation - Further adjusted for mobile visibility */}
       {shootingStars.map(star => (
         <motion.div
           key={star.id}
@@ -376,16 +345,16 @@ const Hero: React.FC = () => {
             width: `${star.size}px`,
             height: `${star.size}px`,
           }}
-          initial={{ 
-            x: `${star.startX}%`, 
+          initial={{
+            x: `${star.startX}%`,
             y: `${star.startY}%`,
             scale: 0,
             opacity: 0
           }}
-          animate={{ 
-            x: `${star.endX}%`, 
+          animate={{
+            x: `${star.endX}%`,
             y: `${star.endY}%`,
-            scale: [0, 1.5, 1],
+            scale: [0, 1.3, 1], // Reduced max scale
             opacity: [0, 1, 1, 0]
           }}
           transition={{
@@ -394,8 +363,9 @@ const Hero: React.FC = () => {
             ease: "easeOut"
           }}
         >
-          <motion.div 
-            className="absolute top-0 left-0 w-16 h-1 bg-gradient-to-r from-transparent via-white to-blue-300 blur-sm"
+          {/* Trailing effect - Even more reduced length for mobile */}
+          <motion.div
+            className="absolute top-0 left-0 w-6 h-0.5 bg-gradient-to-r from-transparent via-white to-blue-300 blur-sm"
             style={{
               transformOrigin: 'right center',
               transform: `translateX(-100%) rotate(${star.startX < star.endX ? '-' : ''}45deg)`
@@ -404,6 +374,7 @@ const Hero: React.FC = () => {
         </motion.div>
       ))}
 
+      {/* Shooting Star Collision Effect - Only shows at end of shooting star animations */}
       {shootingStarsDone && (
         <motion.div
           className="absolute rounded-full blur-md z-20"
@@ -414,22 +385,24 @@ const Hero: React.FC = () => {
             background: 'radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(100,149,237,0.5) 50%, rgba(0,0,255,0) 100%)'
           }}
           initial={{ width: '0px', height: '0px', opacity: 0 }}
-          animate={{ width: '200px', height: '200px', opacity: [0, 1, 0] }}
-          transition={{ duration: 1.5 }}
+          animate={{ width: '100px', height: '100px', opacity: [0, 1, 0] }} // Further reduced size
+          transition={{ duration: 1 }} // Slightly faster
         />
       )}
 
+      {/* Constellations */}
       {constellations.map((constellation, constellationIndex) => (
-        <motion.div 
+        <motion.div
           key={constellation.name}
           className="absolute w-full h-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
-            duration: 2,
-            delay: constellationIndex * 3
+            duration: 1.5, // Slightly faster
+            delay: constellationIndex * 2.5 // Slightly shorter delay
           }}
         >
+          {/* Stars */}
           {constellation.stars.map((star, starIndex) => (
             <div
               key={`${constellation.name}-star-${starIndex}`}
@@ -437,24 +410,25 @@ const Hero: React.FC = () => {
               style={{
                 left: `${star.x}%`,
                 top: `${star.y}%`,
-                width: `${star.size * 2}px`,
-                height: `${star.size * 2}px`
+                width: `${star.size * 1.5}px`, // Slightly smaller star size
+                height: `${star.size * 1.5}px` // Slightly smaller star size
               }}
             >
-              <Star 
-                className="w-full h-full" 
-                fill={constellation.color.replace('text-', 'currentColor')} 
-                stroke="none" 
-                opacity={star.brightness} 
+              <Star
+                className="w-full h-full"
+                fill={constellation.color.replace('text-', 'currentColor')}
+                stroke="none"
+                opacity={star.brightness}
               />
             </div>
           ))}
 
+          {/* Connections */}
           <svg className="absolute inset-0 pointer-events-none" style={{ width: '100%', height: '100%' }}>
             {constellation.connections.map((connection, connectionIndex) => {
               const startStar = constellation.stars[connection[0]];
               const endStar = constellation.stars[connection[1]];
-              
+
               return (
                 <motion.line
                   key={`${constellation.name}-connection-${connectionIndex}`}
@@ -463,13 +437,13 @@ const Hero: React.FC = () => {
                   x2={`${endStar.x}%`}
                   y2={`${endStar.y}%`}
                   stroke={constellation.color.replace('text-', '')}
-                  strokeWidth="1"
-                  strokeOpacity="0.7"
+                  strokeWidth="0.8" // Thinner lines
+                  strokeOpacity="0.6" // Slightly less opaque
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
                   transition={{
-                    duration: 2,
-                    delay: connectionIndex * 0.5 + (constellationIndex * 3)
+                    duration: 1.5, // Slightly faster
+                    delay: connectionIndex * 0.4 + (constellationIndex * 2.5) // Shorter delay
                   }}
                 />
               );
@@ -478,23 +452,24 @@ const Hero: React.FC = () => {
         </motion.div>
       ))}
 
+      {/* Global Connections */}
       <svg className="absolute inset-0 pointer-events-none" style={{ width: '100%', height: '100%' }}>
         {globalConnections.map((connection, index) => {
           const startConstellation = findConstellationByName(connection.from.constellation);
           const endConstellation = findConstellationByName(connection.to.constellation);
-          
+
           if (!startConstellation || !endConstellation) {
             return null;
           }
-          
-          if (!startConstellation.stars[connection.from.starIndex] || 
+
+          if (!startConstellation.stars[connection.from.starIndex] ||
               !endConstellation.stars[connection.to.starIndex]) {
             return null;
           }
-          
+
           const startStar = startConstellation.stars[connection.from.starIndex];
           const endStar = endConstellation.stars[connection.to.starIndex];
-          
+
           return (
             <motion.line
               key={`global-connection-${index}`}
@@ -503,54 +478,58 @@ const Hero: React.FC = () => {
               x2={`${endStar.x}%`}
               y2={`${endStar.y}%`}
               stroke="white"
-              strokeWidth="1"
-              strokeOpacity="0.5"
-              strokeDasharray="5 5"
+              strokeWidth="0.8" // Thinner line
+              strokeOpacity="0.4" // Less opaque
+              strokeDasharray="4 4" // Smaller dashes
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{
-                duration: 3,
-                delay: 7
+                duration: 2.5, // Faster
+                delay: 6 // Earlier
               }}
             />
           );
         })}
       </svg>
-      
-      <div className="relative z-10 flex flex-col items-center justify-center px-4 w-full max-w-4xl mx-auto h-full">
-        <div className="flex flex-col items-center justify-center pt-20 sm:pt-24 md:pt-28 pb-24 sm:pb-20">
-          <div className="relative mb-4 sm:mb-6 flex items-center justify-center w-full">
+
+      {/* Content section - IMPROVED RESPONSIVENESS AND ADDED SPACE FROM NAVBAR */}
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-8 w-full max-w-4xl mx-auto h-full">
+        {/* Main content container with safe area for all device sizes */}
+        <div className="flex flex-col items-center justify-center pt-16 sm:pt-20 md:pt-24 pb-20 sm:pb-16"> {/* Reduced top and bottom padding */}
+          {/* Title with animated characters - Only shows after shooting stars collision */}
+          <div className="relative mb-3 sm:mb-4 flex items-center justify-center w-full"> {/* Reduced margin */}
             {showTitle && (
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentTextMode}
-                  className="flex space-x-2 sm:space-x-3 overflow-hidden py-2 sm:py-4"
-                  initial={{ opacity: 0, y: 50 }}
+                  className="flex space-x-1 sm:space-x-2 overflow-hidden py-1 sm:py-2" // Reduced spacing and padding
+                  initial={{ opacity: 0, y: 30 }} // Reduced initial y
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -50 }}
-                  transition={{ duration: 0.8 }}
+                  exit={{ opacity: 0, y: -30 }} // Reduced exit y
+                  transition={{ duration: 0.6 }} // Faster transition
                 >
                   {currentText.map((char, index) => (
                     <motion.span
                       key={index}
-                      className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold inline-block"
+                      // More responsive text sizing that scales better on all devices
+                      className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold inline-block" // Reduced base size
                       style={{
-                        textShadow: "0 0 10px rgba(255,255,255,0.5)"
+                        textShadow: "0 0 8px rgba(255,255,255,0.4)" // Reduced shadow
                       }}
-                      initial={{ 
+                      initial={{
                         rotateY: 180,
                         opacity: 0
                       }}
-                      animate={{ 
+                      animate={{
                         rotateY: 0,
                         opacity: 1,
                         color: index % 2 === 0 ? '#FFD700' : '#FFFFFF'
                       }}
                       transition={{
-                        duration: 0.5,
-                        delay: index * 0.05,
+                        duration: 0.4, // Faster transition
+                        delay: index * 0.03, // Shorter delay
                         type: "spring",
-                        damping: 12
+                        damping: 10 // Reduced damping
                       }}
                     >
                       {char}
@@ -560,31 +539,33 @@ const Hero: React.FC = () => {
               </AnimatePresence>
             )}
           </div>
-          
+
+          {/* Subtitle with responsive sizing - Shows slightly after title */}
           {showTitle && (
             <motion.h2
-              className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-medium mb-4 sm:mb-6 md:mb-8 max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-xl text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-yellow-300"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-medium mb-3 sm:mb-4 md:mb-6 max-w-xs sm:max-w-sm md:max-w-lg text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-yellow-300" // Reduced font sizes and margin
+              initial={{ opacity: 0, y: 15 }} // Reduced initial y
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
+              transition={{ duration: 0.8, delay: 0.3 }} // Faster and earlier
             >
               A National Level Technical Symposium<br />
               Greek Mythology & Innovation
             </motion.h2>
           )}
 
+          {/* About section - added as requested - IMPROVED RESPONSIVE PADDING */}
           {showTitle && (
             <motion.div
-              className="mb-6 px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/5 backdrop-blur-sm max-w-xs sm:max-w-sm md:max-w-lg text-center"
-              initial={{ opacity: 0, y: 20 }}
+              className="mb-4 px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/5 backdrop-blur-sm max-w-md text-center" // Reduced margin and padding
+              initial={{ opacity: 0, y: 15 }} // Reduced initial y
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.4 }} // Faster and earlier
             >
-              <p className="text-xs sm:text-sm text-white/90">
+              <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
                 {eventDetails.description} Visit us at{' '}
-                <a 
-                  href={eventDetails.websiteUrl} 
-                  target="_blank" 
+                <a
+                  href={eventDetails.websiteUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-300 hover:underline"
                 >
@@ -594,69 +575,73 @@ const Hero: React.FC = () => {
             </motion.div>
           )}
 
+          {/* Register and Share buttons positioned together - FIXED AS REQUESTED */}
           {showTitle && (
             <motion.div
-              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-md"
+              className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3" // Reduced gap
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.7 }}
+              transition={{ duration: 0.8, delay: 0.5 }} // Faster and earlier
             >
-              {/* Fixed Register button - using button with onClick instead of navigating directly */}
-              <motion.button
-                onClick={handleRegister}
-                className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-yellow-400 to-blue-500 text-white font-bold rounded-lg hover:from-yellow-500 hover:to-blue-600 transition-all flex items-center justify-center text-sm sm:text-base md:text-lg w-full"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                type="button" // Explicitly set type
-                aria-label="Register for event"
-              >
-                <Download className="mr-2 w-4 h-4 sm:w-5 sm:h-5" /> Register Now
-              </motion.button>
-
-              {/* Fixed Share button */}
+             <motion.a
+  href="#register"
+  className="register-button w-full sm:w-auto"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  onClick={(e) => { /* Your existing click logic if any */ }}
+  onTouchEnd={(e) => {
+    // Prevent default touch behavior that might interfere with scrolling
+    e.preventDefault();
+    window.location.hash = '#register'; // Force navigation
+  }}
+>
+                <Download className="mr-2 w-4 h-4" /> Register Now
+                </motion.a>
               <motion.button
                 onClick={handleShare}
-                className="px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-sm text-white font-bold rounded-lg hover:bg-white/20 transition-all flex items-center justify-center text-sm sm:text-base md:text-lg w-full"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                type="button" // Explicitly set type
+                className="px-4 py-2 bg-white/10 backdrop-blur-sm text-white font-bold rounded-lg hover:bg-white/20 transition-all flex items-center justify-center text-sm md:text-base w-full sm:w-auto" // Reduced padding and font size
+                whileHover={{ scale: 1.03 }} // Reduced hover scale
+                whileTap={{ scale: 0.97 }} // Reduced tap scale
                 aria-label="Share event"
               >
-                <Share2 className="mr-2 w-4 h-4 sm:w-5 sm:h-5" /> Share Event
+                <Share2 className="mr-2 w-4 h-4" /> Share Event
               </motion.button>
             </motion.div>
           )}
 
+          {/* Event details cards - IMPROVED RESPONSIVENESS AND SPACING */}
           {showTitle && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-8 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 sm:mt-6 w-full max-w-md mx-auto"> {/* Reduced gap and margin */}
+              {/* Date card */}
               <motion.div
-                className="flex items-center p-3 sm:p-4 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-blue-400 hover:bg-white/20 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
+                className="flex items-center p-3 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-blue-400 hover:bg-white/20 transition-all duration-300" // Reduced padding
+                initial={{ opacity: 0, y: 15 }} // Reduced initial y
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9 }}
+                transition={{ delay: 0.7 }} // Earlier
               >
-                <Calendar className="mr-2 sm:mr-3 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                <Calendar className="mr-2 w-4 h-4 flex-shrink-0" /> {/* Reduced icon size */}
                 <div>
-                  <h3 className="font-bold text-xs sm:text-sm">Event Date</h3>
-                  <p className="text-xs text-white/80 mt-1">{eventDetails.date}</p>
+                  <h3 className="font-bold text-xs">Event Date</h3> {/* Reduced font size */}
+                  <p className="text-xs text-white/80 mt-1">{eventDetails.date}</p> {/* Reduced font size */}
                 </div>
               </motion.div>
-              
+
+              {/* Venue with Google Maps link */}
               <motion.a
                 href={eventDetails.venueMapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center p-3 sm:p-4 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-green-500 hover:bg-white/20 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
+                className="flex items-center p-3 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-green-500 hover:bg-white/20 transition-all duration-300" // Reduced padding
+                initial={{ opacity: 0, y: 15 }} // Reduced initial y
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.1 }}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
+                transition={{ delay: 0.9 }} // Earlier
+                whileHover={{ scale: 1.02 }} // Reduced hover scale
+                whileTap={{ scale: 0.99 }} // Reduced tap scale
               >
-                <MapPin className="mr-2 sm:mr-3 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                <MapPin className="mr-2 w-4 h-4 flex-shrink-0" /> {/* Reduced icon size */}
                 <div className="flex-1 overflow-hidden">
-                  <h3 className="font-bold text-xs sm:text-sm">Venue</h3>
-                  <p className="text-xs text-white/80 mt-1 truncate">{eventDetails.venue}</p>
+                  <h3 className="font-bold text-xs">Venue</h3> {/* Reduced font size */}
+                  <p className="text-xs text-white/80 mt-1 truncate">{eventDetails.venue}</p> {/* Reduced font size */}
                 </div>
               </motion.a>
             </div>
@@ -664,18 +649,19 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
+      {/* Scroll indicator - IMPROVED POSITIONING */}
       {showScrollIndicator && showTitle && (
         <motion.div
-          className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20" // Reduced bottom margin
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{ 
-            opacity: { delay: 2, duration: 1 },
-            y: { repeat: Infinity, duration: 1.5 }
+          animate={{ opacity: 1, y: [0, 8, 0] }} // Reduced y animation
+          transition={{
+            opacity: { delay: 1.5, duration: 0.8 }, // Earlier and faster
+            y: { repeat: Infinity, duration: 1.2 } // Faster y animation
           }}
         >
-          <p className="text-white text-xs sm:text-sm mb-2 opacity-60">Scroll to discover events</p>
-          <ArrowDown className="text-white w-4 h-4 sm:w-5 sm:h-5 animate-bounce" />
+          <p className="text-xs text-white text-center mb-1 opacity-60">Scroll to discover events</p> {/* Reduced font size and added text-center */}
+          <ArrowDown className="text-white w-4 h-4 animate-bounce" /> {/* Reduced icon size */}
         </motion.div>
       )}
     </section>

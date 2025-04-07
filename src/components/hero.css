@@ -1,28 +1,102 @@
-/* hero-styles.css */
-
-/* Increase spacing between register button and share button */
 .register-button {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  display: inline-flex; /* For aligning icon and text */
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem; /* Adjust padding as needed */
+  background-image: linear-gradient(to right, #facc15, #3b82f6); /* Example gradient */
+  color: white;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: background-image 0.3s ease;
+  margin-top: 1rem; /* Add some top margin by default */
+  margin-bottom: 1rem; /* Add some bottom margin by default */
+}
+
+.register-button:hover {
+  background-image: linear-gradient(to right, #eab308, #2563eb); /* Darker on hover */
+}
+
+.register-button svg {
+  margin-right: 0.5rem; /* Spacing between icon and text */
+}
+
+/* Ensure smooth scrolling when the anchor link is clicked */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive adjustments for the register button */
+@media (min-width: 46p8x) {
+  .register-button {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
-  
-  /* You can adjust the margin values as needed for the spacing you want */
-  @media (min-width: 640px) {
-    .register-button {
-      margin-top: 30px;
-      margin-bottom: 30px;
-    }
+}
+
+@media (min-width: 468px) {
+  .register-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
-  
-  @media (min-width: 768px) {
-    .register-button {
-      margin-top: 40px;
-      margin-bottom: 40px;
-    }
+}
+
+/* Styling for the share button (adjust as needed) */
+.share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.share-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.share-button svg {
+  margin-right: 0.5rem;
+}
+
+/* Responsive layout for buttons container */
+.buttons-container {
+  display: flex;
+  flex-direction: column; /* Stack on smaller screens */
+  align-items: center;
+  gap: 1rem; /* Spacing between buttons */
+}
+
+@media (min-width: 140px) {
+  .buttons-container {
+    flex-direction: row; /* Horizontal on larger screens */
+    justify-content: center;
   }
-  
-  /* Target the share button in the fixed top bar */
+
+  .register-button,
   .share-button {
-    margin-right: 15px;
-    margin-top: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
+}
+
+/* You might need to adjust the main content container to ensure proper spacing */
+.hero-content {
+  /* Add or adjust padding and margins as needed */
+  padding-top: 4rem; /* Example to avoid overlap with fixed header */
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
