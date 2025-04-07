@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
     venueMapUrl: "https://maps.google.com/?q=Meenakshi+Sundararajan+Engineering+College,+Chennai",
     description: "Experience the fusion of ancient Greek wisdom and modern technological innovation at our one-day symposium. PRANAV 2K25 brings together mythology and technology in a unique academic celebration that bridges centuries of human knowledge.",
     websiteUrl: "https://msec.edu.in",
-    registrationUrl: "https://msec.edu.in/register"
+    registrationUrl: "/register"
   };
 
   const socialMediaLinks = [
