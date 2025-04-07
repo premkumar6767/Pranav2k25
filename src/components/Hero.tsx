@@ -154,11 +154,13 @@ const Hero: React.FC = () => {
     };
   }, [textModes.length]);
 
-  const handleRegister = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    window.location.href = eventDetails.registrationUrl;
+  // Fixed register function to ensure proper navigation on mobile
+  const handleRegister = () => {
+    // Using window.open instead of window.location.href provides better cross-device behavior
+    window.open(eventDetails.registrationUrl, '_blank', 'noopener,noreferrer');
   };
 
+  // Improved share function with better mobile support
   const handleShare = async () => {
     try {
       const shareText = `Join us for PRANAV 2K25: National Level Technical Symposium on ${eventDetails.date} at ${eventDetails.venue}. Learn more at ${eventDetails.websiteUrl}`;
@@ -170,11 +172,26 @@ const Hero: React.FC = () => {
           url: eventDetails.websiteUrl,
         });
       } else {
-        navigator.clipboard.writeText(shareText);
-        alert('Event details copied to clipboard! Share with your friends and colleagues.');
+        // Fallback for browsers without Web Share API
+        try {
+          await navigator.clipboard.writeText(shareText);
+          alert('Event details copied to clipboard! Share with your friends and colleagues.');
+        } catch (clipboardError) {
+          console.error('Clipboard access failed:', clipboardError);
+          // Create a temporary input for manual copying as last resort
+          const tempInput = document.createElement('input');
+          document.body.appendChild(tempInput);
+          tempInput.value = shareText;
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+          alert('Event details copied to clipboard! Share with your friends and colleagues.');
+        }
       }
     } catch (error) {
       console.error('Error sharing:', error);
+      // Provide feedback to the user
+      alert('Unable to share at this time. Please try again later.');
     }
   };
 
@@ -584,20 +601,25 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.7 }}
             >
+              {/* Fixed Register button - using button with onClick instead of navigating directly */}
               <motion.button
                 onClick={handleRegister}
                 className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-yellow-400 to-blue-500 text-white font-bold rounded-lg hover:from-yellow-500 hover:to-blue-600 transition-all flex items-center justify-center text-sm sm:text-base md:text-lg w-full"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                type="button" // Explicitly set type
+                aria-label="Register for event"
               >
                 <Download className="mr-2 w-4 h-4 sm:w-5 sm:h-5" /> Register Now
               </motion.button>
 
+              {/* Fixed Share button */}
               <motion.button
                 onClick={handleShare}
                 className="px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-sm text-white font-bold rounded-lg hover:bg-white/20 transition-all flex items-center justify-center text-sm sm:text-base md:text-lg w-full"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                type="button" // Explicitly set type
                 aria-label="Share event"
               >
                 <Share2 className="mr-2 w-4 h-4 sm:w-5 sm:h-5" /> Share Event
