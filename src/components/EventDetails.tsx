@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Share2, Phone, Mail } from "lucide-react";
-import electroField from "../images/electro-field.webp";
 import shortFilm from "../images/short-film.jpeg";
 import eSports from "../images/e-sports.jpg";
 import cricbuzz from "../images/sport.jpg";
@@ -19,6 +18,7 @@ import auralBliss from "../images/Aural-Bliss.jpeg";
 import treasureHunt from "../images/Treasure-hunt.jpeg";
 import hackathon from "../images/Hackathon.jpeg";
 import robot from "../images/robotcraze.jpg"
+import zeusspark from "../images/Zeusspark.jpeg"
 const events = {
   technical: [
     {
@@ -331,7 +331,7 @@ const events = {
     },
     {
       title: "ZeusSpark",
-      image: treasureHunt,
+      image: zeusspark,
       description:
       "An exciting event to ignite creativity, teamwork, and fun through engaging activities. Round 1: Emoji Quiz - guess movie titles from emoji combinations. Round 2: Movie Plots Challenge - identify movies from their plot descriptions. Round 3: Silent Acting - guess famous movie scenes acted out without dialogue.",
       teamSize: "3-5",
@@ -420,7 +420,7 @@ const events = {
   ],
   online: [
     {
-      title: "Short Film",
+      title: "Film Fest",
       image: shortFilm,
       description:
         "Unleash your creativity by making a compelling short film in just a few minutes. Show off your storytelling, directing, and editing skills!",

@@ -351,7 +351,7 @@ const EVENTS: EventsData = {
   online: [
     {
       id: "short-film",
-      name: "Short Film",
+      name: "Film Fest",
       image: shortFilm,
       description:
         "Unleash your creativity by making a compelling short film in just a few minutes. Show off your storytelling, directing, and editing skills!",
@@ -435,7 +435,7 @@ const CATEGORY_TITLES: CategoryTitles = {
 
 const Events = () => {
   // Define type for active category
-  const [activeCategory, setActiveCategory] = useState<keyof EventsData>("nonTechnical");
+  const [activeCategory, setActiveCategory] = useState<keyof EventsData>("technical");
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [touchStartX, setTouchStartX] = useState(0);
