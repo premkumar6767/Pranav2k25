@@ -63,7 +63,7 @@ const EVENTS: EventsData = {
       description:
         "Showcase your research ideas and innovative findings to a distinguished panel of academicians and industry professionals.",
       timing: "10:00 AM to 1:00 PM",
-      teamSize: "1-2",
+      teamSize: "MAX 4",
       about:
         "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
       rules: [
@@ -86,7 +86,7 @@ const EVENTS: EventsData = {
       description:
         "Showcase your research ideas and innovative findings to a distinguished panel of academicians and industry professionals.",
       timing: "10:00 AM to 1:00 PM",
-      teamSize: "1-2",
+      teamSize: "MAX 4",
       about:
         "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
       rules: [
@@ -110,7 +110,7 @@ const EVENTS: EventsData = {
       description:
         "Robot craze is an action packed game where players control robots in various challenges often set in futuristic scifi environments",
       timing: "10:00 AM to 1:00 PM",
-      teamSize: "1-2",
+      teamSize: "MAX 4",
       about:
         "Robot craze where the goal is to compete objectives or defeat opponents  player control the robots either individually or as team",
       rules: [
@@ -133,7 +133,7 @@ const EVENTS: EventsData = {
       description:
         "Test your knowledge of circuit design and troubleshooting in this electrifying competition!",
       timing: "2:00 PM to 5:00 PM",
-      teamSize: "1-2",
+      teamSize: "MAX 4",
       about:
         "This event challenges participants to design, analyze, and troubleshoot circuits. Participants will be provided with real-world problems and required to build functional circuits within the given time.",
       rules: [
@@ -155,7 +155,7 @@ const EVENTS: EventsData = {
       description:
         "Deconstruct and debug pre-written code to reveal its intended functionality.",
       timing: "9:00 AM to 12:00 PM",
-      teamSize: "1-2",
+      teamSize: "MAX 4",
       about:
         "Participants will be given obfuscated or scrambled code snippets and will need to reverse engineer them to understand their logic. The goal is to identify errors, optimize the code, and restore its original functionality.",
       rules: [
@@ -177,7 +177,7 @@ const EVENTS: EventsData = {
       description:
         "A unique event where rolling the dice leads to unpredictable tech-based quizzes and problem-solving challenges.",
       timing: "1:00 PM to 4:00 PM",
-      teamSize: "2",
+      teamSize: "MAX 4",
       about:
         "Participants will roll dice and complete various technical challenges, including debugging, circuit connections, and quizzes.",
       rules: [
@@ -200,7 +200,7 @@ const EVENTS: EventsData = {
       description:
         "A UI/UX design and development challenge where participants create a website prototype and then convert it into a functional site.",
       timing: "11:00 AM to 2 PM",
-      teamSize: "3-4",
+      teamSize: "MAX 4",
       about:
         "This event focuses on transforming UI/UX designs into functional web applications through creativity and coding.",
       rules: [
