@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./About.css";
-import { Star, Medal, ExternalLink, ChevronLeft, ChevronRight, Shield, Globe, Sparkles } from "lucide-react";
+import { Star, Medal, ExternalLink, ChevronLeft, ChevronRight, Shield, Globe, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import SIT from "../images/SIT.png";
-import chennaiComputer from "../images/Chennai-Computers.jpeg"
-
+import aml from "../images/amltech.jpeg";
+import chcomp from "../images/chennai comps.png"
 interface SponsorProps {
   id?: string;
 }
@@ -13,6 +13,7 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
+  const [expandedDescriptions, setExpandedDescriptions] = useState<boolean[]>([false, false, false]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [animateParticles, setAnimateParticles] = useState(false);
 
@@ -20,7 +21,7 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
     {
       name: "Chennai Computers",
       title: "Expert in Computer Repairs",
-      image: chennaiComputer,
+      image: chcomp,
       mythicalBackground: {
         deity: "Hephaestus",
         realm: "Celestial Forge",
@@ -31,7 +32,8 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
       link: "https://www.thechennaicomputers.com/",
       heroicQuest: "Delivering unparalleled computer repair services",
       achievements: ["Best Service 2024", "Top IT Support"],
-      color: "#d4af37"
+      color: "#d4af37",
+      objectFit: "contain" // Now using contain for all images
     },
     {
       name: "SHANTHI IT SOLUTIONS LTD",
@@ -47,7 +49,25 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
       link: "https://shanthiitsolution.com/",
       heroicQuest: "Empowering businesses through digital innovation",
       achievements: ["Innovation Leader", "Digital Transformation Award"],
-      color: "#c0a86e"
+      color: "#c0a86e",
+      objectFit: "contain" // Changed to contain
+    },
+    {
+      name: "ALM COMPUTERS",
+      title: "Enhance your IT skills with our latest courses",
+      image: aml,
+      mythicalBackground: {
+        deity: "EDUCATOIN ",
+        realm: "Celestial Forge",
+        power: "Master Craftsman of Technology",
+      },
+      description:
+        "ALM Tech is the most innovative IT Training and Consulting Company strategically located in Chennai, delivering classroom and online trainings across India and singapore.Our team of excellent trainers comprises experienced working professionals who possess real-time experience in their respective domains. With their expertise, they will provide you with the best guidance and support to ensure that you learn the latest technologies and tools that are in demand in the industry Our courses are designed to equip you with the necessary skills and knowledge to land your dream job in fields such as PMP,AWS,ASM,ITIL,AZURE Etc.",
+      link: "https://almtechnologies.in/index.php",
+      heroicQuest: "Elevate your skills with our user-friendly content. Simple, effective learning for your success.",
+      achievements: ["AIRTEL", "CAPEGEMINI","DELOITTE","SIEMENS"],
+      color: "#d4af37",
+      objectFit: "contain" // Changed to contain
     },
   ];
 
@@ -94,6 +114,21 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
       setAnimateParticles(false);
       setIsAutoPlaying(true);
     }, 1500);
+  };
+
+  const toggleDescription = (index: number) => {
+    const newExpandedDescriptions = [...expandedDescriptions];
+    newExpandedDescriptions[index] = !newExpandedDescriptions[index];
+    setExpandedDescriptions(newExpandedDescriptions);
+  };
+
+  // Function to truncate description if not expanded
+  const getDescription = (description: string, index: number) => {
+    const maxLength = 150;
+    if (description.length <= maxLength || expandedDescriptions[index]) {
+      return description;
+    }
+    return description.substring(0, maxLength) + '...';
   };
 
   // Number of columns in the temple structure
@@ -298,8 +333,8 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
                     transition={{ duration: 0.5 }}
                   >
                     <div className="grid md:grid-cols-2 min-h-[400px]">
-                      {/* Image Side */}
-                      <div className="relative h-64 md:h-full overflow-hidden">
+                      {/* Image Side - All images now using object-contain */}
+                      <div className="relative h-64 md:h-full overflow-hidden bg-black/80">
                         <motion.img
                           key={activeIndex}
                           initial={{ opacity: 0, scale: 1.1 }}
@@ -307,11 +342,11 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
                           transition={{ duration: 0.8 }}
                           src={sponsors[activeIndex].image}
                           alt={sponsors[activeIndex].name}
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className="absolute inset-0 w-full h-full object-contain p-4"
                         />
                         
-                        {/* Overlay Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+                        {/* Overlay Gradient - Adjusted for better image visibility */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent"></div>
                         
                         {/* Decorative Frame */}
                         <div className="absolute inset-4 border border-gold/20 pointer-events-none"></div>
@@ -354,11 +389,29 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
                           
                           <p className="text-gold/80 italic mb-4">{sponsors[activeIndex].title}</p>
                           
-                          {/* Company Description */}
+                          {/* Company Description with Read More toggle */}
                           <div className="my-4">
                             <p className="text-gray-300 leading-relaxed text-base">
-                              {sponsors[activeIndex].description}
+                              {getDescription(sponsors[activeIndex].description, activeIndex)}
                             </p>
+                            {sponsors[activeIndex].description.length > 150 && (
+                              <button 
+                                onClick={() => toggleDescription(activeIndex)}
+                                className="mt-2 text-gold flex items-center text-sm hover:underline focus:outline-none group"
+                              >
+                                {expandedDescriptions[activeIndex] ? (
+                                  <>
+                                    <span>Read Less</span> 
+                                    <ChevronUp className="w-4 h-4 ml-1 transition-transform group-hover:-translate-y-1" />
+                                  </>
+                                ) : (
+                                  <>
+                                    <span>Read More</span>
+                                    <ChevronDown className="w-4 h-4 ml-1 transition-transform group-hover:translate-y-1" />
+                                  </>
+                                )}
+                              </button>
+                            )}
                           </div>
                           
                           {/* Heroic Quest */}
