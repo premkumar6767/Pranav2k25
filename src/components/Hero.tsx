@@ -1,21 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, Calendar, MapPin, Star, ArrowDown, Share2, Instagram, Linkedin, Music, Volume2, VolumeX } from "lucide-react";
-import './hero.css'
+import { Download, Calendar, MapPin, Star, ArrowDown, Share2, Instagram, Linkedin, Volume2, VolumeX } from "lucide-react";
+import './hero.css';
 
-const Hero = () => {
-  const [currentTextMode, setCurrentTextMode] = useState(0);
-  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
-  const [showTitle, setShowTitle] = useState(false);
-  const [shootingStarsDone, setShootingStarsDone] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [windowSize, setWindowSize] = useState({
+interface Star {
+  x: number;
+  y: number;
+  size: number;
+  brightness: number;
+}
+
+interface Constellation {
+  name: string;
+  stars: Star[];
+  connections: number[][];
+  color: string;
+}
+
+interface EventDetails {
+  date: string;
+  venue: string;
+  venueMapUrl: string;
+  description: string;
+  websiteUrl: string;
+  registrationUrl: string;
+}
+
+const Hero: React.FC = () => {
+  const [currentTextMode, setCurrentTextMode] = useState<number>(0);
+  const [showScrollIndicator, setShowScrollIndicator] = useState<boolean>(true);
+  const [showTitle, setShowTitle] = useState<boolean>(false);
+  const [shootingStarsDone, setShootingStarsDone] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [windowSize, setWindowSize] = useState<{ width: number; height: number }>({
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
     height: typeof window !== 'undefined' ? window.innerHeight : 0
   });
-  
-  // Constellation data remains the same
-  const constellations = [
+
+  const constellations: Constellation[] = [
     {
       name: "Aries",
       stars: [
@@ -53,36 +75,32 @@ const Hero = () => {
   ];
 
   const textModes = [
-    "PRANAV 2K25", // Added space between PRANAV and 2K25
-    "π 2K25", // Added space here too
+    "PRANAV 2K25",
+    "π 2K25",
     "Π^2 * K^25",
     "ΜΥΘΟΛΟΓΙΑ",
-    "ப்ரணவ் 2025", // Added space here
+    "ப்ரணவ் 2025",
     "ΠΡΟΜΗΘΕΑΣ",
   ];
 
-  // Event details with maps URLs
-  const eventDetails = {
+  const eventDetails: EventDetails = {
     date: "April 16, 2025",
     venue: "Meenakshi Sundararajan Engineering College",
     venueMapUrl: "https://maps.google.com/?q=Meenakshi+Sundararajan+Engineering+College,+Chennai",
     description: "Experience the fusion of ancient Greek wisdom and modern technological innovation at our one-day symposium. PRANAV 2K25 brings together mythology and technology in a unique academic celebration that bridges centuries of human knowledge.",
     websiteUrl: "https://msec.edu.in",
-    registrationUrl: "https://msec.edu.in/register" // Added explicit registration URL
+    registrationUrl: "https://msec.edu.in/register"
   };
 
-  // Social media links
   const socialMediaLinks = [
     { name: "Instagram", icon: Instagram, url: "https://instagram.com/__pranav2k25_", color: "bg-gradient-to-br from-purple-600 to-pink-500" },
     { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/company/pranav2k25", color: "bg-blue-600" }
   ];
 
-  // Audio controls
   const toggleMusic = () => {
     setIsPlaying(!isPlaying);
   };
 
-  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
@@ -97,7 +115,6 @@ const Hero = () => {
     }
   }, []);
 
-  // Add favicon to the document head
   useEffect(() => {
     const favicon = document.createElement('link');
     favicon.rel = 'shortcut icon';
@@ -113,22 +130,18 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    // Show shooting stars first, then reveal the title
     const shootingStarsTimer = setTimeout(() => {
       setShootingStarsDone(true);
     }, 3000);
     
-    // Show title after shooting stars animation
     const titleTimer = setTimeout(() => {
       setShowTitle(true);
     }, 3500);
     
-    // Start cycling through text modes after title appears
     const textModeTimer = setInterval(() => {
       setCurrentTextMode((prev) => (prev + 1) % textModes.length);
     }, 2000);
     
-    // Hide scroll indicator after 10 seconds
     const scrollTimer = setTimeout(() => {
       setShowScrollIndicator(false);
     }, 10000);
@@ -141,15 +154,11 @@ const Hero = () => {
     };
   }, [textModes.length]);
 
-  // Function to handle navigation to registration page
-  const handleRegister = (e) => {
-    e.preventDefault(); // Prevent default anchor behavior
-    
-    // Navigate to registration page
+  const handleRegister = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     window.location.href = eventDetails.registrationUrl;
   };
 
-  // Function to handle sharing the event with improved formatting
   const handleShare = async () => {
     try {
       const shareText = `Join us for PRANAV 2K25: National Level Technical Symposium on ${eventDetails.date} at ${eventDetails.venue}. Learn more at ${eventDetails.websiteUrl}`;
@@ -161,7 +170,6 @@ const Hero = () => {
           url: eventDetails.websiteUrl,
         });
       } else {
-        // Fallback for browsers that don't support the Web Share API
         navigator.clipboard.writeText(shareText);
         alert('Event details copied to clipboard! Share with your friends and colleagues.');
       }
@@ -170,8 +178,7 @@ const Hero = () => {
     }
   };
 
-  // Responsive design helper
-  const getResponsiveSize = (base, sm, md, lg, xl) => {
+  const getResponsiveSize = (base: string, sm: string, md: string, lg: string, xl: string) => {
     const width = windowSize.width;
     if (width < 640) return base;
     if (width < 768) return sm;
@@ -198,14 +205,13 @@ const Hero = () => {
 
   const currentText = textModes[currentTextMode].split("");
 
-  const findConstellationByName = (name) => {
+  const findConstellationByName = (name: string) => {
     if (!name) return null;
     return constellations.find(c => 
       c.name.toLowerCase() === name.toLowerCase()
     ) || null;
   };
 
-  // Shooting stars data
   const shootingStars = [
     { id: 'star-1', startX: 0, startY: 30, endX: 50, endY: 50, duration: 2, delay: 0, size: 2 },
     { id: 'star-2', startX: 100, startY: 20, endX: 50, endY: 50, duration: 2, delay: 0.5, size: 2 }
@@ -213,7 +219,6 @@ const Hero = () => {
 
   return (
     <section id='hero' className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#0B1026] via-[#0D1C3D] to-[#0B1026]">
-      {/* Add meta viewport tag to ensure proper mobile scaling */}
       <motion.div
         className="fixed top-0 left-0 w-full"
         initial={{ opacity: 0 }}
@@ -222,23 +227,20 @@ const Hero = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </motion.div>
 
-      {/* Fixed top bar for navigation controls */}
       <motion.div 
         className="fixed top-0 left-0 right-0 px-4 py-4 sm:px-6 sm:py-5 md:py-6 flex justify-between items-center z-30"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5 }}
       >
-        {/* Logo/brand placeholder - left side */}
         <motion.div 
           className="rounded-full bg-white/5 backdrop-blur-sm p-2 sm:p-3"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          
+          {/* Logo/brand placeholder */}
         </motion.div>
         
-        {/* Music toggle button - right side */}
         <motion.button
           onClick={toggleMusic}
           className="flex items-center p-2 sm:p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all gap-2"
@@ -250,11 +252,9 @@ const Hero = () => {
             <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-white" /> : 
             <VolumeX className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           }
-         
         </motion.button>
       </motion.div>
 
-      {/* Social Media Links - Fixed on the side */}
       <motion.div 
         className="fixed left-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-3 z-30 hidden md:flex"
         initial={{ opacity: 0, x: -20 }}
@@ -279,7 +279,6 @@ const Hero = () => {
         ))}
       </motion.div>
 
-      {/* Mobile Social Media Links - Only visible on small screens */}
       <motion.div 
         className="fixed bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-6 z-30 md:hidden"
         initial={{ opacity: 0, y: 20 }}
@@ -301,7 +300,6 @@ const Hero = () => {
         ))}
       </motion.div>
 
-      {/* Nebula Elements */}
       {nebulaElements.map(nebula => (
         <motion.div
           key={nebula.id}
@@ -324,7 +322,6 @@ const Hero = () => {
         />
       ))}
 
-      {/* Background Mount Olympus */}
       <div className="absolute inset-0 opacity-20">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-full h-full">
           <defs>
@@ -340,7 +337,6 @@ const Hero = () => {
         </svg>
       </div>
 
-      {/* Background stars */}
       {backgroundStars.map(star => (
         <div
           key={star.id}
@@ -355,7 +351,6 @@ const Hero = () => {
         />
       ))}
 
-      {/* Shooting Stars Animation */}
       {shootingStars.map(star => (
         <motion.div
           key={star.id}
@@ -382,7 +377,6 @@ const Hero = () => {
             ease: "easeOut"
           }}
         >
-          {/* Trailing effect */}
           <motion.div 
             className="absolute top-0 left-0 w-16 h-1 bg-gradient-to-r from-transparent via-white to-blue-300 blur-sm"
             style={{
@@ -393,7 +387,6 @@ const Hero = () => {
         </motion.div>
       ))}
 
-      {/* Shooting Star Collision Effect - Only shows at end of shooting star animations */}
       {shootingStarsDone && (
         <motion.div
           className="absolute rounded-full blur-md z-20"
@@ -409,7 +402,6 @@ const Hero = () => {
         />
       )}
 
-      {/* Constellations */}
       {constellations.map((constellation, constellationIndex) => (
         <motion.div 
           key={constellation.name}
@@ -421,7 +413,6 @@ const Hero = () => {
             delay: constellationIndex * 3
           }}
         >
-          {/* Stars */}
           {constellation.stars.map((star, starIndex) => (
             <div
               key={`${constellation.name}-star-${starIndex}`}
@@ -442,7 +433,6 @@ const Hero = () => {
             </div>
           ))}
 
-          {/* Connections */}
           <svg className="absolute inset-0 pointer-events-none" style={{ width: '100%', height: '100%' }}>
             {constellation.connections.map((connection, connectionIndex) => {
               const startStar = constellation.stars[connection[0]];
@@ -471,7 +461,6 @@ const Hero = () => {
         </motion.div>
       ))}
 
-      {/* Global Connections */}
       <svg className="absolute inset-0 pointer-events-none" style={{ width: '100%', height: '100%' }}>
         {globalConnections.map((connection, index) => {
           const startConstellation = findConstellationByName(connection.from.constellation);
@@ -511,11 +500,8 @@ const Hero = () => {
         })}
       </svg>
       
-      {/* Content section */}
       <div className="relative z-10 flex flex-col items-center justify-center px-4 w-full max-w-4xl mx-auto h-full">
-        {/* Main content container with safe area for all device sizes */}
         <div className="flex flex-col items-center justify-center pt-20 sm:pt-24 md:pt-28 pb-24 sm:pb-20">
-          {/* Title with animated characters - Only shows after shooting stars collision */}
           <div className="relative mb-4 sm:mb-6 flex items-center justify-center w-full">
             {showTitle && (
               <AnimatePresence mode="wait">
@@ -558,7 +544,6 @@ const Hero = () => {
             )}
           </div>
           
-          {/* Subtitle with responsive sizing - Shows slightly after title */}
           {showTitle && (
             <motion.h2
               className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-medium mb-4 sm:mb-6 md:mb-8 max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-xl text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-yellow-300"
@@ -571,7 +556,6 @@ const Hero = () => {
             </motion.h2>
           )}
 
-          {/* About section */}
           {showTitle && (
             <motion.div
               className="mb-6 px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/5 backdrop-blur-sm max-w-xs sm:max-w-sm md:max-w-lg text-center"
@@ -593,7 +577,6 @@ const Hero = () => {
             </motion.div>
           )}
 
-          {/* Register and Share buttons - FIXED FOR MOBILE DEVICES */}
           {showTitle && (
             <motion.div
               className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-md"
@@ -601,7 +584,6 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.7 }}
             >
-              {/* Register button - Now uses onClick handler that works on all devices */}
               <motion.button
                 onClick={handleRegister}
                 className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-yellow-400 to-blue-500 text-white font-bold rounded-lg hover:from-yellow-500 hover:to-blue-600 transition-all flex items-center justify-center text-sm sm:text-base md:text-lg w-full"
@@ -611,7 +593,6 @@ const Hero = () => {
                 <Download className="mr-2 w-4 h-4 sm:w-5 sm:h-5" /> Register Now
               </motion.button>
 
-              {/* Share button */}
               <motion.button
                 onClick={handleShare}
                 className="px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-sm text-white font-bold rounded-lg hover:bg-white/20 transition-all flex items-center justify-center text-sm sm:text-base md:text-lg w-full"
@@ -624,10 +605,8 @@ const Hero = () => {
             </motion.div>
           )}
 
-          {/* Event details cards */}
           {showTitle && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-8 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
-              {/* Date card */}
               <motion.div
                 className="flex items-center p-3 sm:p-4 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-blue-400 hover:bg-white/20 transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
@@ -641,7 +620,6 @@ const Hero = () => {
                 </div>
               </motion.div>
               
-              {/* Venue with Google Maps link */}
               <motion.a
                 href={eventDetails.venueMapUrl}
                 target="_blank"
@@ -664,7 +642,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       {showScrollIndicator && showTitle && (
         <motion.div
           className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
