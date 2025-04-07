@@ -56,12 +56,14 @@ const RegistrationPage: React.FC = () => {
   // Events data (Updated with new events)
   const EVENTS = {
     technical: [
-      { id: 'Paper Presentation', name: 'Paper Presentation' },
-      { id: 'Project expo/Hackathon', name: 'Project expo/Hackathon' },
-      { id: 'Wired-WOnders', name: 'Wired-WOnders' },
-      { id: 'Roll and dice', name: 'Roll and dice ' },
-      { id: 'Robot Craze', name: 'Robot Craze ' },
-      { id: 'Byte the dice', name: 'Byte the dice' }, // Added new technical event
+      { id: 'Paper Presentation', name: 'PAPER PRESENTATION' },
+      { id: 'Project expo/Hackathon', name: 'PROJECT EXPO/HACKATHON' },
+      { id: 'Wired-WOnders', name: 'WIRED WONDERS' },
+      { id: 'Roll and dice', name: 'ROLL AND DICE' },
+      { id: 'Robot Craze', name: 'ROBOT CRAZE' },
+      { id: 'Byte the dice', name: 'BYTE THE DICE' }, 
+      { id: 'Design To Dev', name: 'DESIGN TO DEV' },
+      // Added new technical event
     ],
     nonTechnical: [
       { id: 'Anime ', name: 'ANIME AND MANGA' },
