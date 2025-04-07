@@ -45,7 +45,7 @@ const events = {
         {
           name: "KS Kishore",
           phone: "9940096759",
-        }
+        },
         {
           name: "Sai Prasath",
           phone: "956622942"
