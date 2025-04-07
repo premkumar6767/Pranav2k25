@@ -69,7 +69,6 @@ const RegistrationPage: React.FC = () => {
       { id: 'Anime ', name: 'ANIME AND MANGA' },
       { id: 'Aural Bliss', name: 'AURAL BLISS' },
       { id: 'TreasureHunt', name: 'TREASURE HUNT' },
-      { id: 'ElectroF', name: 'ELECTRO FIELD' },
       { id: 'SportsBz', name: 'SPORTS BUZZ' },
       { id: 'OjingeoGame', name: 'OJINGEO GAME' },
       { id: 'ZeusPark', name: 'ZEUS PARK' }, // Added new non-technical event
