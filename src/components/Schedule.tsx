@@ -27,13 +27,13 @@ const scheduleData: ScheduleDay[] = [
     day: "Technical Events",
     date: "APRIL 16, 2025",
     events: [
-      { time: "10:00 AM", title: "PAPER PRESENTATION", location: "KRS SEMINAR HALL FIRST FLOOR" },
+      { time: "10:00 AM to 1:00PM", title: "PAPER PRESENTATION", location: "KRS SEMINAR HALL FIRST FLOOR" },
       { time: "08:30 AM", title: "HACKATHON", location: "DSP LAB" },
-      { time: "10:00 AM", title: "WIRED WONDERS", location: "EDC LAB FIRST FLOOR" },
-      { time: "10:30 AM", title: "ROBOT CRAZE", location: "ECE 2A GROUND FLOOR" },
-      { time: "11:00 AM", title: "BYTE THE DICE", location: "EEE 3RD FIRST FLOOR" },
-      { time: "10:00 AM", title: "DESIGN 2 DEV", location: "CSE LAB 6 SECOND FLOOR" },
-      { time: "10:30 AM", title: "DECODEX", location: "COMMON LAB THIRD FLOOR" }
+      { time: "10:00 AM to 12:00PM & 2:00Pm to 3:00PM", title: "WIRED WONDERS", location: "EDC LAB FIRST FLOOR" },
+      { time: "10:30 AM to 12:00Pm & 2:00 to 3:30PM", title: "ROBOT CRAZE", location: "ECE 2A GROUND FLOOR" },
+      { time: "11:00 - 12:30 & 2:00 to 3:30", title: "BYTE THE DICE", location: "EEE 3RD FIRST FLOOR" },
+      { time: "10:00 AM to 12:30PM", title: "DESIGN 2 DEV", location: "CSE LAB 6 SECOND FLOOR" },
+      { time: "10:30 AM to 12:00Pm & 2:00 to 3:30PM", title: "DECODEX", location: "COMMON IT LAB THIRD FLOOR" }
     ]
   },
   {
@@ -41,9 +41,9 @@ const scheduleData: ScheduleDay[] = [
     date: "APRIL 16, 2025",
     events: [
       { time: "11:00 AM", title: "OJINGEO", location: "ECE 4A SECOND FLOOR" },
-      { time: "11:30 AM", title: "AURAL BLISS", location: "ECE 3A CLASSROOM" },
-      { time: "02:00 PM", title: "SENPAI FANS", location: "3B CLASSROOM" },
-      { time: "01:30 PM", title: "TREASURE HUNT", location: "CS LAB" },
+      { time: "11:30 AM- 12:30 PM & 2:00PM to 4:00PM", title: "AURAL BLISS", location: "ECE 3A CLASSROOM" },
+      { time: "02:00 PM to 4:00PM", title: "SENPAI FANS", location: "3B CLASSROOM" },
+      { time: "02:00 PM to 4:00PM", title: "TREASURE HUNT", location: "CS LAB" },
       { time: "02:00 PM", title: "CRICBUZZ", location: "4B CLASSROOM" },
       { time: "02:30 PM", title: "ZEUS' SPARK", location: "3A CLASSROOM" }
     ]

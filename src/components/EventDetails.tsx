@@ -1,7 +1,8 @@
+
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Share2, Phone } from "lucide-react";
+import { ArrowLeft, Share2, Phone} from "lucide-react";
 import shortFilm from "../images/short-film.jpeg";
 import eSports from "../images/e-sports.jpg";
 import cricbuzz from "../images/sport.jpg";
@@ -26,6 +27,7 @@ const events = {
       description:
         "Showcase your research ideas and innovative findings to a distinguished panel of academicians and industry professionals.",
       teamSize: "1-4",
+      timing :"April 16th 10:00Am - 1:00Pm",
       about:
         "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
       rules: [
@@ -47,7 +49,7 @@ const events = {
         },
         {
           name: "Sai Prasath",
-          phone: "956622942"
+          phone: "956622942",
         }
       ]
     },
@@ -57,6 +59,7 @@ const events = {
       description:
         "Showcase your research ideas and innovative findings to a distinguished panel of academicians and industry professionals.",
       teamSize: "2-4",
+      timing :"April 16th 8:30Am",
       about:
         "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
       rules: [
@@ -90,6 +93,7 @@ const events = {
       description:
         "Test your knowledge of circuit design and troubleshooting in this electrifying competition!",
       teamSize: "2-4",
+      timing :"April 16th 10:00AM to 12:30PM & 2:00PM to 3:00 PM",
       about:
         "This event challenges participants to design, analyze, and troubleshoot circuits. Participants will be provided with real-world problems and required to build functional circuits within the given time.",
       rules: [
@@ -120,6 +124,7 @@ const events = {
       description:
         "Deconstruct and debug pre-written code to reveal its intended functionality.",
       teamSize: "2-4",
+      timing :"April 16th 10:30AM to 12:30PM & 2:30PM to 3:30 PM",
       about:
         "Participants will be given obfuscated or scrambled code snippets and will need to reverse engineer them to understand their logic. The goal is to identify errors, optimize the code, and restore its original functionality.",
       rules: [
@@ -145,11 +150,12 @@ const events = {
       ]
     },
     {
-      title: "Byte the Dice",
+      title: "haltthedice",
       image: roleAndDice,
       description:
         "A unique event where rolling the dice leads to unpredictable tech-based quizzes and problem-solving challenges.",
       teamSize: "1-2",
+      timing :"April 16th 11:00AM to 12:30PM & 2:30PM to 3:30 PM",
       about:
         "Participants will roll dice and complete various technical challenges, including debugging, circuit connections, and quizzes.",
       rules: [
@@ -176,11 +182,12 @@ const events = {
       ]
     },
     {
-      title: "Design 2 Dev",
+      title: "Designtodev",
       image: designedToDev,
       description:
         "A UI/UX design and development challenge where participants create a website prototype and then convert it into a functional site.",
       teamSize: "3-4",
+      timing :"April 16th 10:00AM to 12:30PM ",
       about:
         "This event focuses on transforming UI/UX designs into functional web applications through creativity and coding.",
       rules: [
@@ -211,6 +218,7 @@ const events = {
       description:
         "Inspired by the viral Korean survival game, this event will push your strategic thinking and endurance to the limit.",
       teamSize: "1-3",
+      timing :"April 16th 11:00AM ",
       about:
         "This event is a survival-based challenge inspired by the famous Squid Game. Participants will compete in multiple rounds of physically and mentally challenging games. The last team standing wins the ultimate prize!",
       rules: [
@@ -240,6 +248,7 @@ const events = {
       description:
         "Test your anime and manga knowledge in this ultimate quiz showdown!",
       teamSize: "1-3",
+      timing :"April 16th 2:00PM to 4:00 PM",
       about:
         "Are you an anime and manga expert? This quiz will challenge your knowledge across different anime genres, famous characters, theme songs, and classic storylines.",
       rules: [
@@ -269,6 +278,7 @@ const events = {
       description:
         "A music lover's paradise! 'Aural Bliss' is an exhilarating competition that tests your auditory perception and musical knowledge.",
       teamSize: "1-3",
+      timing :"April 16th 11:30AM to 12:30PM & 2:00PM to 4:00 PM",
       about:
         "This event is for all music enthusiasts who love identifying songs, artists, and lyrics. Contestants will go through multiple rounds of music-related challenges, testing their auditory skills and knowledge.",
       rules: [
@@ -298,6 +308,7 @@ const events = {
       description:
         "Solve cryptic clues and uncover hidden treasures across the campus. An adventurous race against time and opponents!",
       teamSize: "3-5",
+      timing :"April 16th 2:00PM to 4:00 PM",
       about:
         "Teams will solve riddles and navigate through multiple checkpoints to uncover the hidden treasure. The fastest team to complete all challenges wins.",
       rules: [
@@ -329,6 +340,7 @@ const events = {
       description:
       "An exciting event to ignite creativity, teamwork, and fun through engaging activities. Round 1: Emoji Quiz - guess movie titles from emoji combinations. Round 2: Movie Plots Challenge - identify movies from their plot descriptions. Round 3: Silent Acting - guess famous movie scenes acted out without dialogue.",
       teamSize: "2-3",
+      timing :"April 16th 1 & 2:00PM to 4:00 PM",
       about:
         "Teams will solve riddles and navigate through multiple checkpoints to uncover the hidden treasure. The fastest team to complete all challenges wins.",
       rules: [
@@ -361,6 +373,7 @@ const events = {
       description:
     "An action-packed game where players control robots in various sci-fi challenges, focusing on battles, strategy, and customization.",
   teamSize: "3-4",
+  timing :"April 16th 10:30AM to 12:00PM & 2:00PM to 3:30 PM",
   about:
     "Players control customizable robots either individually or in teams to complete missions or defeat opponents using tactics and combat strategies.",
   rules: [
@@ -388,7 +401,7 @@ const events = {
       image: cricbuzz,
       description:
         "A series of mini sports challenges and quizzes for sports enthusiasts.",
-      timing: "Day 2 - 11:00 AM to 2:00 PM",
+      timing: "Day 2 - 2:00 PM to 4:00 PM",
       teamSize: "2-3",
       about:
         "Sports Buzz is a combination of physical mini-games and sports knowledge quizzes. Test your athletic abilities and sports trivia in this exciting event!",
@@ -421,7 +434,7 @@ const events = {
       image: shortFilm,
       description:
         "Unleash your creativity by making a compelling short film in just a few minutes. Show off your storytelling, directing, and editing skills!",
-      timing: "Submit by 12th April - 5:00 PM",
+      timing: "Submit by 15th April - 9:00 PM",
       about:
         "Participants will create a short film based on a given theme within the specified time limit. The best films will be showcased at the closing ceremony.",
       rules: [
@@ -439,15 +452,12 @@ const events = {
         "Participants must submit their films online before the deadline. The best films will be screened during the closing ceremony, and winners will receive prizes.",
       coordinators: [
         {
-          name: "Dhruv Patel",
-          phone: "9876543299",
-          email: "dhruv.patel@msec.edu"
+          name: "Jaisurya S",
+          phone: "7708310607",
+          email:"sjaisurya2005@gmail.com",
+         
         },
-        {
-          name: "Nisha Rajput",
-          phone: "8765432199",
-          email: "nisha.rajput@msec.edu"
-        }
+       
       ]
     },
     {
@@ -456,8 +466,8 @@ const events = {
       description:
         "Compete in an adrenaline-pumping online gaming tournament featuring some of the most popular multiplayer games!",
       timing: "Day 2 - Online",
-      price: "₹200",
-      teamSize: "2",
+      
+      teamSize: "4-max",
       about:
         "This high-intensity gaming competition brings together e-sports enthusiasts to battle it out in their favorite online multiplayer games. The tournament format will vary based on the selected games.",
       rules: [
@@ -472,15 +482,11 @@ const events = {
       details:
         "Participants will receive match schedules and lobby details via Discord before the tournament begins. Ensure your game account is ready and updated before the event.",
       coordinators: [
+       
         {
-          name: "Vishal Nair",
-          phone: "9988776611",
-          email: "vishal.nair@msec.edu"
-        },
-        {
-          name: "Shreya Kapoor",
+          name: "Chatriyan U9943880362",
           phone: "8877665511",
-          email: "shreya.kapoor@msec.edu"
+         
         }
       ]
     }
