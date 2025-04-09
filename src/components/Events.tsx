@@ -105,7 +105,7 @@ const EVENTS: EventsData = {
     {
       
       id: "robotcraze",
-      name:"Robot Craze ",
+      name:"Robot Craze",
       image: robot,
       description:
         "Robot craze is an action packed game where players control robots in various challenges often set in futuristic scifi environments",

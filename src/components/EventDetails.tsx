@@ -150,7 +150,7 @@ const events = {
       ]
     },
     {
-      title: "haltthedice",
+      title: "Byte the Dice",
       image: roleAndDice,
       description:
         "A unique event where rolling the dice leads to unpredictable tech-based quizzes and problem-solving challenges.",
@@ -182,7 +182,7 @@ const events = {
       ]
     },
     {
-      title: "Designtodev",
+      title: "Design 2 Dev",
       image: designedToDev,
       description:
         "A UI/UX design and development challenge where participants create a website prototype and then convert it into a functional site.",
@@ -368,7 +368,7 @@ const events = {
       ]
     },
     {
-      title: "robotcraze",
+      title: "Robot Craze",
       image: robot,
       description:
     "An action-packed game where players control robots in various sci-fi challenges, focusing on battles, strategy, and customization.",
