@@ -191,6 +191,21 @@ const Hero = () => {
     }
   };
 
+  // IMPROVED: Function to handle smooth scrolling to register section
+  const scrollToRegister = (e) => {
+    e.preventDefault();
+    const registerSection = document.getElementById("register");
+    if (registerSection) {
+      // Using both scrollIntoView for wider browser support
+      registerSection.scrollIntoView({ behavior: "smooth" });
+      
+      // For mobile devices where smooth scrolling might not work well
+      const yOffset = -80; // Adjust offset as needed
+      const y = registerSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   const backgroundStars = Array.from({ length: 70 }, (_, i) => ({
     // Reduced background star count
     id: `star-${i}`,
@@ -263,24 +278,24 @@ const Hero = () => {
         />
       </motion.div>
 
-      {/* Fixed top bar for navigation controls - IMPROVED RESPONSIVENESS AND SPACING */}
+      {/* Fixed top bar for navigation controls */}
       <motion.div
-        className="fixed top-0 left-0 right-0 px-4 py-3 sm:px-6 sm:py-4 flex justify-between items-center z-30" // Reduced padding
+        className="fixed top-0 left-0 right-0 px-4 py-3 sm:px-6 sm:py-4 flex justify-between items-center z-30"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5 }}
       >
         {/* Logo/brand placeholder - left side */}
         <motion.div
-          className="rounded-full bg-white/5 backdrop-blur-sm p-2 sm:p-2" // Further reduced padding
+          className="rounded-full bg-white/5 backdrop-blur-sm p-2 sm:p-2"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         ></motion.div>
 
-        {/* Music toggle button - right side - ADDED AS REQUESTED */}
+        {/* Music toggle button - right side */}
         <motion.button
           onClick={toggleMusic}
-          className="flex items-center p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all gap-2" // Reduced padding
+          className="flex items-center p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all gap-2"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           aria-label={isPlaying ? "Pause music" : "Play music"}
@@ -293,9 +308,9 @@ const Hero = () => {
         </motion.button>
       </motion.div>
 
-      {/* Social Media Links - Fixed on the side - IMPROVED RESPONSIVENESS */}
+      {/* Social Media Links - Fixed on the side */}
       <motion.div
-        className="fixed left-2 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2 z-30 md:flex hidden" // Reduced left margin and spacing, hidden on mobile
+        className="fixed left-2 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2 z-30 md:flex hidden"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 2, staggerChildren: 0.1 }}
@@ -306,21 +321,21 @@ const Hero = () => {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`p-1.5 rounded-full ${link.color} text-white hover:scale-110 transition-all`} // Reduced padding
+            className={`p-1.5 rounded-full ${link.color} text-white hover:scale-110 transition-all`}
             whileHover={{ scale: 1.2, rotate: 10 }}
             whileTap={{ scale: 0.9 }}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 2 + index * 0.1 }}
           >
-            <link.icon className="w-4 h-4" /> {/* Reduced icon size */}
+            <link.icon className="w-4 h-4" />
           </motion.a>
         ))}
       </motion.div>
 
-      {/* Mobile Social Media Links - Only visible on small screens - IMPROVED POSITIONING */}
+      {/* Mobile Social Media Links - Only visible on small screens */}
       <motion.div
-        className="fixed bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-4 z-30 md:hidden" // Reduced bottom margin and spacing
+        className="fixed bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-4 z-30 md:hidden"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2 }}
@@ -344,7 +359,7 @@ const Hero = () => {
       {nebulaElements.map((nebula) => (
         <motion.div
           key={nebula.id}
-          className="absolute rounded-full blur-2xl" // Slightly less blur
+          className="absolute rounded-full blur-2xl"
           style={{
             width: `${nebula.size}px`,
             height: `${nebula.size}px`,
@@ -353,10 +368,10 @@ const Hero = () => {
             backgroundColor: nebula.color,
           }}
           animate={{
-            scale: [1, 1.05, 1], // Reduced scale animation
+            scale: [1, 1.05, 1],
           }}
           transition={{
-            duration: 20, // Faster animation
+            duration: 20,
             repeat: Infinity,
             repeatType: "reverse",
           }}
@@ -365,8 +380,6 @@ const Hero = () => {
 
       {/* Background Mount Olympus */}
       <div className="absolute inset-0 opacity-15">
-        {" "}
-        {/* Reduced opacity */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 100 100"
@@ -383,13 +396,11 @@ const Hero = () => {
               <stop
                 offset="0%"
                 style={{ stopColor: "rgba(255,255,255,0.08)" }}
-              />{" "}
-              {/* Reduced opacity */}
+              />
               <stop
                 offset="100%"
                 style={{ stopColor: "rgba(200,200,255,0.03)" }}
-              />{" "}
-              {/* Reduced opacity */}
+              />
             </linearGradient>
           </defs>
           <path
@@ -414,7 +425,7 @@ const Hero = () => {
         />
       ))}
 
-      {/* Shooting Stars Animation - Further adjusted for mobile visibility */}
+      {/* Shooting Stars Animation */}
       {shootingStars.map((star) => (
         <motion.div
           key={star.id}
@@ -432,7 +443,7 @@ const Hero = () => {
           animate={{
             x: `${star.endX}%`,
             y: `${star.endY}%`,
-            scale: [0, 1.3, 1], // Reduced max scale
+            scale: [0, 1.3, 1],
             opacity: [0, 1, 1, 0],
           }}
           transition={{
@@ -441,7 +452,7 @@ const Hero = () => {
             ease: "easeOut",
           }}
         >
-          {/* Trailing effect - Even more reduced length for mobile */}
+          {/* Trailing effect */}
           <motion.div
             className="absolute top-0 left-0 w-6 h-0.5 bg-gradient-to-r from-transparent via-white to-blue-300 blur-sm"
             style={{
@@ -454,7 +465,7 @@ const Hero = () => {
         </motion.div>
       ))}
 
-      {/* Shooting Star Collision Effect - Only shows at end of shooting star animations */}
+      {/* Shooting Star Collision Effect */}
       {shootingStarsDone && (
         <motion.div
           className="absolute rounded-full blur-md z-20"
@@ -466,8 +477,8 @@ const Hero = () => {
               "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(100,149,237,0.5) 50%, rgba(0,0,255,0) 100%)",
           }}
           initial={{ width: "0px", height: "0px", opacity: 0 }}
-          animate={{ width: "100px", height: "100px", opacity: [0, 1, 0] }} // Further reduced size
-          transition={{ duration: 1 }} // Slightly faster
+          animate={{ width: "100px", height: "100px", opacity: [0, 1, 0] }}
+          transition={{ duration: 1 }}
         />
       )}
 
@@ -479,8 +490,8 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
-            duration: 1.5, // Slightly faster
-            delay: constellationIndex * 2.5, // Slightly shorter delay
+            duration: 1.5,
+            delay: constellationIndex * 2.5,
           }}
         >
           {/* Stars */}
@@ -491,8 +502,8 @@ const Hero = () => {
               style={{
                 left: `${star.x}%`,
                 top: `${star.y}%`,
-                width: `${star.size * 1.5}px`, // Slightly smaller star size
-                height: `${star.size * 1.5}px`, // Slightly smaller star size
+                width: `${star.size * 1.5}px`,
+                height: `${star.size * 1.5}px`,
               }}
             >
               <Star
@@ -521,13 +532,13 @@ const Hero = () => {
                   x2={`${endStar.x}%`}
                   y2={`${endStar.y}%`}
                   stroke={constellation.color.replace("text-", "")}
-                  strokeWidth="0.8" // Thinner lines
-                  strokeOpacity="0.6" // Slightly less opaque
+                  strokeWidth="0.8"
+                  strokeOpacity="0.6"
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
                   transition={{
-                    duration: 1.5, // Slightly faster
-                    delay: connectionIndex * 0.4 + constellationIndex * 2.5, // Shorter delay
+                    duration: 1.5,
+                    delay: connectionIndex * 0.4 + constellationIndex * 2.5,
                   }}
                 />
               );
@@ -571,47 +582,42 @@ const Hero = () => {
               x2={`${endStar.x}%`}
               y2={`${endStar.y}%`}
               stroke="white"
-              strokeWidth="0.8" // Thinner line
-              strokeOpacity="0.4" // Less opaque
-              strokeDasharray="4 4" // Smaller dashes
+              strokeWidth="0.8"
+              strokeOpacity="0.4"
+              strokeDasharray="4 4"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{
-                duration: 2.5, // Faster
-                delay: 6, // Earlier
+                duration: 2.5,
+                delay: 6,
               }}
             />
           );
         })}
       </svg>
 
-      {/* Content section - IMPROVED RESPONSIVENESS AND ADDED SPACE FROM NAVBAR */}
+      {/* Content section */}
       <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-8 w-full max-w-4xl mx-auto h-full">
         {/* Main content container with safe area for all device sizes */}
         <div className="flex flex-col items-center justify-center pt-16 sm:pt-20 md:pt-24 pb-20 sm:pb-16">
-          {" "}
-          {/* Reduced top and bottom padding */}
-          {/* Title with animated characters - Only shows after shooting stars collision */}
+          {/* Title with animated characters */}
           <div className="relative mb-3 sm:mb-4 flex items-center justify-center w-full">
-            {" "}
-            {/* Reduced margin */}
             {showTitle && (
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentTextMode}
-                  className="flex space-x-1 sm:space-x-2 overflow-hidden py-1 sm:py-2" // Reduced spacing and padding
-                  initial={{ opacity: 0, y: 30 }} // Reduced initial y
+                  className="flex space-x-1 sm:space-x-2 overflow-hidden py-1 sm:py-2"
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -30 }} // Reduced exit y
-                  transition={{ duration: 0.6 }} // Faster transition
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{ duration: 0.6 }}
                 >
                   {currentText.map((char, index) => (
                     <motion.span
                       key={index}
-                      // More responsive text sizing that scales better on all devices
-                      className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold inline-block" // Reduced base size
+                      className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold inline-block"
                       style={{
-                        textShadow: "0 0 8px rgba(255,255,255,0.4)", // Reduced shadow
+                        textShadow: "0 0 8px rgba(255,255,255,0.4)",
                       }}
                       initial={{
                         rotateY: 180,
@@ -623,10 +629,10 @@ const Hero = () => {
                         color: index % 2 === 0 ? "#FFD700" : "#FFFFFF",
                       }}
                       transition={{
-                        duration: 0.4, // Faster transition
-                        delay: index * 0.03, // Shorter delay
+                        duration: 0.4,
+                        delay: index * 0.03,
                         type: "spring",
-                        damping: 10, // Reduced damping
+                        damping: 10,
                       }}
                     >
                       {char}
@@ -636,26 +642,26 @@ const Hero = () => {
               </AnimatePresence>
             )}
           </div>
-          {/* Subtitle with responsive sizing - Shows slightly after title */}
+          {/* Subtitle with responsive sizing */}
           {showTitle && (
             <motion.h2
-              className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-medium mb-3 sm:mb-4 md:mb-6 max-w-xs sm:max-w-sm md:max-w-lg text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-yellow-300" // Reduced font sizes and margin
-              initial={{ opacity: 0, y: 15 }} // Reduced initial y
+              className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-medium mb-3 sm:mb-4 md:mb-6 max-w-xs sm:max-w-sm md:max-w-lg text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-yellow-300"
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }} // Faster and earlier
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
               A National Level Technical Symposium
               <br />
               Greek Mythology & Innovation
             </motion.h2>
           )}
-          {/* About section - added as requested - IMPROVED RESPONSIVE PADDING */}
+          {/* About section */}
           {showTitle && (
             <motion.div
-              className="mb-4 px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/5 backdrop-blur-sm max-w-md text-center" // Reduced margin and padding
-              initial={{ opacity: 0, y: 15 }} // Reduced initial y
+              className="mb-4 px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/5 backdrop-blur-sm max-w-md text-center"
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }} // Faster and earlier
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
               <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
                 {eventDetails.description} Visit us at{" "}
@@ -670,56 +676,29 @@ const Hero = () => {
               </p>
             </motion.div>
           )}
-          {/* Register and Share buttons positioned together - FIXED AS REQUESTED */}
+          
+          {/* IMPROVED: Register and Share buttons with better touch handling */}
           {showTitle && (
             <motion.div
-              className="buttons-container" // Use your existing buttons container class
+              className="buttons-container w-full max-w-xs sm:max-w-md"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <motion.div // Wrapper div to handle the motion effects
+              {/* IMPROVED: Register button with better mobile support */}
+              <motion.button
+                className="register-button w-full sm:w-auto"
+                onClick={scrollToRegister}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto"
+                aria-label="Register Now"
               >
-                <a
-                  href="#register"
-                  className="register-button w-full"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    // Fixed Object is possibly 'null' error with optional chaining
-                    document
-                      .getElementById("register")
-                      ?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  onTouchStart={(e) => {
-                    // Mark this element as being touched
-                    e.currentTarget.dataset.touching = "true";
-                  }}
-                  onTouchEnd={(e) => {
-                    if (e.currentTarget.dataset.touching === "true") {
-                      e.preventDefault();
-                      // Fixed Object is possibly 'null' error with optional chaining
-                      document
-                        .getElementById("register")
-                        ?.scrollIntoView({ behavior: "smooth" });
-                      // Reset the touching state
-                      delete e.currentTarget.dataset.touching;
-                    }
-                  }}
-                  onTouchCancel={(e) => {
-                    // Reset the touching state if the touch is canceled
-                    delete e.currentTarget.dataset.touching;
-                  }}
-                >
-                  <Download className="mr-2 w-4 h-4" /> Register Now
-                </a>
-              </motion.div>
+                <Download className="mr-2 w-4 h-4" /> Register Now
+              </motion.button>
 
               <motion.button
                 onClick={handleShare}
-                className="share-button w-full sm:w-auto" // Use your existing share button class
+                className="share-button w-full sm:w-auto"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 aria-label="Share event"
@@ -728,27 +707,23 @@ const Hero = () => {
               </motion.button>
             </motion.div>
           )}
-          {/* Event details cards - IMPROVED RESPONSIVENESS AND SPACING */}
+          
+          {/* Event details cards */}
           {showTitle && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 sm:mt-6 w-full max-w-md mx-auto">
-              {" "}
-              {/* Reduced gap and margin */}
               {/* Date card */}
               <motion.div
-                className="flex items-center p-3 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-blue-400 hover:bg-white/20 transition-all duration-300" // Reduced padding
-                initial={{ opacity: 0, y: 15 }} // Reduced initial y
+                className="flex items-center p-3 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-blue-400 hover:bg-white/20 transition-all duration-300"
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }} // Earlier
+                transition={{ delay: 0.7 }}
               >
-                <Calendar className="mr-2 w-4 h-4 flex-shrink-0" />{" "}
-                {/* Reduced icon size */}
+                <Calendar className="mr-2 w-4 h-4 flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-xs">Event Date</h3>{" "}
-                  {/* Reduced font size */}
+                  <h3 className="font-bold text-xs">Event Date</h3>
                   <p className="text-xs text-white/80 mt-1">
                     {eventDetails.date}
-                  </p>{" "}
-                  {/* Reduced font size */}
+                  </p>
                 </div>
               </motion.div>
               {/* Venue with Google Maps link */}
@@ -756,22 +731,19 @@ const Hero = () => {
                 href={eventDetails.venueMapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center p-3 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-green-500 hover:bg-white/20 transition-all duration-300" // Reduced padding
-                initial={{ opacity: 0, y: 15 }} // Reduced initial y
+                className="flex items-center p-3 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-green-500 hover:bg-white/20 transition-all duration-300"
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9 }} // Earlier
-                whileHover={{ scale: 1.02 }} // Reduced hover scale
-                whileTap={{ scale: 0.99 }} // Reduced tap scale
+                transition={{ delay: 0.9 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.99 }}
               >
-                <MapPin className="mr-2 w-4 h-4 flex-shrink-0" />{" "}
-                {/* Reduced icon size */}
+                <MapPin className="mr-2 w-4 h-4 flex-shrink-0" />
                 <div className="flex-1 overflow-hidden">
-                  <h3 className="font-bold text-xs">Venue</h3>{" "}
-                  {/* Reduced font size */}
+                  <h3 className="font-bold text-xs">Venue</h3>
                   <p className="text-xs text-white/80 mt-1 truncate">
                     {eventDetails.venue}
-                  </p>{" "}
-                  {/* Reduced font size */}
+                  </p>
                 </div>
               </motion.a>
             </div>
@@ -779,25 +751,26 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator - IMPROVED POSITIONING */}
+      {/* Scroll indicator */}
       {showScrollIndicator && showTitle && (
         <motion.div
-          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20" // Reduced bottom margin
+          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 8, 0] }} // Reduced y animation
+          animate={{ opacity: 1, y: [0, 8, 0] }}
           transition={{
-            opacity: { delay: 1.5, duration: 0.8 }, // Earlier and faster
-            y: { repeat: Infinity, duration: 1.2 }, // Faster y animation
+            opacity: { delay: 1.5, duration: 0.8 },
+            y: { repeat: Infinity, duration: 1.2 },
           }}
         >
           <p className="text-xs text-white text-center mb-1 opacity-60">
             Scroll to discover events
-          </p>{" "}
-          {/* Reduced font size and added text-center */}
-          <ArrowDown className="text-white w-4 h-4 animate-bounce" />{" "}
-          {/* Reduced icon size */}
+          </p>
+          <ArrowDown className="text-white w-4 h-4 animate-bounce" />
         </motion.div>
       )}
+      
+      {/* ADDED: Empty register section for scroll target */}
+      <div id="register" className="h-1 w-full"></div>
     </section>
   );
 };

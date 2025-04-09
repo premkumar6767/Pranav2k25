@@ -83,13 +83,17 @@ html {
     justify-content: center;
   }
 
-  .register-button,
+  
   .share-button {
     margin-top: 0;
     margin-bottom: 0;
   }
 }
-
+.register-button{
+  display: inline-flex;
+  align-items: center;
+  justify-content:center;
+}
 /* You might need to adjust the main content container to ensure proper spacing */
 .hero-content {
   /* Add or adjust padding and margins as needed */
