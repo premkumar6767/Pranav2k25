@@ -57,33 +57,29 @@ const events = {
       title: "Hackathon",
       image: hackathon,
       description:
-        "Showcase your research ideas and innovative findings to a distinguished panel of academicians and industry professionals.",
-      teamSize: "2-4",
-      timing :"April 16th 8:30Am",
+        "This event will unfold across two distinct rounds, designed to foster innovation and technical proficiency among participating teams.",
+      teamSize: "1-4",
+      timing: "April 16th, 8:30 AM",
       about:
-        "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
+        "Participants will engage in ideation, proposal presentation, and hands-on development. This event promotes creativity, real-time problem-solving, and teamwork across multiple domains such as AI, IoT, Cyber Security, and more.",
       rules: [
-        "Each participant/team can present only one research paper.",
-        "Papers must be original and should not have been published elsewhere.",
-        "A soft copy of the paper must be submitted before the event for screening.",
-        "Presentation time is 10 minutes, followed by a **5-minute Q&A session.",
-        "Use of plagiarized content will lead to immediate disqualification.",
-        "Presentations must follow IEEE format and should be in PPT format.",
-        "Judging criteria: Originality, Technical Content, Presentation Skills, and Q&A handling.",
-        "Decision of the judges will be final and binding.",
+        "A team should consist of a maximum of 4 members.",
+        "Presentation template must be submitted in the given format (PPT or PDF).",
+        "Participants must bring their own laptops, accessories, and hardware components (if required).",
+        "Inter-disciplinary participants are welcome.",
+        "Teams must complete tasks within the given time limit.",
+        "Judge’s decisions are final; any misconduct will lead to disqualification."
       ],
       details:
-        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report **30 minutes before their scheduled time.",
+        " Venue: Hall A. Participants must report 30 minutes before their scheduled time with their presentation ready on a USB drive.",
       coordinators: [
         {
           name: "Aadhitya S V",
-          phone: "94983 83681",
-          
+          phone: "94983 83681"
         },
         {
           name: "Sutharsan V",
-          phone: "6369953702",
-          
+          phone: "6369953702"
         }
       ]
     },
