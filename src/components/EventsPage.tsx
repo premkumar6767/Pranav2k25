@@ -10,7 +10,7 @@ import ojingeoGame from "../images/ojingeo.jpg";
 import animeQuiz from "../images/Senpai-fans.jpeg";
 import auralBliss from "../images/Aural-Bliss.jpeg";
 import treasureHunt from "../images/treashunt.jpg";
-import hackathon from "../images/Hackathon.jpeg";
+import hackathon from "../images/Hackathon-1.jpg";
 import robotCraze from "../images/robotcraze.jpg";
 import cricbuzz from "../images/sport.jpg";
 import zeuseSpark from "../images/Zeusspark.jpeg";

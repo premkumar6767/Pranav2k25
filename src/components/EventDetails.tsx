@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Share2, Phone} from "lucide-react";
+import { ArrowLeft, Share2, Phone } from "lucide-react";
 import shortFilm from "../images/short-film.jpeg";
 import eSports from "../images/e-sports.jpg";
 import cricbuzz from "../images/sport.jpg";
@@ -17,8 +16,8 @@ import animeQuiz from "../images/Senpai-fans.jpeg";
 import auralBliss from "../images/Aural-Bliss.jpeg";
 import treasureHunt from "../images/Treasure-hunt.jpeg";
 import hackathon from "../images/Hackathon.jpeg";
-import robot from "../images/robotcraze.jpg"
-import zeusspark from "../images/Zeusspark.jpeg"
+import robot from "../images/robotcraze.jpg";
+import zeusspark from "../images/Zeusspark.jpeg";
 const events = {
   technical: [
     {
@@ -27,7 +26,7 @@ const events = {
       description:
         "Showcase your research ideas and innovative findings to a distinguished panel of academicians and industry professionals.",
       teamSize: "1-4",
-      timing :"April 16th 10:00Am - 1:00Pm",
+      timing: "April 16th 10:00Am - 1:00Pm",
       about:
         "This event provides an opportunity for students to present their research papers on emerging technologies, scientific innovations, and engineering advancements. Participants will receive expert feedback and gain recognition for their contributions.",
       rules: [
@@ -50,8 +49,8 @@ const events = {
         {
           name: "Sai Prasath",
           phone: "956622942",
-        }
-      ]
+        },
+      ],
     },
     {
       title: "Hackathon",
@@ -68,20 +67,42 @@ const events = {
         "Participants must bring their own laptops, accessories, and hardware components (if required).",
         "Inter-disciplinary participants are welcome.",
         "Teams must complete tasks within the given time limit.",
-        "Judge’s decisions are final; any misconduct will lead to disqualification."
+        "Judge’s decisions are final; any misconduct will lead to disqualification.",
       ],
       details:
-        " Venue: Hall A. Participants must report 30 minutes before their scheduled time with their presentation ready on a USB drive.",
+        "🔹 ROUND 1: Ideation and Proposal Presentation\n" +
+        "Participants will conceptualize and present innovative solutions to predefined domains. This round includes:\n" +
+        "• Problem Statement Analysis\n" +
+        "• Solution Ideation\n" +
+        "• Presentation Development\n" +
+        "• Evaluation\n\n" +
+        "📚 DOMAINS:\n" +
+        "• IoT Simulation\n" +
+        "• Home Automation Simulation\n" +
+        "• Wearable Technology\n" +
+        "• E-Waste Management Using IoT\n" +
+        "• AI & Machine Learning\n" +
+        "• Web3 & Blockchain\n" +
+        "• Sustainable Development\n" +
+        "• Cyber Security\n" +
+        "• Game Development\n" +
+        "• Virtual Reality\n\n" +
+        "📤 PRESENTATION FORMAT & SUBMISSION:\n" +
+        "Submit your presentation (PPT or PDF) to the mentioned email. Template and submission link will be shared soon.\n\n" +
+        "Top 10 teams with the highest scores in Round 1 will proceed to the final round.\n\n" +
+        "🔹 ROUND 2: Prototype/Simulation Development\n" +
+        "Shortlisted teams will receive a problem statement on the spot. They must develop a prototype or simulation based on it within the allotted time.\n\n" +
+        "📍 Venue: Hall A\nParticipants must report 30 minutes before their scheduled time with their presentation ready on a USB drive.",
       coordinators: [
         {
           name: "Aadhitya S V",
-          phone: "94983 83681"
+          phone: "94983 83681",
         },
         {
           name: "Sutharsan V",
-          phone: "6369953702"
-        }
-      ]
+          phone: "6369953709",
+        },
+      ],
     },
     {
       title: "Wired Wonders",
@@ -89,7 +110,7 @@ const events = {
       description:
         "Test your knowledge of circuit design and troubleshooting in this electrifying competition!",
       teamSize: "2-4",
-      timing :"April 16th 10:00AM to 12:30PM & 2:00PM to 3:00 PM",
+      timing: "April 16th 10:00AM to 12:30PM & 2:00PM to 3:00 PM",
       about:
         "This event challenges participants to design, analyze, and troubleshoot circuits. Participants will be provided with real-world problems and required to build functional circuits within the given time.",
       rules: [
@@ -111,8 +132,8 @@ const events = {
         {
           name: "Sabareesan",
           phone: "9894789245",
-        }
-      ]
+        },
+      ],
     },
     {
       title: "DecodeX",
@@ -120,7 +141,7 @@ const events = {
       description:
         "Deconstruct and debug pre-written code to reveal its intended functionality.",
       teamSize: "2-4",
-      timing :"April 16th 10:30AM to 12:30PM & 2:30PM to 3:30 PM",
+      timing: "April 16th 10:30AM to 12:30PM & 2:30PM to 3:30 PM",
       about:
         "Participants will be given obfuscated or scrambled code snippets and will need to reverse engineer them to understand their logic. The goal is to identify errors, optimize the code, and restore its original functionality.",
       rules: [
@@ -142,8 +163,8 @@ const events = {
         {
           name: "Peranandhan",
           phone: "7010893206",
-        }
-      ]
+        },
+      ],
     },
     {
       title: "Byte the Dice",
@@ -151,7 +172,7 @@ const events = {
       description:
         "A unique event where rolling the dice leads to unpredictable tech-based quizzes and problem-solving challenges.",
       teamSize: "1-2",
-      timing :"April 16th 11:00AM to 12:30PM & 2:30PM to 3:30 PM",
+      timing: "April 16th 11:00AM to 12:30PM & 2:30PM to 3:30 PM",
       about:
         "Participants will roll dice and complete various technical challenges, including debugging, circuit connections, and quizzes.",
       rules: [
@@ -169,13 +190,13 @@ const events = {
       coordinators: [
         {
           name: "Aditya P",
-          phone: "9940398918"
+          phone: "9940398918",
         },
         {
           name: "Rackesh U",
-          phone: "8639486845"
-        }
-      ]
+          phone: "8639486845",
+        },
+      ],
     },
     {
       title: "Design 2 Dev",
@@ -183,7 +204,7 @@ const events = {
       description:
         "A UI/UX design and development challenge where participants create a website prototype and then convert it into a functional site.",
       teamSize: "3-4",
-      timing :"April 16th 10:00AM to 12:30PM ",
+      timing: "April 16th 10:00AM to 12:30PM ",
       about:
         "This event focuses on transforming UI/UX designs into functional web applications through creativity and coding.",
       rules: [
@@ -202,11 +223,11 @@ const events = {
         {
           name: " Prem Kumar M",
           phone: "7448631031",
-        }
-      ]
-    }
+        },
+      ],
+    },
   ],
-  
+
   nonTechnical: [
     {
       title: "Ojingeo Game",
@@ -214,7 +235,7 @@ const events = {
       description:
         "Inspired by the viral Korean survival game, this event will push your strategic thinking and endurance to the limit.",
       teamSize: "1-3",
-      timing :"April 16th 11:00AM ",
+      timing: "April 16th 11:00AM ",
       about:
         "This event is a survival-based challenge inspired by the famous Squid Game. Participants will compete in multiple rounds of physically and mentally challenging games. The last team standing wins the ultimate prize!",
       rules: [
@@ -234,9 +255,9 @@ const events = {
         },
         {
           name: "Suyash Ashwin",
-          phone: "8776655440",
-        }
-      ]
+          phone: "88386 05968",
+        },
+      ],
     },
     {
       title: "Senpai Fans",
@@ -244,7 +265,7 @@ const events = {
       description:
         "Test your anime and manga knowledge in this ultimate quiz showdown!",
       teamSize: "1-3",
-      timing :"April 16th 2:00PM to 4:00 PM",
+      timing: "April 16th 2:00PM to 4:00 PM",
       about:
         "Are you an anime and manga expert? This quiz will challenge your knowledge across different anime genres, famous characters, theme songs, and classic storylines.",
       rules: [
@@ -265,8 +286,8 @@ const events = {
         {
           name: "Sai Mathesh",
           phone: "63815 82411",
-        }
-      ]
+        },
+      ],
     },
     {
       title: "Aural Bliss",
@@ -274,7 +295,7 @@ const events = {
       description:
         "A music lover's paradise! 'Aural Bliss' is an exhilarating competition that tests your auditory perception and musical knowledge.",
       teamSize: "1-3",
-      timing :"April 16th 11:30AM to 12:30PM & 2:00PM to 4:00 PM",
+      timing: "April 16th 11:30AM to 12:30PM & 2:00PM to 4:00 PM",
       about:
         "This event is for all music enthusiasts who love identifying songs, artists, and lyrics. Contestants will go through multiple rounds of music-related challenges, testing their auditory skills and knowledge.",
       rules: [
@@ -295,8 +316,8 @@ const events = {
         {
           name: " Rackesh K",
           phone: "8877665533",
-        }
-      ]
+        },
+      ],
     },
     {
       title: "Treasure Hunt",
@@ -304,7 +325,7 @@ const events = {
       description:
         "Solve cryptic clues and uncover hidden treasures across the campus. An adventurous race against time and opponents!",
       teamSize: "3-5",
-      timing :"April 16th 2:00PM to 4:00 PM",
+      timing: "April 16th 2:00PM to 4:00 PM",
       about:
         "Teams will solve riddles and navigate through multiple checkpoints to uncover the hidden treasure. The fastest team to complete all challenges wins.",
       rules: [
@@ -326,17 +347,17 @@ const events = {
         },
         {
           name: " Monish",
-          phone: "8877665544"
-        }
-      ]
+          phone: "8877665544",
+        },
+      ],
     },
     {
       title: "Zeus' Spark",
       image: zeusspark,
       description:
-      "An exciting event to ignite creativity, teamwork, and fun through engaging activities. Round 1: Emoji Quiz - guess movie titles from emoji combinations. Round 2: Movie Plots Challenge - identify movies from their plot descriptions. Round 3: Silent Acting - guess famous movie scenes acted out without dialogue.",
+        "An exciting event to ignite creativity, teamwork, and fun through engaging activities. Round 1: Emoji Quiz - guess movie titles from emoji combinations. Round 2: Movie Plots Challenge - identify movies from their plot descriptions. Round 3: Silent Acting - guess famous movie scenes acted out without dialogue.",
       teamSize: "2-3",
-      timing :"April 16th 1 & 2:00PM to 4:00 PM",
+      timing: "April 16th 1 & 2:00PM to 4:00 PM",
       about:
         "Teams will solve riddles and navigate through multiple checkpoints to uncover the hidden treasure. The fastest team to complete all challenges wins.",
       rules: [
@@ -354,44 +375,43 @@ const events = {
       coordinators: [
         {
           name: "Diwakar",
-          phone:"6380406486"
-          
+          phone: "6380406486",
         },
         {
           name: "Jayshaal",
           phone: "91760 70805",
-        }
-      ]
+        },
+      ],
     },
     {
       title: "Robot Craze",
       image: robot,
       description:
-    "An action-packed game where players control robots in various sci-fi challenges, focusing on battles, strategy, and customization.",
-  teamSize: "3-4",
-  timing :"April 16th 10:30AM to 12:00PM & 2:00PM to 3:30 PM",
-  about:
-    "Players control customizable robots either individually or in teams to complete missions or defeat opponents using tactics and combat strategies.",
-  rules: [
-    "Arrive at the venue on time and ensure you're settled accordingly.",
-    "Stick to the time limit allocated so that you won't miss the event.",
-    "Maintain professional body language, clarity in speech, and confidence while communicating.",
-    "Teams should have 3-4 members.",
-    "Clicking photos should be informed to the coordinator beforehand to avoid unnecessary issues.",
-  ],
-  details:
-    "Players can customize their robots with different weapons, armor, and abilities to match their playstyle. Combat includes lasers, missiles, and melee attacks. Victory is achieved by completing missions or defeating all opponents. Points are also awarded for achievements.",
-  coordinators: [
-    {
-      name: "Abishek",  // You can replace this with actual coordinator name
-      phone: "9488271971",
+        "An action-packed game where players control robots in various sci-fi challenges, focusing on battles, strategy, and customization.",
+      teamSize: "3-4",
+      timing: "April 16th 10:30AM to 12:00PM & 2:00PM to 3:30 PM",
+      about:
+        "Players control customizable robots either individually or in teams to complete missions or defeat opponents using tactics and combat strategies.",
+      rules: [
+        "Arrive at the venue on time and ensure you're settled accordingly.",
+        "Stick to the time limit allocated so that you won't miss the event.",
+        "Maintain professional body language, clarity in speech, and confidence while communicating.",
+        "Teams should have 3-4 members.",
+        "Clicking photos should be informed to the coordinator beforehand to avoid unnecessary issues.",
+      ],
+      details:
+        "Players can customize their robots with different weapons, armor, and abilities to match their playstyle. Combat includes lasers, missiles, and melee attacks. Victory is achieved by completing missions or defeating all opponents. Points are also awarded for achievements.",
+      coordinators: [
+        {
+          name: "Abishek", // You can replace this with actual coordinator name
+          phone: "9488271971",
+        },
+        {
+          name: "Naresh M",
+          phone: "8098504465",
+        },
+      ],
     },
-    {
-      name: "Naresh M",
-      phone: "8098504465"
-    }
-  ]
-},
     {
       title: "Cricbuzz",
       image: cricbuzz,
@@ -420,9 +440,9 @@ const events = {
         {
           name: "Mahider ",
           phone: "8765432188",
-        }
-      ]
-    }
+        },
+      ],
+    },
   ],
   online: [
     {
@@ -450,11 +470,9 @@ const events = {
         {
           name: "Jaisurya S",
           phone: "7708310607",
-          email:"sjaisurya2005@gmail.com",
-         
+          email: "sjaisurya2005@gmail.com",
         },
-       
-      ]
+      ],
     },
     {
       title: "E-Sports",
@@ -462,7 +480,7 @@ const events = {
       description:
         "Compete in an adrenaline-pumping online gaming tournament featuring some of the most popular multiplayer games!",
       timing: "Day 2 - Online",
-      
+
       teamSize: "4-max",
       about:
         "This high-intensity gaming competition brings together e-sports enthusiasts to battle it out in their favorite online multiplayer games. The tournament format will vary based on the selected games.",
@@ -478,14 +496,12 @@ const events = {
       details:
         "Participants will receive match schedules and lobby details via Discord before the tournament begins. Ensure your game account is ready and updated before the event.",
       coordinators: [
-       
         {
           name: "Chatriyan U9943880362",
           phone: "8877665511",
-         
-        }
-      ]
-    }
+        },
+      ],
+    },
   ],
   workshop: [
     {
@@ -517,10 +533,10 @@ const events = {
         {
           name: "Vishalan",
           phone: "9789018392",
-        }
-      ]
-    }
-  ]
+        },
+      ],
+    },
+  ],
 };
 
 const EventDetail = () => {
@@ -564,18 +580,26 @@ const EventDetail = () => {
     >
       {/* Greek Column Decorations */}
       <div className="absolute top-0 left-0 h-full w-16 opacity-50 hidden lg:block">
-        <div className="h-full w-full bg-contain bg-repeat-y" style={{ backgroundImage: "url(/images/greek-column-left.png)" }}></div>
+        <div
+          className="h-full w-full bg-contain bg-repeat-y"
+          style={{ backgroundImage: "url(/images/greek-column-left.png)" }}
+        ></div>
       </div>
       <div className="absolute top-0 right-0 h-full w-16 opacity-50 hidden lg:block">
-        <div className="h-full w-full bg-contain bg-repeat-y" style={{ backgroundImage: "url(/images/greek-column-right.png)" }}></div>
+        <div
+          className="h-full w-full bg-contain bg-repeat-y"
+          style={{ backgroundImage: "url(/images/greek-column-right.png)" }}
+        ></div>
       </div>
 
       {/* Olympian Scroll Container */}
-      <div className="bg-amber-50/10 p-6 sm:p-8 rounded-lg shadow-2xl max-w-3xl w-full backdrop-blur-md text-white border-2 border-amber-200/30"
+      <div
+        className="bg-amber-50/10 p-6 sm:p-8 rounded-lg shadow-2xl max-w-3xl w-full backdrop-blur-md text-white border-2 border-amber-200/30"
         style={{
           backgroundImage: `url(/images/greek-papyrus-texture.jpg)`,
           backgroundBlendMode: "overlay",
-        }}>
+        }}
+      >
         {/* Back Button */}
         <motion.button
           initial={{ opacity: 0, x: -20 }}
@@ -590,7 +614,10 @@ const EventDetail = () => {
         {/* Greek Laurel Wreath and Event Title */}
         <div className="relative flex flex-col items-center mb-6">
           <div className="absolute -top-16 w-44 h-44 opacity-70">
-            <div className="w-full h-full bg-contain bg-center bg-no-repeat" style={{ backgroundImage: "url(/images/laurel-wreath.png)" }}></div>
+            <div
+              className="w-full h-full bg-contain bg-center bg-no-repeat"
+              style={{ backgroundImage: "url(/images/laurel-wreath.png)" }}
+            ></div>
           </div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -628,7 +655,9 @@ const EventDetail = () => {
           <div className="flex flex-col md:flex-row justify-around text-amber-300 font-bold text-lg cursor-pointer font-serif">
             <span
               className={`p-2 transition-all duration-300 ${
-                activeTab === "about" ? "text-white border-b-2 border-amber-300" : "hover:text-amber-100"
+                activeTab === "about"
+                  ? "text-white border-b-2 border-amber-300"
+                  : "hover:text-amber-100"
               }`}
               onClick={() => setActiveTab("about")}
             >
@@ -636,7 +665,9 @@ const EventDetail = () => {
             </span>
             <span
               className={`p-2 transition-all duration-300 ${
-                activeTab === "rules" ? "text-white border-b-2 border-amber-300" : "hover:text-amber-100"
+                activeTab === "rules"
+                  ? "text-white border-b-2 border-amber-300"
+                  : "hover:text-amber-100"
               }`}
               onClick={() => setActiveTab("rules")}
             >
@@ -644,7 +675,9 @@ const EventDetail = () => {
             </span>
             <span
               className={`p-2 transition-all duration-300 ${
-                activeTab === "details" ? "text-white border-b-2 border-amber-300" : "hover:text-amber-100"
+                activeTab === "details"
+                  ? "text-white border-b-2 border-amber-300"
+                  : "hover:text-amber-100"
               }`}
               onClick={() => setActiveTab("details")}
             >
@@ -652,7 +685,9 @@ const EventDetail = () => {
             </span>
             <span
               className={`p-2 transition-all duration-300 ${
-                activeTab === "coordinators" ? "text-white border-b-2 border-amber-300" : "hover:text-amber-100"
+                activeTab === "coordinators"
+                  ? "text-white border-b-2 border-amber-300"
+                  : "hover:text-amber-100"
               }`}
               onClick={() => setActiveTab("coordinators")}
             >
@@ -670,15 +705,15 @@ const EventDetail = () => {
                 <div className="mt-4 p-3 bg-amber-900/20 rounded-lg">
                   <p className="font-semibold text-amber-300">Team Size:</p>
                   <p>{event.teamSize} participants</p>
-                  
-                 
                 </div>
               </div>
             )}
 
             {activeTab === "rules" && (
               <div>
-                <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">Sacred Rules</h3>
+                <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">
+                  Sacred Rules
+                </h3>
                 <ul className="list-disc pl-5 space-y-2 font-serif">
                   {event.rules.map((rule, index) => (
                     <li key={index}>{rule}</li>
@@ -689,28 +724,30 @@ const EventDetail = () => {
 
             {activeTab === "details" && (
               <div>
-                <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">Event Details</h3>
+                <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">
+                  Event Details
+                </h3>
                 <p className="font-serif">{event.details}</p>
               </div>
             )}
 
             {activeTab === "coordinators" && (
               <div>
-                <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">Event Oracles</h3>
+                <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">
+                  Event Oracles
+                </h3>
                 <div className="space-y-4">
                   {event.coordinators.map((coordinator, index) => (
                     <div key={index} className="bg-amber-900/20 p-3 rounded-lg">
                       <p className="font-bold">{coordinator.name}</p>
-                      
+
                       <div className="flex flex-col mt-2 space-y-2">
-                        <a 
-                          href={`tel:${coordinator.phone}`} 
+                        <a
+                          href={`tel:${coordinator.phone}`}
                           className="flex items-center text-amber-200 hover:text-amber-100"
                         >
                           <Phone className="w-4 h-4 mr-2" /> {coordinator.phone}
                         </a>
-                        
-                    
                       </div>
                     </div>
                   ))}

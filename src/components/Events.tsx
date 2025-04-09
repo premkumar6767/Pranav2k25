@@ -17,7 +17,7 @@ import designedToDev from "../images/d2dev.jpg";
 import reverseCoding from "../images/decodex.jpg";
 import ojingeoGame from "../images/ojingeo.jpg";
 import animeQuiz from "../images/anime.jpg";
-import hack from "../images/Hackathon.jpeg";
+import hack from "../images/Hackathon-1.jpg";
 import auralBliss from "../images/auralbliss.jpg";
 import treasureHunt from "../images/treashunt.jpg";
 import robot from "../images/robotcraze.jpg" ;
