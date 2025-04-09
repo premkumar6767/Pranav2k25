@@ -171,7 +171,7 @@ const EVENTS: EventsData = {
         "The event will be conducted in Coding Lab 2. Participants should bring their own laptops if required.",
     },
     {
-      id: "halt-the-dice",
+      id: "byte-the-dice",
       name: "Byte the Dice",
       image: roleAndDice,
       description:
@@ -194,7 +194,7 @@ const EVENTS: EventsData = {
         "The event includes three rounds: Qualifier (knockout stage), Challenge Round (technical tasks), and Final Showdown (intense competition).",
     },
     {
-      id: "design-to-dev",
+      id: "design-2-dev",
       name: "Design 2 Dev",
       image: designedToDev,
       description:
@@ -350,7 +350,7 @@ const EVENTS: EventsData = {
   ],
   online: [
     {
-      id: "short-film",
+      id: "film-fest",
       name: "Film Fest",
       image: shortFilm,
       description:

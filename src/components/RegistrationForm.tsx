@@ -35,9 +35,9 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const EMAILJS_CONFIG = {
-  SERVICE_ID: 'service_zhp76nl',
-  TEMPLATE_ID: 'template_ge1bl5a',
-  PUBLIC_KEY: 'rmTViAJq1uQiY5YlG'
+  SERVICE_ID: 'service_hd4nnip',
+  TEMPLATE_ID: 'template_jt5f1rq',
+  PUBLIC_KEY: 'qTKZFS8T7WFzYdg3l'
 };
 
 const RegistrationPage: React.FC = () => {

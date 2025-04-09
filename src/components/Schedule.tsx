@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Clock } from 'lucide-react';
+import { Calendar, Clock, Bell } from 'lucide-react';
 import "./About.css";
 
 interface Event {
@@ -19,8 +19,8 @@ const scheduleData: ScheduleDay[] = [
     day: "Online Events",
     date: "APRIL 14, 2025",
     events: [
-      { title: "MUSES REELS" },
-      { title: "ELYSIAN BATTLES" },
+      { title: "Esports-FREEFIRE/BGMI" },
+      { title: "ShortFilm" },
     ]
   },
   {
@@ -42,10 +42,10 @@ const scheduleData: ScheduleDay[] = [
     events: [
       { time: "11:00 AM", title: "OJINGEO", location: "ECE 4A SECOND FLOOR" },
       { time: "11:30 AM", title: "AURAL BLISS", location: "ECE 3A CLASSROOM" },
-      { time: "02:00 PM", title: "SENPAI FANS", location: "ECE 4B CLASSROOM" },
-      { time: "01:30 PM", title: "TREASURE HUNT", location: "ECE 3B CLASSROOM" },
-      { time: "02:00 PM", title: "CRICBUZZ", location: "ECE 2B CLASSROOM" },
-      { time: "02:30 PM", title: "ZEUS' SPARK", location: "4TH YEAR EEE CLASSROOM" }
+      { time: "02:00 PM", title: "SENPAI FANS", location: "3B CLASSROOM" },
+      { time: "01:30 PM", title: "TREASURE HUNT", location: "CS LAB" },
+      { time: "02:00 PM", title: "CRICBUZZ", location: "4B CLASSROOM" },
+      { time: "02:30 PM", title: "ZEUS' SPARK", location: "3A CLASSROOM" }
     ]
   },
   {
@@ -70,11 +70,62 @@ const Schedule: React.FC = () => {
             Mark your schedule for mythical innovation and collaboration. Our carefully crafted schedule ensures a perfect balance of learning, competition, and networking.
           </p>
         </div>
-        <div className="flex flex-col lg:flex-row gap-8">
-          {scheduleData.map((day, dayIndex) => (
+        
+        {/* Reminder Card */}
+        <div className="mb-12 bg-gold/10 border border-gold/40 rounded-lg p-6 shadow-lg">
+          <div className="flex items-center mb-4">
+            <Bell className="h-6 w-6 text-gold golden-glow mr-3" />
+            <h3 className="text-2xl font-cinzel font-bold text-gold">Event Reminder</h3>
+          </div>
+          <p className="text-white">
+            Don't miss our events! Online events starts before the evenet, with all other events on April 16th. 
+            Register for all the events you are  going to participate and Remember that esports, Short film  will be conducted before the symposium event. Our Team will reach you out through your mail id or phone number. Thanks for your participation.
+          </p>
+        </div>
+        
+        {/* Schedule Grid - First Row (Technical and Non-Technical) */}
+        <div className="flex flex-col md:flex-row gap-8 mb-8">
+          {scheduleData.slice(1, 3).map((day, dayIndex) => (
             <div 
               key={dayIndex}
-              className="lg:w-1/3 bg-deep-blue/50 border border-gold/30 rounded-lg overflow-hidden"
+              className="md:w-1/2 bg-deep-blue/50 border border-gold/30 rounded-lg overflow-hidden h-full"
+            >
+              <div className="bg-gold/20 p-6">
+                <h3 className="text-2xl font-cinzel font-bold text-gold">{day.day}</h3>
+                <div className="flex items-center mt-2 text-white">
+                  <Calendar className="h-4 w-4 mr-2" />
+                  <span>{day.date}</span>
+                </div>
+              </div>
+              <div className="p-6">
+                {day.events.map((event, eventIndex) => (
+                  <div 
+                    key={eventIndex}
+                    className={`mb-6 ${eventIndex !== day.events.length - 1 ? 'border-b border-gold/20 pb-6' : ''}`}
+                  >
+                    {event.time && (
+                      <div className="flex items-center mb-2">
+                        <Clock className="h-4 w-4 text-gold golden-glow mr-2" />
+                        <span className="text-gold font-medium">{event.time}</span>
+                      </div>
+                    )}
+                    <h4 className="text-lg font-cinzel font-bold text-white mb-1">{event.title}</h4>
+                    {event.location && (
+                      <p className="text-gray-400 text-sm">{event.location}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* Schedule Grid - Second Row (Workshop and Online Events) */}
+        <div className="flex flex-col md:flex-row gap-8">
+          {[scheduleData[3], scheduleData[0]].map((day, dayIndex) => (
+            <div 
+              key={dayIndex}
+              className="md:w-1/2 bg-deep-blue/50 border border-gold/30 rounded-lg overflow-hidden h-full"
             >
               <div className="bg-gold/20 p-6">
                 <h3 className="text-2xl font-cinzel font-bold text-gold">{day.day}</h3>

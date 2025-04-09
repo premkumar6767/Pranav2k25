@@ -1,8 +1,7 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Share2, Phone, Mail } from "lucide-react";
+import { ArrowLeft, Share2, Phone } from "lucide-react";
 import shortFilm from "../images/short-film.jpeg";
 import eSports from "../images/e-sports.jpg";
 import cricbuzz from "../images/sport.jpg";
