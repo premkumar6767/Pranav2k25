@@ -1,106 +1,95 @@
-.register-button {
-  display: inline-flex; /* For aligning icon and text */
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.5rem; /* Adjust padding as needed */
-  background-image: linear-gradient(to right, #facc15, #3b82f6); /* Example gradient */
-  color: white;
-  font-weight: bold;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  transition: background-image 0.3s ease;
-  margin-top: 1rem; /* Add some top margin by default */
-  margin-bottom: 1rem; /* Add some bottom margin by default */
-}
-
-.register-button:hover {
-  background-image: linear-gradient(to right, #eab308, #2563eb); /* Darker on hover */
-}
-
-.register-button svg {
-  margin-right: 0.5rem; /* Spacing between icon and text */
-}
-
-/* Ensure smooth scrolling when the anchor link is clicked */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Responsive adjustments for the register button */
-@media (min-width: 46p8x) {
-  .register-button {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-}
-
-@media (min-width: 468px) {
-  .register-button {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-}
-
-/* Styling for the share button (adjust as needed) */
+/* Common button styling */
+.register-button,
 .share-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 0.5rem;
+  font-size: 0.875rem; /* 14px base font size for mobile */
+  width: 100%; /* Full width on mobile */
+  max-width: 250px; /* Prevent buttons from getting too wide */
+}
+
+/* Register button specific styles */
+.register-button {
+  background-image: linear-gradient(to right, #facc15, #3b82f6);
+  color: white;
+}
+
+.register-button:hover {
+  background-image: linear-gradient(to right, #eab308, #2563eb);
+}
+
+/* Share button specific styles */
+.share-button {
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   color: white;
-  font-weight: bold;
-  border-radius: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .share-button:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Common icon styling */
+.register-button svg,
 .share-button svg {
   margin-right: 0.5rem;
+  width: 1rem; /* Consistent icon size */
+  height: 1rem;
 }
 
-/* Responsive layout for buttons container */
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Buttons container */
 .buttons-container {
   display: flex;
-  flex-direction: column; /* Stack on smaller screens */
+  flex-direction: column;
   align-items: center;
-  gap: 1rem; /* Spacing between buttons */
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0 1rem;
 }
 
-@media (min-width: 140px) {
+/* Responsive adjustments */
+@media (min-width: 468px) {
+  .register-button,
+  .share-button {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 640px) {
   .buttons-container {
-    flex-direction: row; /* Horizontal on larger screens */
+    flex-direction: row;
     justify-content: center;
   }
-
   
+  .register-button,
   .share-button {
-    margin-top: 0;
-    margin-bottom: 0;
+    width: auto; /* Auto width on larger screens */
+    min-width: 160px; /* Ensures buttons aren't too small */
   }
 }
-.register-button{
-  display: inline-flex;
-  align-items: center;
-  justify-content:center;
-}
-/* You might need to adjust the main content container to ensure proper spacing */
+
+/* Hero content container */
 .hero-content {
-  /* Add or adjust padding and margins as needed */
-  padding-top: 4rem; /* Example to avoid overlap with fixed header */
+  padding-top: 4rem;
   padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 100%;
 }
