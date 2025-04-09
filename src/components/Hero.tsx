@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, Calendar, MapPin, Star, ArrowDown, Share2, Instagram, Linkedin, Music, Volume2, VolumeX, Upload, File } from "lucide-react";
 import './hero.css'
+import ppt from "../../public/hackathon_merged.pdf"
 
 const Hero = () => {
   const [currentTextMode, setCurrentTextMode] = useState(0);
@@ -9,7 +10,7 @@ const Hero = () => {
   const [showTitle, setShowTitle] = useState(false);
   const [shootingStarsDone, setShootingStarsDone] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [windowSize, setWindowSize] = useState({
+  const [setWindowSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
     height: typeof window !== 'undefined' ? window.innerHeight : 0
   });
@@ -86,7 +87,7 @@ const Hero = () => {
   const handleDownloadPPT = () => {
     // This is a placeholder. In production, link to your actual file
     const link = document.createElement('a');
-    link.href = './public/hackathon_merged.pdf'; // Replace with actual path
+    link.href = ppt; // Replace with actual path
     link.download = 'PRANAV_2K25_Hackathon_Sample.pdf';
     document.body.appendChild(link);
     link.click();
