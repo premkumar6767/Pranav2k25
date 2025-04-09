@@ -63,6 +63,7 @@ const RegistrationPage: React.FC = () => {
       { id: 'Robot Craze', name: 'ROBOT CRAZE' },
       { id: 'Byte the dice', name: 'BYTE THE DICE' }, 
       { id: 'Design To Dev', name: 'DESIGN TO DEV' },
+      { id: 'Decodex', name: 'DECODEX' },
       // Added new technical event
     ],
     nonTechnical: [

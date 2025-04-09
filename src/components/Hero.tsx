@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
 import {
   Download,
   Calendar,
@@ -192,18 +193,11 @@ const Hero = () => {
   };
 
   // IMPROVED: Function to handle smooth scrolling to register section
-  const scrollToRegister = (e) => {
+  const navigate = useNavigate();
+
+  const navigateToRegister = (e) => {
     e.preventDefault();
-    const registerSection = document.getElementById("register");
-    if (registerSection) {
-      // Using both scrollIntoView for wider browser support
-      registerSection.scrollIntoView({ behavior: "smooth" });
-      
-      // For mobile devices where smooth scrolling might not work well
-      const yOffset = -80; // Adjust offset as needed
-      const y = registerSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    navigate('/register');
   };
 
   const backgroundStars = Array.from({ length: 70 }, (_, i) => ({
@@ -688,7 +682,7 @@ const Hero = () => {
               {/* IMPROVED: Register button with better mobile support */}
               <motion.button
                 className="register-button w-full sm:w-auto"
-                onClick={scrollToRegister}
+                onClick={navigateToRegister}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Register Now"
