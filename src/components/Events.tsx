@@ -104,7 +104,7 @@ const EVENTS: EventsData = {
     },
     {
       
-      id: "robotcraze",
+      id: "robot-craze",
       name:"Robot Craze",
       image: robot,
       description:
