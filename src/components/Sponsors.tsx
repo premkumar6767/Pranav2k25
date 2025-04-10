@@ -2,9 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./About.css";
 import { Star, Medal, ExternalLink, ChevronLeft, ChevronRight, Shield, Globe, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
-import SIT from "../images/SIT.png";
+import SIT from "../images/shanthi.png";
 import aml from "../images/amltech.jpeg";
-import chcomp from "../images/chennai comps.png"
+import chcomp from "../images/chennai comps.png";
+import artic from "../images/articfox.jpeg";
+import group from "../images/groupofcompanies.png"
 interface SponsorProps {
   id?: string;
 }
@@ -69,6 +71,43 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
       color: "#d4af37",
       objectFit: "contain" // Changed to contain
     },
+    {
+      name: "ARTIC FOX ",
+      title: "The Gadget Backpack -Designed Fore Every Gear, Ready For Every Move",
+      image: artic,
+      mythicalBackground: {
+        deity: "Hermes ",
+        realm: "Provider Of Technology and goodies",
+        power: "God of Technology",
+      },
+      description:"At Artic fox  we transcend the  ordinary by crafting products that elevate everyday experiences We are proudly based in Bangalore, India. We Oversee our manufacturing process to inspire and empower our dynamic customer base  we continuously push the boundaries of creativity and technology to redefine standards",
+      link: "https://arcticfox.com/",
+      heroicQuest: "Providing the best Goodies for you ",
+      achievements: ["1Year Warranty ", "secure checkout","4.77/5 Star customer reviews","Free shipping"],
+      color: "#d4af37",
+      objectFit: "contain" // Now using contain for all images
+    },
+    {
+      name: "UCON Group of Companies",
+      title: "Engineering Excellence in Construction",
+      image: group,
+      mythicalBackground: {
+        deity: "Hephaestus",
+        realm: "Celestial Forge",
+        power: "Master Craftsman of Technology and Structures"
+      },
+      description:
+        "Established in 2004, UCON Group of Companies is a leading force in India's construction industry. Under the leadership of Shri Kamalakannan M. (KK), the group operates with a dedicated team of over 500 skilled engineers and collaborates with 1,500+ structural consultants and architects nationwide. With over 8,500 projects completed, UCON is recognized for excellence in structural systems, post-tensioning, foundation engineering, and infrastructure projects like metro rails and suspension bridges.",
+      link: "https://www.uconpt.com/",
+      heroicQuest: "Shaping the nation’s infrastructure with innovation and precision.",
+      achievements: [
+        "8,500+ Projects Completed",
+        "850 Million sq. ft. PT Slab Area Covered",
+        "Trusted by 1,500+ Consultants & Architects"
+      ],
+      color: "#d4af37",
+      objectFit: "contain"
+    }
   ];
 
   useEffect(() => {
