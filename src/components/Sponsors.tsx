@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./About.css";
 import { Star, Medal, ExternalLink, ChevronLeft, ChevronRight, Shield, Globe, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
-import SIT from "../images/shanthi.png";
+import SIT from "../images/shanti.jpeg";
 import aml from "../images/amltech.jpeg";
 import chcomp from "../images/chennai comps.png";
 import artic from "../images/articfox.jpeg";
