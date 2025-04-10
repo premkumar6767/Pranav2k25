@@ -649,7 +649,7 @@ const EventDetail = () => {
           </button>
           <button
             onClick={shareEvent}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition transform hover:scale-105 border-b-4 border-blue-800 w-full sm:w-auto"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-16 py-3 rounded-lg font-bold flex items-center gap-2 transition transform hover:scale-105 border-b-4 border-blue-800 w-full sm:w-auto"
           >
             <Share2 className="w-5 h-5" /> Spread the Word
           </button>
