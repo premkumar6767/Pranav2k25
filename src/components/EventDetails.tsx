@@ -70,7 +70,7 @@ const events = {
         "Judge’s decisions are final; any misconduct will lead to disqualification.",
       ],
       details:
-        "🔹 ROUND 1: Ideation and Proposal Presentation\n" +
+        "🔹 ROUND 1: Ideation and Proposal Presentation\n\n" +
         "Participants will conceptualize and present innovative solutions to predefined domains. This round includes:\n" +
         "• Problem Statement Analysis\n" +
         "• Solution Ideation\n" +
@@ -88,11 +88,15 @@ const events = {
         "• Game Development\n" +
         "• Virtual Reality\n\n" +
         "📤 PRESENTATION FORMAT & SUBMISSION:\n" +
-        "Submit your presentation (PPT or PDF) to the mentioned email. Template and submission link will be shared soon.\n\n" +
-        "Top 10 teams with the highest scores in Round 1 will proceed to the final round.\n\n" +
-        "🔹 ROUND 2: Prototype/Simulation Development\n" +
-        "Shortlisted teams will receive a problem statement on the spot. They must develop a prototype or simulation based on it within the allotted time.\n\n" +
-        "📍 Venue: Hall A\nParticipants must report 30 minutes before their scheduled time with their presentation ready on a USB drive.",
+        "Submit your presentation (PPT or PDF) to the mentioned email.\n" +
+        "Template and submission link will be shared soon.\n\n" +
+        "✅ Top 10 teams with the highest scores in Round 1 will proceed to the final round.\n\n" +
+        "🔹 ROUND 2: Prototype/Simulation Development\n\n" +
+        "Shortlisted teams will receive a problem statement on the spot.\n" +
+        "They must develop a prototype or simulation based on it within the allotted time.\n\n" +
+        "📍 Venue: Hall A\n" +
+        "🕒 Participants must report 30 minutes before their scheduled time\n" +
+        "with their presentation ready on a USB drive.",
       coordinators: [
         {
           name: "Aadhitya S V",
@@ -591,6 +595,7 @@ const EventDetail = () => {
           style={{ backgroundImage: "url(/images/greek-column-right.png)" }}
         ></div>
       </div>
+      
 
       {/* Olympian Scroll Container */}
       <div
@@ -723,7 +728,7 @@ const EventDetail = () => {
             )}
 
             {activeTab === "details" && (
-              <div>
+              <div className="whitespace-pre-wrap text-sm">
                 <h3 className="text-xl font-bold text-amber-300 mb-3 font-serif">
                   Event Details
                 </h3>
