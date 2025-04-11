@@ -389,32 +389,32 @@ const events = {
     },
     {
       title: "Robot Craze",
-      image: robot,
+      image: robot, // replace with actual image reference
       description:
-        "An action-packed game where players control robots in various sci-fi challenges, focusing on battles, strategy, and customization.",
+        "A thrilling robotics showdown featuring quiz rounds, rover races, and intense mini soccer matches using Bluetooth-controlled robots.",
       teamSize: "3-4",
-      timing: "April 16th 10:30AM to 12:00PM & 2:00PM to 3:30 PM",
+      timing: "April 16th, 10:30 AM to 12:00 PM & 2:00 PM to 3:30 PM",
       about:
-        "Players control customizable robots either individually or in teams to complete missions or defeat opponents using tactics and combat strategies.",
+        "Fuel your passion for robotics and battle it out in Robo Craze — a high-energy, tech-packed event where knowledge, control, and strategy collide. Teams will compete in multiple rounds to test their technical know-how, driving skills, and gameplay tactics.",
       rules: [
-        "Arrive at the venue on time and ensure you're settled accordingly.",
-        "Stick to the time limit allocated so that you won't miss the event.",
-        "Maintain professional body language, clarity in speech, and confidence while communicating.",
-        "Teams should have 3-4 members.",
-        "Clicking photos should be informed to the coordinator beforehand to avoid unnecessary issues.",
+        "Participants must arrive at the venue on time and be ready before the rounds begin.",
+        "Strict adherence to time slots is required to ensure smooth conduct of the event.",
+        "Maintain professionalism, clarity in communication, and teamwork throughout.",
+        "Each team must consist of 3-4 members.",
+        "Inform the event coordinator before taking any photos or recordings."
       ],
       details:
-        "Players can customize their robots with different weapons, armor, and abilities to match their playstyle. Combat includes lasers, missiles, and melee attacks. Victory is achieved by completing missions or defeating all opponents. Points are also awarded for achievements.",
+        "The event includes three main rounds:\n\n1. Tech Check (Quiz Round) – A fast-paced quiz testing participants' knowledge of electronics, microcontrollers, motor drivers, and Bluetooth modules.\n\n2. **Rover Rush (Race Round)** – Navigate a Bluetooth-controlled rover through a challenging obstacle course where speed and control are crucial.\n\n3. **Robo Soccer Showdown** – Teams compete in a mini soccer match using their rovers to score goals. Precision, coordination, and team strategy will determine the winner.",
       coordinators: [
         {
-          name: "Abishek", // You can replace this with actual coordinator name
-          phone: "9488271971",
+          name: "Abishek",
+          phone: "9488271971"
         },
         {
           name: "Naresh M",
-          phone: "8098504465",
-        },
-      ],
+          phone: "8098504465"
+        }
+      ]
     },
     {
       title: "Cricbuzz",
@@ -474,7 +474,6 @@ const events = {
         {
           name: "Jaisurya S",
           phone: "7708310607",
-          email: "sjaisurya2005@gmail.com",
         },
       ],
     },
@@ -501,7 +500,7 @@ const events = {
         "Participants will receive match schedules and lobby details via Discord before the tournament begins. Ensure your game account is ready and updated before the event.",
       coordinators: [
         {
-          name: "Chatriyan U9943880362",
+          name: "Chatriyan",
           phone: "8877665511",
         },
       ],
