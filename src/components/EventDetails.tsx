@@ -94,7 +94,7 @@ const events = {
         "🔹 ROUND 2: Prototype/Simulation Development\n\n" +
         "Shortlisted teams will receive a problem statement on the spot.\n" +
         "They must develop a prototype or simulation based on it within the allotted time.\n\n" +
-        "📍 Venue: Hall A\n" +
+        "📍 Venue: LIC LAB\n" +
         "🕒 Participants must report 30 minutes before their scheduled time\n" +
         "with their presentation ready on a USB drive.",
       coordinators: [

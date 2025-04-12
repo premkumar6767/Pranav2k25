@@ -100,7 +100,7 @@ const EVENTS: EventsData = {
         "Decision of the judges will be final and binding.",
       ],
       details:
-        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report 30 minutes before their scheduled time.",
+        "The event will be conducted in LIC LAB. Participants must bring their presentation on a USB drive and report 30 minutes before their scheduled time.",
     },
     {
       
