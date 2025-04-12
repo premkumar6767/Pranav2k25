@@ -341,6 +341,7 @@ const events = {
       about:
         "Teams will solve riddles and navigate through multiple checkpoints to uncover the hidden treasure. The fastest team to complete all challenges wins.",
         rules: [
+          "Each team should have atleast one pen with them.",
           "Team Size: Maximum of 5 members per team.",
           "No phones or gadgets allowed. This is a no-tech zone – it’s all about brains and luck.",
           "All rounds are time-bound. Don’t delay or you'll be eliminated!",
