@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Share2, Phone } from "lucide-react";
 import shortFilm from "../images/short-film.jpeg";
 import eSports from "../images/e-sports.jpg";
+import decode from "../images/decoodexx.jpeg";
 import cricbuzz from "../images/sport.jpg";
 import droneWorkshop from "../images/drone-workshop.webp";
 import paperPresentation from "../images/Paper-presentaion.jpeg";
 import wiredWonders from "../images/Wired-Wonders.jpeg";
 import roleAndDice from "../images/Halt-the-dice.jpeg";
 import designedToDev from "../images/Design2dev.jpeg";
-import reverseCoding from "../images/Decodex.jpeg";
 import ojingeoGame from "../images/Ojngeo.jpeg";
 import animeQuiz from "../images/Senpai-fans.jpeg";
 import auralBliss from "../images/Aural-Bliss.jpeg";
@@ -141,7 +141,8 @@ const events = {
     },
     {
       title: "DecodeX",
-      image: reverseCoding,
+      image: decode,
+      objectFit: "contain",
       description:
         "Deconstruct and debug pre-written code to reveal its intended functionality.",
       teamSize: "2-4",
@@ -149,23 +150,22 @@ const events = {
       about:
         "Participants will be given obfuscated or scrambled code snippets and will need to reverse engineer them to understand their logic. The goal is to identify errors, optimize the code, and restore its original functionality.",
       rules: [
-        "Each team will receive multiple code snippets that need to be debugged and reconstructed.",
-        "Programming languages allowed: C, C++, Python, and Java.",
-        "Participants must provide comments and explanations for their solutions.",
+        "Programming languages allowed: C, Python.",
         "Marks will be based on correctness, efficiency, and explanation clarity.",
-        "Use of online compilers or external help is strictly prohibited.",
+        "Online Compilers can be used   ",
         "Final submissions must be in text or code file format.",
         "Judging will consider code quality, logic, and optimization techniques used.",
       ],
-      details:
-        "The event will be conducted in Coding Lab 2. Participants should bring their own laptops if required.",
+      
+
+      details: "The event will be conducted in IT common lab.\n\n• Round 1: Rapid Fire Tech Quiz –\n  - Buzzer-based quiz on C and Python fundamentals.\n  - 20 questions including theory, output predictions, and syntax.\n  - First correct team gets points.\n  - Top 10 teams advance.\n\n• Round 2: Code Charades –\n  - Coding-themed dumb charades.\n  - One member acts out programming terms, others guess.\n  - Top scoring teams proceed.\n\n• Round 3: Code & Conquer –\n  - Write code to replicate displayed output pattern.\n  - Judged on correctness, efficiency, and execution time.\n\n• Prizes:\n  🥇 Rs. 1500\n  🥈 Rs. 1000\n  🥉 Rs. 500",
       coordinators: [
         {
           name: "Barath A",
           phone: "9043057100",
         },
         {
-          name: "Peranandhan",
+          name: "Peranandan",
           phone: "7010893206",
         },
       ],

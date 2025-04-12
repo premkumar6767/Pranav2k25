@@ -6,6 +6,7 @@ import SIT from "../images/shanti.jpeg";
 import aml from "../images/amltech.jpeg";
 import chcomp from "../images/chennai comps.png";
 import artic from "../images/articfox.jpeg";
+import uniq from "../images/uniq.jpeg"
 import group from "../images/groupofcompanies.png"
 interface SponsorProps {
   id?: string;
@@ -51,6 +52,23 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
       link: "https://shanthiitsolution.com/",
       heroicQuest: "Empowering businesses through digital innovation",
       achievements: ["Innovation Leader", "Digital Transformation Award"],
+      color: "#c0a86e",
+      objectFit: "contain" // Changed to contain
+    },
+    {
+      name: "UNIQ TECHNOLOGIES",
+      title: "Service| Development| Consultancy",
+      image: uniq,
+      mythicalBackground: {
+        deity: "Athena",
+        realm: "Strategic Intelligence",
+        power: "Goddess of Wisdom and Technology",
+      },
+      description:
+        "Providing innovative IT solutions since 2020, driving digital transformation in Kurnool and beyond.",
+      link: "https://uniqtechnologies.co.in",
+      heroicQuest: "Empowering businesses through digital innovation",
+      achievements: ["Network Solutions", "Testing services"],
       color: "#c0a86e",
       objectFit: "contain" // Changed to contain
     },
