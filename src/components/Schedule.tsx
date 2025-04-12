@@ -28,7 +28,7 @@ const scheduleData: ScheduleDay[] = [
     date: "APRIL 16, 2025",
     events: [
       { time: "10:00 AM to 1:00PM", title: "PAPER PRESENTATION", location: "KRS SEMINAR HALL FIRST FLOOR" },
-      { time: "08:30 AM", title: "HACKATHON", location: "DSP LAB" },
+      { time: "08:30 AM", title: "HACKATHON", location: "LIC LAB" },
       { time: "10:00 AM to 12:00PM & 2:00Pm to 3:00PM", title: "WIRED WONDERS", location: "EDC LAB FIRST FLOOR" },
       { time: "10:30 AM to 12:00Pm & 2:00 to 3:30PM", title: "ROBOT CRAZE", location: "ECE 2A GROUND FLOOR" },
       { time: "11:00 - 12:30 & 2:00 to 3:30", title: "BYTE THE DICE", location: "EEE 3RD FIRST FLOOR" },
