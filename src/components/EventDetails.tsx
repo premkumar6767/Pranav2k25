@@ -40,7 +40,7 @@ const events = {
         "Decision of the judges will be final and binding.",
       ],
       details:
-        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report **30 minutes before their scheduled time.",
+        "The event will be conducted in Hall A. Participants must bring their presentation on a USB drive and report 30 minutes before their scheduled time.",
       coordinators: [
         {
           name: "KS Kishore",
@@ -210,23 +210,31 @@ const events = {
       teamSize: "3-4",
       timing: "April 16th 10:00AM to 12:30PM ",
       about:
-        "This event focuses on transforming UI/UX designs into functional web applications through creativity and coding.",
+        "This event focuses on transforming creative UI/UX designs into real-world web applications. Participants will showcase both their design thinking and development skills by working through two rounds using tools like Figma/Canva for design and HTML, CSS, and JavaScript for development.",
       rules: [
-        "Each team must consist of 3-4 members.",
-        "Participants must first create a UI/UX design before proceeding to development.",
-        "UI/UX designs must be made using either Figma or Canva.",
-        "The final website implementation must use HTML, CSS, and JavaScript.",
-        "Teams will be given a limited time frame to complete their projects.",
-        "Judges will evaluate based on creativity, functionality, and responsiveness.",
-        "Plagiarized or copied designs will result in disqualification.",
-        "All team members must contribute to both design and development.",
+        "Teams must consist of 2 to 3 members.",
+        "All team members must actively contribute to both design and development.",
+        "All work must be completed within the given time frame during the event.",
+        "AI tools may only be used for minor enhancements. Complete AI-generated designs or code are not allowed.",
+        "Submissions must be original. Plagiarism will lead to disqualification.",
+        "Designs must creatively follow the assigned theme.",
+        "The website must include working interactive elements.",
+        "Entries will be judged on creativity, functionality, and responsiveness.",
       ],
       details:
-        "The event consists of two rounds: UI Design Challenge (designing a website in Figma/Canva) and Development Challenge (converting the design into a working website).",
+        "The event consists of two rounds:\n" +
+        "Round 1: UI Design Challenge – Design a theme-based website prototype in Figma or Canva.\n" +
+        "➤ The theme will be given on the spot.\n" +
+        "➤ Teams must complete an original design from scratch.\n" +
+        "➤ AI tools are not allowed in this round.\n\n" +
+        "Round 2: Development Challenge – Convert your design into a responsive and functional website using HTML, CSS, and JavaScript.\n" +
+        "➤ The final site must be responsive and reflect the original design.\n" +
+        "➤ Teams can use any code editor or framework, but must stick to HTML, CSS, and JavaScript.\n" +
+        "➤ AI tools may be used for minor enhancements or assistance, but complete code generation is not allowed.",
       coordinators: [
         {
-          name: " Prem Kumar M",
-          phone: "7448631031",
+          name: "Prem Kumar M",
+          phone: "74486 31031",
         },
       ],
     },
@@ -327,34 +335,34 @@ const events = {
       title: "Treasure Hunt",
       image: treasureHunt,
       description:
-        "Solve cryptic clues and uncover hidden treasures across the campus. An adventurous race against time and opponents!",
-      teamSize: "3-5",
+        "Get ready to unleash your inner explorer! Treasure Hunt is back – louder, wilder, and full of brain-twisting surprises! With 3 crazy fun rounds, this ain’t your average run-around-the-campus kind of game. We’re talking riddles, dice drama, puzzle madness, and a race to grab gold coins like your life depends on it.",
+      teamSize: "Up to 5 members",
       timing: "April 16th 2:00PM to 4:00 PM",
       about:
-        "Teams will solve riddles and navigate through multiple checkpoints to uncover the hidden treasure. The fastest team to complete all challenges wins.",
+        "Round 1 – Code of Clues: You’ll face 3 quirky questions – not your typical quiz stuff. Think Tamil cinema hints, Clue Chronicles, and cartoon chaos! Each one comes in a different format and must be decoded fast – it's a time-based round!\n\nRound 2 – Dice Dungeons: Pure chance meets chaos! Roll the dice to collect puzzle pieces, but be careful – some rolls might make you lose a piece or skip a turn. Complete your puzzle first to move on!\n\nRound 3 – *The Golden Chase*: The ultimate treasure rush! Hunt for golden coins hidden all over the building. Fill your treasure box – but beware... there’s a surprise twist waiting!",
       rules: [
-        "Each team consists of 3-5 members.",
-        "Teams must follow the clue sequence provided at each checkpoint.",
-        "The use of mobile phones or external help is strictly prohibited.",
-        "Each checkpoint must be completed before moving to the next location.",
-        "A team caught tampering with clues or misguiding others will be disqualified.",
-        "All team members must stay together during the hunt.",
-        "Teams must respect campus rules and avoid disturbing other events.",
-        "The winning team is determined by the fastest completion time.",
+        "Team Size: Maximum of 5 members per team.",
+        "No phones or gadgets allowed. This is a no-tech zone – it’s all about brains and luck.",
+        "All rounds are time-bound. Don’t delay or you'll be eliminated!",
+        "Volunteers’ instructions must be followed strictly. Ignoring them means disqualification.",
+        "Do not tamper with other teams’ clues or game items. Play fair.",
+        "No running in unsafe zones. Safety comes first.",
+        "Hidden Twist Alert: One round has a surprise twist. Stay sharp!",
+        "Most importantly – Have fun and go wild!"
       ],
       details:
-        "Participants will receive their first clue at the starting point. Each clue leads to a hidden location where the next clue awaits. The final clue will guide the team to the treasure.",
+        "Three thrilling rounds of pure madness: crack quirky clues, roll dice with fate, and chase down hidden treasures. The team that outsmarts the chaos and grabs the gold takes the win!",
       coordinators: [
         {
           name: "Madhan Raj M",
           phone: "91760 70805",
         },
         {
-          name: " Monish",
+          name: "Monish",
           phone: "8877665544",
         },
       ],
-    },
+    },  
     {
       title: "Zeus' Spark",
       image: zeusspark,
@@ -401,20 +409,20 @@ const events = {
         "Strict adherence to time slots is required to ensure smooth conduct of the event.",
         "Maintain professionalism, clarity in communication, and teamwork throughout.",
         "Each team must consist of 3-4 members.",
-        "Inform the event coordinator before taking any photos or recordings."
+        "Inform the event coordinator before taking any photos or recordings.",
       ],
       details:
         "The event includes three main rounds:\n\n1. Tech Check (Quiz Round) – A fast-paced quiz testing participants' knowledge of electronics, microcontrollers, motor drivers, and Bluetooth modules.\n\n2. **Rover Rush (Race Round)** – Navigate a Bluetooth-controlled rover through a challenging obstacle course where speed and control are crucial.\n\n3. **Robo Soccer Showdown** – Teams compete in a mini soccer match using their rovers to score goals. Precision, coordination, and team strategy will determine the winner.",
       coordinators: [
         {
           name: "Abishek",
-          phone: "9488271971"
+          phone: "9488271971",
         },
         {
           name: "Naresh M",
-          phone: "8098504465"
-        }
-      ]
+          phone: "8098504465",
+        },
+      ],
     },
     {
       title: "Cricbuzz",
@@ -594,7 +602,6 @@ const EventDetail = () => {
           style={{ backgroundImage: "url(/images/greek-column-right.png)" }}
         ></div>
       </div>
-      
 
       {/* Olympian Scroll Container */}
       <div
