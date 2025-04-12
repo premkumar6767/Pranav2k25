@@ -57,7 +57,7 @@ const RegistrationPage: React.FC = () => {
   const EVENTS = {
     technical: [
       { id: 'Paper Presentation', name: 'PAPER PRESENTATION' },
-      { id: 'Project expo/Hackathon', name: 'PROJECT EXPO/HACKATHON' },
+      { id: 'Project expo/Hackathon', name: 'HACKATHON' },
       { id: 'Wired-WOnders', name: 'WIRED WONDERS' },
       { id: 'Robot Craze', name: 'ROBOT CRAZE' },
       { id: 'Byte the dice', name: 'BYTE THE DICE' }, 
