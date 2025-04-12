@@ -335,34 +335,34 @@ const events = {
       title: "Treasure Hunt",
       image: treasureHunt,
       description:
-        "Get ready to unleash your inner explorer! Treasure Hunt is back – louder, wilder, and full of brain-twisting surprises! With 3 crazy fun rounds, this ain’t your average run-around-the-campus kind of game. We’re talking riddles, dice drama, puzzle madness, and a race to grab gold coins like your life depends on it.",
-      teamSize: "Up to 5 members",
+        "Solve cryptic clues and uncover hidden treasures across the campus. An adventurous race against time and opponents!",
+      teamSize: "3-5",
       timing: "April 16th 2:00PM to 4:00 PM",
       about:
-        "Round 1 – Code of Clues: You’ll face 3 quirky questions – not your typical quiz stuff. Think Tamil cinema hints, Clue Chronicles, and cartoon chaos! Each one comes in a different format and must be decoded fast – it's a time-based round!\n\nRound 2 – Dice Dungeons: Pure chance meets chaos! Roll the dice to collect puzzle pieces, but be careful – some rolls might make you lose a piece or skip a turn. Complete your puzzle first to move on!\n\nRound 3 – *The Golden Chase*: The ultimate treasure rush! Hunt for golden coins hidden all over the building. Fill your treasure box – but beware... there’s a surprise twist waiting!",
-      rules: [
-        "Team Size: Maximum of 5 members per team.",
-        "No phones or gadgets allowed. This is a no-tech zone – it’s all about brains and luck.",
-        "All rounds are time-bound. Don’t delay or you'll be eliminated!",
-        "Volunteers’ instructions must be followed strictly. Ignoring them means disqualification.",
-        "Do not tamper with other teams’ clues or game items. Play fair.",
-        "No running in unsafe zones. Safety comes first.",
-        "Hidden Twist Alert: One round has a surprise twist. Stay sharp!",
-        "Most importantly – Have fun and go wild!"
-      ],
+        "Teams will solve riddles and navigate through multiple checkpoints to uncover the hidden treasure. The fastest team to complete all challenges wins.",
+        rules: [
+          "Team Size: Maximum of 5 members per team.",
+          "No phones or gadgets allowed. This is a no-tech zone – it’s all about brains and luck.",
+          "All rounds are time-bound. Don’t delay or you'll be eliminated!",
+          "Volunteers’ instructions must be followed strictly. Ignoring them means disqualification.",
+          "Do not tamper with other teams’ clues or game items. Play fair.",
+          "No running in unsafe zones. Safety comes first.",
+          "Hidden Twist Alert: One round has a surprise twist. Stay sharp!",
+          "Most importantly – Have fun and go wild!"
+        ],
       details:
-        "Three thrilling rounds of pure madness: crack quirky clues, roll dice with fate, and chase down hidden treasures. The team that outsmarts the chaos and grabs the gold takes the win!",
+        "Participants will receive their first clue at the starting point. Each clue leads to a hidden location where the next clue awaits. The final clue will guide the team to the treasure.\n\n Round 1 – Code of Clues: You’ll face 3 quirky questions – not your typical quiz stuff. Think Tamil cinema hints, Clue Chronicles, and cartoon chaos! Each one comes in a different format and must be decoded fast – it's a time-based round!\n\nRound 2 – Dice Dungeons: Pure chance meets chaos! Roll the dice to collect puzzle pieces, but be careful – some rolls might make you lose a piece or skip a turn. Complete your puzzle first to move on!\n\nRound 3 – The Golden Chase: The ultimate treasure rush! Hunt for golden coins hidden all over the building. Fill your treasure box – but beware... there’s a surprise twist waiting!",
       coordinators: [
         {
           name: "Madhan Raj M",
           phone: "91760 70805",
         },
         {
-          name: "Monish",
+          name: " Monish",
           phone: "8877665544",
         },
       ],
-    },  
+    },
     {
       title: "Zeus' Spark",
       image: zeusspark,

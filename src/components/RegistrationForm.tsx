@@ -59,7 +59,6 @@ const RegistrationPage: React.FC = () => {
       { id: 'Paper Presentation', name: 'PAPER PRESENTATION' },
       { id: 'Project expo/Hackathon', name: 'PROJECT EXPO/HACKATHON' },
       { id: 'Wired-WOnders', name: 'WIRED WONDERS' },
-      { id: 'Roll and dice', name: 'ROLL AND DICE' },
       { id: 'Robot Craze', name: 'ROBOT CRAZE' },
       { id: 'Byte the dice', name: 'BYTE THE DICE' }, 
       { id: 'Design To Dev', name: 'DESIGN TO DEV' },
@@ -67,12 +66,12 @@ const RegistrationPage: React.FC = () => {
       // Added new technical event
     ],
     nonTechnical: [
-      { id: 'Anime ', name: 'ANIME AND MANGA' },
+      { id: 'Anime ', name: 'SENPAI FANS' },
       { id: 'Aural Bliss', name: 'AURAL BLISS' },
       { id: 'TreasureHunt', name: 'TREASURE HUNT' },
       { id: 'SportsBz', name: 'SPORTS BUZZ' },
       { id: 'OjingeoGame', name: 'OJINGEO GAME' },
-      { id: 'ZeusPark', name: 'ZEUS PARK' }, // Added new non-technical event
+      { id: 'ZeusPark', name: 'ZEUS SPARK' }, // Added new non-technical event
     ],
     workshop: [
       { id: 'DRONE ', name: 'DRONE WORKSHOP' },
