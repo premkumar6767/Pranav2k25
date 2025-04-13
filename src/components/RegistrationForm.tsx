@@ -14,6 +14,8 @@ interface Participant {
 interface Event {
   id: string;
   name: string;
+  closed?: boolean;  // New property to track closed registration
+  closedReason?: string; // Optional reason why registration is closed
 }
 
 interface FormErrors {
@@ -53,7 +55,7 @@ const RegistrationPage: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string>('');
   const [currentStep, setCurrentStep] = useState<number>(1);
 
-  // Events data (Updated with new events)
+  // Events data (Updated with closed event status)
   const EVENTS = {
     technical: [
       { id: 'Paper Presentation', name: 'PAPER PRESENTATION' },
@@ -63,7 +65,6 @@ const RegistrationPage: React.FC = () => {
       { id: 'Byte the dice', name: 'BYTE THE DICE' }, 
       { id: 'Design To Dev', name: 'DESIGN TO DEV' },
       { id: 'Decodex', name: 'DECODEX' },
-      // Added new technical event
     ],
     nonTechnical: [
       { id: 'Anime ', name: 'SENPAI FANS' },
@@ -71,14 +72,20 @@ const RegistrationPage: React.FC = () => {
       { id: 'TreasureHunt', name: 'TREASURE HUNT' },
       { id: 'SportsBz', name: 'SPORTS BUZZ' },
       { id: 'OjingeoGame', name: 'OJINGEO GAME' },
-      { id: 'ZeusPark', name: 'ZEUS SPARK' }, // Added new non-technical event
+      { id: 'ZeusPark', name: 'ZEUS SPARK' },
     ],
     workshop: [
       { id: 'DRONE ', name: 'DRONE WORKSHOP' },
     ],
     onlineevents: [
       { id: 'shortfilm ', name: 'SHORT FILM' },
-      { id: 'esports ', name: 'E-sports(FreeFire)' },
+      { 
+        id: 'esports ', 
+        name: 'E-sports(FreeFire)', 
+        closed: true, 
+        closedReason: 'Registration closed on April 10, 2025'
+      },
+      // Add any other closed events here with similar format
     ],
   };
 
@@ -108,8 +115,10 @@ const RegistrationPage: React.FC = () => {
     }
   };
 
-  // Event selection toggle
-  const toggleEventSelection = (eventId: string) => {
+  // Event selection toggle - Modified to prevent selecting closed events
+  const toggleEventSelection = (eventId: string, isClosed: boolean) => {
+    if (isClosed) return; // Prevent selecting closed events
+    
     setSelectedEvents(prev =>
       prev.includes(eventId)
         ? prev.filter((id) => id !== eventId)
@@ -255,7 +264,9 @@ const RegistrationPage: React.FC = () => {
     cardSubheader: "font-medium text-lg mb-3 text-amber-300 font-serif",
     inputField: "w-full px-3 py-2 bg-gray-700 border-b-2 border-amber-500 text-gray-100 focus:outline-none focus:border-amber-300 rounded-md transition duration-300 placeholder-gray-400",
     checkbox: "form-checkbox h-5 w-5 text-amber-500 border-amber-500",
+    checkboxDisabled: "form-checkbox h-5 w-5 text-gray-600 border-gray-600 opacity-50 cursor-not-allowed",
     label: "text-amber-200 mb-2 font-medium",
+    labelDisabled: "text-gray-500 mb-2 font-medium cursor-not-allowed",
     btn: "px-6 py-2 bg-amber-600 text-gray-900 font-bold rounded-md hover:bg-amber-500 hover:shadow-md hover:shadow-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-opacity-50 transition-all duration-300",
     btnSecondary: "px-6 py-2 bg-gray-700 text-amber-400 font-bold rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-opacity-50 transition-all duration-300",
     btnDanger: "text-red-400 hover:text-red-300 focus:outline-none font-medium",
@@ -269,7 +280,38 @@ const RegistrationPage: React.FC = () => {
     noticeBox: "p-4 bg-gray-700 border border-amber-500 rounded-md text-gray-300",
     successBox: "bg-gray-800 border-2 border-amber-500 rounded-lg p-6 mb-8",
     successHeader: "text-xl font-bold mb-4 text-amber-400 font-serif",
-    tableHeader: "p-2 border-b border-amber-500 text-left text-amber-400 font-serif"
+    tableHeader: "p-2 border-b border-amber-500 text-left text-amber-400 font-serif",
+    closedEvent: "text-red-400 text-xs ml-2 italic"
+  };
+
+  // Function to render an event checkbox with closed status handling
+  const renderEventCheckbox = (event: Event, index: number) => {
+    const isClosed = event.closed === true;
+    return (
+      <div key={event.id} className="flex items-center mb-2">
+        <input
+          type="checkbox"
+          id={event.id}
+          className={isClosed ? greekStyles.checkboxDisabled : greekStyles.checkbox}
+          value={event.id}
+          checked={selectedEvents.includes(event.id)}
+          onChange={() => toggleEventSelection(event.id, isClosed)}
+          disabled={isClosed}
+        />
+        <label
+          htmlFor={event.id}
+          className={isClosed ? greekStyles.labelDisabled : greekStyles.label}
+          style={{ marginLeft: '0.5rem' }}
+        >
+          {event.name}
+          {isClosed && (
+            <span className={greekStyles.closedEvent}>
+              {event.closedReason || "Registration closed"}
+            </span>
+          )}
+        </label>
+      </div>
+    );
   };
 
   // Render function for the first step
@@ -305,94 +347,22 @@ const RegistrationPage: React.FC = () => {
         {/* Technical Events */}
         <div className="mb-6">
           <h3 className={greekStyles.subheaderText}>Technical Events</h3>
-          {EVENTS.technical.map((event) => (
-            <div key={event.id} className="flex items-center mb-2">
-              <input
-                type="checkbox"
-                id={event.id}
-                className={greekStyles.checkbox}
-                value={event.id}
-                checked={selectedEvents.includes(event.id)}
-                onChange={() => toggleEventSelection(event.id)}
-              />
-              <label
-                htmlFor={event.id}
-                className={greekStyles.label}
-                style={{ marginLeft: '0.5rem' }}
-              >
-                {event.name}
-              </label>
-            </div>
-          ))}
+          {EVENTS.technical.map((event, index) => renderEventCheckbox(event, index))}
         </div>
         {/* Non-Technical Events */}
         <div className="mb-6">
           <h3 className={greekStyles.subheaderText}>Non-Technical Events</h3>
-          {EVENTS.nonTechnical.map((event) => (
-            <div key={event.id} className="flex items-center mb-2">
-              <input
-                type="checkbox"
-                id={event.id}
-                className={greekStyles.checkbox}
-                value={event.id}
-                checked={selectedEvents.includes(event.id)}
-                onChange={() => toggleEventSelection(event.id)}
-              />
-              <label
-                htmlFor={event.id}
-                className={greekStyles.label}
-                style={{ marginLeft: '0.5rem' }}
-              >
-                {event.name}
-              </label>
-            </div>
-          ))}
+          {EVENTS.nonTechnical.map((event, index) => renderEventCheckbox(event, index))}
         </div>
         {/* Workshops */}
         <div className="mb-6">
           <h3 className={greekStyles.subheaderText}>Workshops</h3>
-          {EVENTS.workshop.map((event) => (
-            <div key={event.id} className="flex items-center mb-2">
-              <input
-                type="checkbox"
-                id={event.id}
-                className={greekStyles.checkbox}
-                value={event.id}
-                checked={selectedEvents.includes(event.id)}
-                onChange={() => toggleEventSelection(event.id)}
-              />
-              <label
-                htmlFor={event.id}
-                className={greekStyles.label}
-                style={{ marginLeft: '0.5rem' }}
-              >
-                {event.name}
-              </label>
-            </div>
-          ))}
+          {EVENTS.workshop.map((event, index) => renderEventCheckbox(event, index))}
         </div>
         {/* Online Events */}
         <div className="mb-6">
           <h3 className={greekStyles.subheaderText}>Online Events</h3>
-          {EVENTS.onlineevents.map((event) => (
-            <div key={event.id} className="flex items-center mb-2">
-              <input
-                type="checkbox"
-                id={event.id}
-                className={greekStyles.checkbox}
-                value={event.id}
-                checked={selectedEvents.includes(event.id)}
-                onChange={() => toggleEventSelection(event.id)}
-              />
-              <label
-                htmlFor={event.id}
-                className={greekStyles.label}
-                style={{ marginLeft: '0.5rem' }}
-              >
-                {event.name}
-              </label>
-            </div>
-          ))}
+          {EVENTS.onlineevents.map((event, index) => renderEventCheckbox(event, index))}
         </div>
         {formErrors.events && (
           <p className={greekStyles.errorText}>{formErrors.events}</p>
