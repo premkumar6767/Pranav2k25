@@ -430,31 +430,25 @@ const events = {
       image: cricbuzz,
       description:
         "A series of mini sports challenges and quizzes for sports enthusiasts.",
-      timing: "Day 2 - 2:00 PM to 4:00 PM",
+      timing: "April 16th - 2:00 PM to 4:00 PM",
       teamSize: "2-3",
       about:
-        "Sports Buzz is a combination of physical mini-games and sports knowledge quizzes. Test your athletic abilities and sports trivia in this exciting event!",
+        "Cricbuzz is designed for cricket and sports lovers! This event challenges your knowledge of sports and puts your strategic thinking to the test with two exciting rounds: a quiz and a squad selection round.",
       rules: [
-        "Teams will participate in both physical challenges and sports quizzes.",
-        "Each team must have 2-3 members who will participate in different activities.",
-        "Physical challenges include mini versions of popular sports.",
-        "Quiz sections cover international sports, championships, and famous athletes.",
-        "Points from both physical challenges and quizzes will be aggregated.",
-        "Teams must wear appropriate sportswear for the physical challenges.",
-        "Use of external reference material during quizzes is prohibited.",
+        "The event consists of two exciting rounds.\n\n In Round 1, teams will face a sports quiz covering various aspects of sports knowledge. From this round, only the top 8 teams will qualify for Round 2. \n\nIn the final round, teams will take part in a unique squad selection challenge, where they will be given different scenarios and must build their best possible team. The winners will be declared based on the total points earned in Round 2. Each team should consist of 2 to 3 members. Use of mobile phones or any external help during the quiz is strictly prohibited. Teams are expected to maintain discipline and demonstrate fair play throughout the event.",
       ],
       details:
-        "The event will be held at the college sports complex. Teams should arrive 30 minutes before the scheduled time for registration and briefing.",
-      coordinators: [
-        {
-          name: "Hariharan ",
-          phone: "63794 25941",
-        },
-        {
-          name: "Mahider ",
-          phone: "8765432188",
-        },
-      ],
+        "The event will be conducted in two round. Teams must report 30 minutes prior to the event start time for briefing and attendance.",
+        coordinators: [
+          {
+            name: "Hariharan",
+            phone: "63794 25941",
+          },
+          {
+            name: "Mahider",
+            phone: "8765432188",
+          }
+        ],
     },
   ],
   online: [
