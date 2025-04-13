@@ -356,7 +356,6 @@ const EVENTS: EventsData = {
       description:
         "Unleash your creativity by making a compelling short film in just a few minutes. Show off your storytelling, directing, and editing skills!",
       timing: "Submit by Day 1 - 5:00 PM",
-      price: "₹300",
       teamSize: "3-5",
       about:
         "Participants will create a short film based on a given theme within the specified time limit. The best films will be showcased at the closing ceremony.",
@@ -381,7 +380,6 @@ const EVENTS: EventsData = {
       description:
         "Compete in an adrenaline-pumping online gaming tournament featuring some of the most popular multiplayer games!",
       timing: "Day 2 - Online",
-      price: "₹200",
       teamSize: "2",
       about:
         "This high-intensity gaming competition brings together e-sports enthusiasts to battle it out in their favorite online multiplayer games. The tournament format will vary based on the selected games.",
@@ -406,7 +404,6 @@ const EVENTS: EventsData = {
       description:
         "Learn the fundamentals of drone technology, including assembly, calibration, and flying techniques. A must-attend for drone enthusiasts!",
       timing: "Day 1 - Full Day",
-      price: "₹1000",
       teamSize: "1",
       about:
         "A hands-on workshop covering drone aerodynamics, control systems, and live flying sessions. Participants will gain practical experience in drone assembly and operation.",
