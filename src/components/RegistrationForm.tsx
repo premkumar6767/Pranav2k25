@@ -78,6 +78,7 @@ const RegistrationPage: React.FC = () => {
     ],
     onlineevents: [
       { id: 'shortfilm ', name: 'SHORT FILM' },
+      { id: 'esports ', name: 'E-sports(FreeFire)' },
     ],
   };
 
