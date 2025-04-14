@@ -59,7 +59,8 @@ const RegistrationPage: React.FC = () => {
   const EVENTS = {
     technical: [
       { id: 'Paper Presentation', name: 'PAPER PRESENTATION' },
-      { id: 'Project expo/Hackathon', name: 'HACKATHON' },
+      { id: 'Project expo/Hackathon', name: 'HACKATHON', closed: true, 
+        closedReason: 'Registration closed on April 14, 2025' },
       { id: 'Wired-WOnders', name: 'WIRED WONDERS' },
       { id: 'Robot Craze', name: 'ROBOT CRAZE' , closed: true, 
         closedReason: 'Registration closed on April 13, 2025' },
@@ -70,7 +71,8 @@ const RegistrationPage: React.FC = () => {
     nonTechnical: [
       { id: 'Anime ', name: 'SENPAI FANS' },
       { id: 'Aural Bliss', name: 'AURAL BLISS' },
-      { id: 'TreasureHunt', name: 'TREASURE HUNT' },
+      { id: 'TreasureHunt', name: 'TREASURE HUNT', closed: true, 
+        closedReason: 'Registration closed on April 14, 2025' },
       { id: 'SportsBz', name: 'SPORTS BUZZ' },
       { id: 'OjingeoGame', name: 'OJINGEO GAME' },
       { id: 'ZeusPark', name: 'ZEUS SPARK' },
