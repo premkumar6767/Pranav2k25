@@ -131,10 +131,10 @@ const RegistrationPage: React.FC = () => {
 
   // Add participant
   const addParticipant = () => {
-    if (participants.length < 6) {
+    if (participants.length < 5) {
       setParticipants(prev => [...prev, { name: '', email: '', phone: '' }]);
     } else {
-      alert('Maximum Limit: You can add up to 6 participants only.');
+      alert('Maximum Limit: You can add up to 5 participants only.');
     }
   };
 
