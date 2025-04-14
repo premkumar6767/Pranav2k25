@@ -310,7 +310,7 @@ const EVENTS: EventsData = {
       image: zeuseSpark,
       description:
         "A series of fun and interactive electronic-themed challenges designed for tech enthusiasts.",
-      timing: "11:00 AM to 2:00 PM",
+      timing: "2:00 PM to 4:00 PM",
       teamSize: "2-3",
       about:
         "This event is a hands-on electronics challenge where participants must complete tasks involving circuits, sensors, and basic robotics.",
