@@ -61,11 +61,11 @@ const RegistrationPage: React.FC = () => {
       { id: 'Paper Presentation', name: 'PAPER PRESENTATION' },
       { id: 'Project expo/Hackathon', name: 'HACKATHON', closed: true, 
         closedReason: 'Registration closed on April 14, 2025' },
+        { id: 'Design To Dev', name: 'DESIGN TO DEV' },
       { id: 'Wired-WOnders', name: 'WIRED WONDERS' },
       { id: 'Robot Craze', name: 'ROBOT CRAZE' , closed: true, 
         closedReason: 'Registration closed on April 13, 2025' },
       { id: 'Byte the dice', name: 'BYTE THE DICE' }, 
-      { id: 'Design To Dev', name: 'DESIGN TO DEV' },
       { id: 'Decodex', name: 'DECODEX' },
     ],
     nonTechnical: [
