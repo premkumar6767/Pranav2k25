@@ -37,9 +37,9 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const EMAILJS_CONFIG = {
-  SERVICE_ID: 'service_wrc7hgs',
-  TEMPLATE_ID: 'template_s3bgxdp',
-  PUBLIC_KEY: 'A_nhMq5ZY84InwDWx'
+  SERVICE_ID: 'service_jrfllkn',
+  TEMPLATE_ID: 'template_iw2tl2r',
+  PUBLIC_KEY: 'AL3Jtz4w9YnN13kCiq'
 };
 
 const RegistrationPage: React.FC = () => {
@@ -58,8 +58,7 @@ const RegistrationPage: React.FC = () => {
   // Events data (Updated with closed event status)
   const EVENTS = {
     technical: [
-      { id: 'Paper Presentation', name: 'PAPER PRESENTATION', closed: true, 
-        closedReason: 'Registration closed on April 15, 2025' },
+      { id: 'Paper Presentation', name: 'PAPER PRESENTATION' },
       { id: 'Project expo/Hackathon', name: 'HACKATHON', closed: true, 
         closedReason: 'Registration closed on April 14, 2025' },
       { id: 'Design To Dev', name: 'DESIGN TO DEV', closed: true, 

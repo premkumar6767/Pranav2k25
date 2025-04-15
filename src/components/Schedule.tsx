@@ -33,7 +33,7 @@ const scheduleData: ScheduleDay[] = [
       { time: "10:30 AM to 12:00Pm & 2:00 to 3:30PM", title: "ROBOT CRAZE", location: "ECE 2A GROUND FLOOR" },
       { time: "11:00 - 12:30 & 2:00 to 3:30", title: "BYTE THE DICE", location: "EEE 3RD FIRST FLOOR" },
       { time: "10:00 AM to 12:30PM", title: "DESIGN 2 DEV", location: "CSE LAB 6 SECOND FLOOR" },
-      { time: "10:30 AM to 12:00Pm & 2:00 to 3:30PM", title: "DECODEX", location: "COMMON IT LAB THIRD FLOOR" }
+      { time: "10:30 AM to 12:00Pm & 2:00 to 3:30PM", title: "DECODEX", location: "DSP LAB 2ND FLOOR" }
     ]
   },
   {
