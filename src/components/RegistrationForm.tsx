@@ -75,7 +75,8 @@ const RegistrationPage: React.FC = () => {
         closedReason: 'Registration closed on April 14, 2025' },
       { id: 'SportsBz', name: 'SPORTS BUZZ' },
       { id: 'OjingeoGame', name: 'OJINGEO GAME' },
-      { id: 'ZeusPark', name: 'ZEUS SPARK' },
+      { id: 'ZeusPark', name: 'ZEUS SPARK', closed: true, 
+        closedReason: 'Registration closed on April 14, 2025' },
     ],
     workshop: [
       { id: 'DRONE ', name: 'DRONE WORKSHOP', closed: true, 
