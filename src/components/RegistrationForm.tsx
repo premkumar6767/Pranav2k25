@@ -58,7 +58,8 @@ const RegistrationPage: React.FC = () => {
   // Events data (Updated with closed event status)
   const EVENTS = {
     technical: [
-      { id: 'Paper Presentation', name: 'PAPER PRESENTATION' },
+      { id: 'Paper Presentation', name: 'PAPER PRESENTATION', closed: true, 
+        closedReason: 'Registration closed on April 15, 2025' },
       { id: 'Project expo/Hackathon', name: 'HACKATHON', closed: true, 
         closedReason: 'Registration closed on April 14, 2025' },
       { id: 'Design To Dev', name: 'DESIGN TO DEV', closed: true, 
