@@ -8,6 +8,7 @@ import chcomp from "../images/chennai comps.png";
 import artic from "../images/articfox.jpeg";
 import uniq from "../images/uniq.jpeg"
 import group from "../images/groupofcompanies.png"
+import isr from "../images/isr new logo.jpg"
 interface SponsorProps {
   id?: string;
 }
@@ -125,7 +126,23 @@ const Sponsors: React.FC<SponsorProps> = ({ id = "mythological-sponsors" }) => {
       ],
       color: "#d4af37",
       objectFit: "contain"
-    }
+    },
+    {
+      name: "Isr ventures ",
+      title: "Founded in 2009 by ISR Selvakumar & Actor Solai is an innovative and creative production house.Now focusing on Independent film production, Web series and Life coach programs for aspiring Media enthusiasts.",
+      image: isr,
+      mythicalBackground: {
+        deity: "Hermes ",
+        realm: "Movies and entertainment",
+        power: "God of Technology",
+      },
+      description:"The company is very proud to be a gateway for new comers aiming to create a content rich digital media. ISR Ventures are content creators, unbound by formats and methods of making.We strongly believe in creating content that not only entertains, but fuels the imagination of the viewer and trigger them to think and discuss.Our strength is value based story telling, strong narratives with quality production. We are passionate to have a ever expanding team of fresh story developers with a free flowing creativity, to develop them into audio-visual scripts.",
+      link: "https://isrventures.in/",
+      heroicQuest: "Providing the best Entertainment for you ",
+      achievements: ["Vithiyadi Naanunakku (2016)","Yadena Katen (2021)"],
+      color: "#d4af37",
+      objectFit: "contain" // Now using contain for all images
+    },
   ];
 
   useEffect(() => {
